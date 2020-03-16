@@ -39,10 +39,9 @@ public class MainController {
     }
 
     @PostMapping(path = "/add")
-    public String add(@RequestParam String username,String password)
+    public @ResponseBody boolean add(@RequestParam String username,String password)
     {
-         mainService.add(username, password);
-        return "Successfully registration!";
+        return mainService.add(username, password);
     }
 
 
