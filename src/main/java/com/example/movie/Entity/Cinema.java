@@ -12,7 +12,7 @@ public class Cinema {
     private String title;
     private String tel;
     private boolean refund;
-    private boolean change;
+    private boolean change_time;
     private boolean snack;
     private boolean three_D_glasses;
     private boolean wifi;
@@ -59,13 +59,14 @@ public class Cinema {
         this.refund = refund;
     }
 
-    public boolean isChange() {
-        return change;
+    public boolean isChange_time() {
+        return change_time;
     }
 
-    public void setChange(boolean change) {
-        this.change = change;
+    public void setChange_time(boolean change_time) {
+        this.change_time = change_time;
     }
+
 
     public boolean isSnack() {
         return snack;

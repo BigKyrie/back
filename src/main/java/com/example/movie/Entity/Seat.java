@@ -9,7 +9,7 @@ public class Seat {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
     private Integer row;
-    private Integer column;
+    private Integer col;
     private boolean taken_or_not;
 
     @ManyToOne
@@ -33,11 +33,11 @@ public class Seat {
     }
 
     public Integer getColumn() {
-        return column;
+        return col;
     }
 
-    public void setColumn(Integer column) {
-        this.column = column;
+    public void setColumn(Integer col) {
+        this.col = col;
     }
 
     public boolean isTaken_or_not() {
