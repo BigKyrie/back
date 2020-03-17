@@ -17,5 +17,4 @@ public class MovieService {
     public List<Movie> display_all_movies(){
         return movieRepository.display_all_movies();
     }
-
 }
