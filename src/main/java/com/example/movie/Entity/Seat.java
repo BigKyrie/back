@@ -10,6 +10,7 @@
 //    private Integer id;
 //    private Integer row;
 //    private Integer column;
+//
 //    @ManyToOne
 //    @JoinColumn(name = "Screen_id")
 //    private Screen screen;

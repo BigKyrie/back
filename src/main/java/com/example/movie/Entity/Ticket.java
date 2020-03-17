@@ -1,7 +1,7 @@
-//package com.example.movie.Entity;
-//
-//import org.springframework.data.relational.core.sql.In;
-//
+package com.example.movie.Entity;
+
+import org.springframework.data.relational.core.sql.In;
+
 //import javax.persistence.*;
 //
 //@Entity

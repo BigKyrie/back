@@ -1,7 +1,6 @@
 package com.example.movie.Controller;
 
 import com.example.movie.Entity.Movie;
-import com.example.movie.Service.MainService;
 import com.example.movie.Service.MovieService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
