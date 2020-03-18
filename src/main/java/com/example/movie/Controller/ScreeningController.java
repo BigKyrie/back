@@ -19,7 +19,8 @@ public class ScreeningController {
     @Autowired
     private ScreeningService screeningService;
     //find screenings by movie_id
-    @GetMapping(path = "/{id}")
-    public @ResponseBody List<Screening> display_screenings_by_id(@PathVariable(name = "id") Integer id)
-    {return screeningService.display_screenings_by_id(id);}
+    @GetMapping(path = "/{movie_id}/{cinema_id}")
+    public @ResponseBody List<Screening> display_screenings_by_id(@PathVariable(name = "movie_id") Integer movie_id,
+                                                                  @PathVariable(name = "cinema_id") Integer cinema_id)
+    {return screeningService.display_screenings_filterby_cinema_id_and_movie_id(movie_id,cinema_id);}
 }
