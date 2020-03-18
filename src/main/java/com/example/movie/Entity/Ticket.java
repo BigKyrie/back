@@ -3,6 +3,7 @@ package com.example.movie.Entity;
 import org.springframework.data.relational.core.sql.In;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Entity
 @Table(name = "ticket")
@@ -12,6 +13,7 @@ public class Ticket {
     private Integer id;
     private float price;
 
+    private Date create_time;
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
@@ -52,6 +54,13 @@ public class Ticket {
         this.seat = seat;
     }
 
+    public Date getCreate_time() {
+        return create_time;
+    }
+
+    public void setCreate_time(Date create_time) {
+        this.create_time = create_time;
+    }
 
 
 }
