@@ -17,7 +17,6 @@ public class MovieController {
     private MovieService movieService;
 
     @GetMapping(path = "/allMovies")
-    public @ResponseBody
-    List<Movie> display_all_movies(){return movieService.display_all_movies();}
+    public @ResponseBody List<Movie> display_all_movies(){return movieService.display_all_movies();}
 
 }
