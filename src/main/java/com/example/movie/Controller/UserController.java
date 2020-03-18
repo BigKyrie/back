@@ -1,7 +1,6 @@
 package com.example.movie.Controller;
 
-import com.example.movie.Entity.Movie;
-import com.example.movie.Service.MainService;
+import com.example.movie.Service.UserService;
 import com.example.movie.Entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,9 +10,9 @@ import java.util.List;
 
 @Controller
 @RequestMapping(path = "/demo")
-public class MainController {
+public class UserController {
     @Autowired
-    private MainService mainService;
+    private UserService userService;
 
     @GetMapping(path = "/index")
     private String helloWorld() {
@@ -23,25 +22,25 @@ public class MainController {
     @GetMapping(path = "/getAll")
     public @ResponseBody Iterable<User> getAllUsers()
     {
-        return mainService.getAllUsers();
+        return userService.getAllUsers();
     }
 
     @PostMapping(path = "/getUser")
     public @ResponseBody List<User> findByUsername(String username)
     {
-        return mainService.findByUsername(username);
+        return userService.findByUsername(username);
     }
 
     @PostMapping(path = "/get")
     public @ResponseBody List<User> findByUsernameAndPassword(String username,String password)
     {
-        return mainService.findByUsernameAndPassword(username,password);
+        return userService.findByUsernameAndPassword(username,password);
     }
 
     @PostMapping(path = "/add")
     public @ResponseBody boolean add(@RequestParam String username,String password)
     {
-        return mainService.add(username, password);
+        return userService.add(username, password);
     }
 
 

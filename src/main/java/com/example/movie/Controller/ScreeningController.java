@@ -18,6 +18,7 @@ import java.util.List;
 public class ScreeningController {
     @Autowired
     private ScreeningService screeningService;
+    //find screenings by movie_id
     @GetMapping(path = "/{id}")
     public @ResponseBody List<Screening> display_screenings_by_id(@PathVariable(name = "id") Integer id)
     {return screeningService.display_screenings_by_id(id);}
