@@ -43,5 +43,9 @@ public class UserController {
         return userService.add(username, password);
     }
 
+    @GetMapping(path = "/manage")
+    public String manageMain(){
+        return "manage";
+    }
 
 }
