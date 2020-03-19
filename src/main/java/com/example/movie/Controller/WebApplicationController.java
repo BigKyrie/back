@@ -7,6 +7,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @RequestMapping
 public class WebApplicationController {
+    @GetMapping(path="/login")
+    private String login() { return "cinema_admin_login"; }
+
     @GetMapping(path = "/register")
     private String register() {
         return "register";

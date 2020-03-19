@@ -15,10 +15,7 @@ public class CinemaAdminController {
     @Autowired
     private Cinema_AdminService cinema_adminService;
 
-    @GetMapping(path="/h")
-    private String helloWorld() {
-        return "cinema_login";
-    }
+
 
 
     @PostMapping(path="/login")

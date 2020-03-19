@@ -20,6 +20,7 @@ public class Cinema_AdminService {
 
     }
 
+    //add a cinema admin
     public boolean add(String username, String password) {
         List<Cinema_Admin> findCinemaAdminUserName = cinema_adminRepository.findByCinemaAdminUsername(username);
         if (findCinemaAdminUserName.size() != 0) {
