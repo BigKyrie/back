@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cinema</title>
+    <link rel="stylesheet" href="/webjars/bootstrap/3.3.5/css/bootstrap.min.css" />
+    <script src="/webjars/jquery/3.1.1/jquery.min.js"></script>
+    <script src="/webjars/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container-fluid">
+    <div class="row">
+        <!--Separate four columns in the page-->
+        <div class="col-md-3"></div>
+        <div class="col-md-8">
+            <h1>My Cinema Info</h1>
+            <form action="" method="post">
+                Cinema Name :<input name="title" type="text"><br>
+                Location :<input name="location" type="password"><br>
+                Telephone number:<input name = "tel" type = "text"><br>
+                Refund:
+                <select name="refund">
+                    <option value="true" >yes</option>
+                    <option value="false">no</option>
+                </select><br>
+                WIFI Access:
+                <select name="wifi">
+                <option value="true" >yes</option>
+                <option value="false">no</option>
+                </select><br>
+                Change screening:
+                <select name="change_time">
+                    <option value="true" >yes</option>
+                    <option value="false">no</option>
+                </select><br>
+                Snack:
+                <select name="snack">
+                    <option value="true" >yes</option>
+                    <option value="false">no</option>
+                </select><br>
+                3D Glasses:
+                <select name="three_D_glass">
+                    <option value="true" >yes</option>
+                    <option value="false">no</option>
+                </select><br>
+                Rest Area:
+                <select name="rest_area">
+                    <option value="true" >yes</option>
+                    <option value="false">no</option>
+                </select><br>
+                Children discount:
+                <select name="children_discount">
+                    <option value="true" >yes</option>
+                    <option value="false">no</option>
+                </select><br>
+                <input type="submit" value="Save">
+            </form>
+        </div>
+        <div class="col-md-3"></div>
+    </div>
+</div>
+</body>
+</html>

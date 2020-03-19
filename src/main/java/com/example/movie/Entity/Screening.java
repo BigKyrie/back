@@ -12,7 +12,7 @@ public class Screening {
     private Integer id;
     private Date start_time;
     private Date end_time;
-
+    private float price;
     @ManyToOne
     @JoinColumn(name = "screen_id")
     private Screen screen;
@@ -62,7 +62,12 @@ public class Screening {
         this.movie = movie;
     }
 
+    public float getPrice() {
+        return price;
+    }
 
-
+    public void setPrice(float price) {
+        this.price = price;
+    }
 
 }

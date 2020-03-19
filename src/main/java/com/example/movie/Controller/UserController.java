@@ -14,11 +14,6 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @GetMapping(path = "/index")
-    private String helloWorld() {
-        return "hello";
-    }
-
     @GetMapping(path = "/getAll")
     public @ResponseBody Iterable<User> getAllUsers()
     {
@@ -43,9 +38,5 @@ public class UserController {
         return userService.add(username, password);
     }
 
-    @GetMapping(path = "/manage")
-    public String manageMain(){
-        return "manage";
-    }
 
 }

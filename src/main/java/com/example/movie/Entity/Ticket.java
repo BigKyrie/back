@@ -11,7 +11,7 @@ public class Ticket {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
-    private float price;
+
 
     private Date create_time;
     @ManyToOne
@@ -28,14 +28,6 @@ public class Ticket {
 
     public void setId(Integer id) {
         this.id = id;
-    }
-
-    public float getPrice() {
-        return price;
-    }
-
-    public void setPrice(float price) {
-        this.price = price;
     }
 
     public User getUser() {
