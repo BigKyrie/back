@@ -15,6 +15,11 @@ public class Cinema_AdminService {
     @Autowired
     private Cinema_AdminRepository cinema_adminRepository;
 
+    public List<Cinema_Admin> findByCinemaAdminUsernameAndPassword(String username,String password){
+        return cinema_adminRepository.findByCinemaAdminUsernameAndPassword(username,password);
+
+    }
+
     public boolean add(String username, String password) {
         List<Cinema_Admin> findCinemaAdminUserName = cinema_adminRepository.findByCinemaAdminUsername(username);
         if (findCinemaAdminUserName.size() != 0) {
