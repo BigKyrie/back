@@ -26,7 +26,7 @@ public class CinemaAdminController {
                                       @RequestParam("password") String password){
         List<Cinema_Admin> admins = cinema_adminService.findByCinemaAdminUsernameAndPassword(username,password);
         if(admins.size()>0){
-            return "manage";
+            return "redirect:/manage";
         }
         else{
             return "Wrong";
@@ -35,9 +35,9 @@ public class CinemaAdminController {
     }
 
     @PostMapping(path = "/add")
-    public @ResponseBody String add(@RequestParam String username, String password)
+    public String add(@RequestParam String username, String password)
     {
         cinema_adminService.add(username, password);
-        return "Successfully registered!";
+        return "redirect:/cinemaAdmin/h";
     }
 }
