@@ -56,8 +56,8 @@ public class Movie {
         return actors;
     }
 
-    public void setActors(String lead_actors) {
-        this.actors = lead_actors;
+    public void setActors(String actors) {
+        this.actors = actors;
     }
 
     public Date getShowtime() {
