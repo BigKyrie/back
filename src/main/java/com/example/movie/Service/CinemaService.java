@@ -27,7 +27,7 @@ public class CinemaService {
         List<Cinema> cinemas=new ArrayList<>();
         List<Screen> screens=new ArrayList<>();
         List<Cinema> final_cinemas=new ArrayList<>();
-        List<Screening> screenings = screeningRepository.display_screenings_by_id(id);
+        List<Screening> screenings = screeningRepository.display_screenings_by_movie_id(id);
         for (int i = 0; i < screenings.size(); i++) {
             screens.add(screenings.get(i).getScreen());
             for (int j = 0; j < screens.size(); j++) {

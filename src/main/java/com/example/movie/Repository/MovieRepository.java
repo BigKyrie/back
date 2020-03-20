@@ -13,4 +13,5 @@ public interface MovieRepository extends CrudRepository<Movie,Integer>
 {
     @Query(value = "select * from movie" ,nativeQuery = true)
     List<Movie> display_all_movies();
+
 }

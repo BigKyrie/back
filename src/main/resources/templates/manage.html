@@ -17,18 +17,11 @@
     </div>
     <div class="row">
         <!--Separate four columns in the page-->
-        <div class="col-md-3">
-            <a href="/myCinema"><button type="button" class="btn btn-primary">Cinema information</button></a>
-        </div>
-        <div class="col-md-3">
-            <a href=""><button type="button" class="btn btn-primary">Screen information</button></a>
-        </div>
-        <div class="col-md-3">
-            <a href=""><button type="button" class="btn btn-primary">Movie information</button></a>
-        </div>
-        <div class="col-md-3">
-            <a href=""><button type="button" class="btn btn-primary">Screening information</button></a>
-        </div>
+        <div class="col-md-3"><a href=""><button type="button" class="btn btn-primary">Cinema information</button></a></div>
+        <div class="col-md-3"><a href=""><button type="button" class="btn btn-primary">Screen information</button></a></div>
+        <div class="col-md-3"><a href=""><button type="button" class="btn btn-primary" th:href="@{/cinemaAdmin/movies_in_cinema}">Movie information</button></a></div>
+        <div class="col-md-3"><a href=""><button type="button" class="btn btn-primary">Screening information</button></a></div>
+
     </div>
 </div>
 </body>
