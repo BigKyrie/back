@@ -1,0 +1,17 @@
+.dashboard-content {
+    height: 112px;
+    border-radius: 4px;
+    border: solid 1px #dfe2e9;
+    background-color: #B0C4DE;
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 30px ;
+}
+
+.content-title {
+    margin-top: 40px;
+    margin-left: 70px;
+    height: 21px;
+    font-size: 18px;
+    color: #2F4F4F;
+}

@@ -13,8 +13,10 @@
         <!--Separate four columns in the page-->
         <div class="col-md-3"></div>
         <div class="col-md-8">
-            <h1>My Cinema Info</h1>
-            <form action="/cinema/add" method="post">
+            <legend>My Cinema Info</legend>
+            <form action="/cinema/add" method="post" class="form-horizontal" role="form">
+                <fieldset>
+                <div class="form-group">
                 Cinema Name :<input name="title" type="text"><br>
                 Location :<input name="location" type="text"><br>
                 Telephone number:<input name = "tel" type = "text"><br>
@@ -53,6 +55,8 @@
                     <option value="true" >yes</option>
                     <option value="false">no</option>
                 </select><br>
+                </div>
+                </fieldset>
                 <input type="submit" value="Save">
             </form>
         </div>
