@@ -19,9 +19,9 @@ public class CinemaService {
     private CinemaRepository cinemaRepository;
 
 
-//    public List<Cinema> display_all_cinemas(){
-//        return cinemaRepository.display_all_cinemas();
-//    }
+    public List<Cinema> display_all_cinemas(){
+        return cinemaRepository.display_all_cinemas();
+    }
 
     public List<Cinema> display_cinemas_for_a_certain_movie(Integer id) {
         List<Cinema> cinemas=new ArrayList<>();

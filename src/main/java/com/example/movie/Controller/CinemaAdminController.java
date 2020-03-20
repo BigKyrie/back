@@ -38,7 +38,7 @@ public class CinemaAdminController {
     public String add(@RequestParam String username, String password)
     {
         cinema_adminService.add(username, password);
-        return "redirect:/cinemaAdmin/h";
+        return "redirect:/login";
     }
 
 

@@ -8,6 +8,7 @@ import com.example.movie.Service.Cinema_AdminService;
 import com.example.movie.Service.ScreeningService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -35,5 +36,13 @@ public class CinemaController {
         cinemaService.add(title, location, tel, refund, change_time,  snack,  three_D_glasses,
          wifi, rest_area, children_discount);
         return "redirect:/manage";
+    }
+
+
+    @GetMapping(path="/getAllCinema")
+    public String allCinema( Model model) {
+        List<Cinema> cinemas = cinemaService.display_all_cinemas();
+        model.addAttribute("cinemas",cinemas);
+        return "cinema_list";
     }
 }

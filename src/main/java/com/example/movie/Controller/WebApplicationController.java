@@ -14,14 +14,8 @@ public class WebApplicationController {
     private String login() { return "cinema_admin_login"; }
 
     @GetMapping(path = "/register")
-
     private String adminRegister() {
         return "register";
-    }
-
-    @GetMapping(path="/login")
-    private String adminLogin() {
-        return "cinema_login";
     }
 
     @GetMapping(path = "/manage")
@@ -29,7 +23,7 @@ public class WebApplicationController {
         return "manage";
     }
 
-    @GetMapping(path = "/myCinema")
+    @GetMapping(path = "/addCinema")
     public String myCinema(){
         return "cinema_form";
     }
