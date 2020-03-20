@@ -1,8 +1,5 @@
 package com.example.movie.Repository;
 import com.example.movie.Entity.Cinema;
-import com.example.movie.Entity.Movie;
-import com.example.movie.Entity.Screening;
-import com.sun.corba.se.impl.presentation.rmi.StubFactoryDynamicBase;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
