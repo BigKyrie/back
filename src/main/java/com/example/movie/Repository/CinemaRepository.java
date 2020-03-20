@@ -16,4 +16,5 @@ public interface CinemaRepository extends CrudRepository<Cinema,Integer>
 
     @Query(value = "select * from cinema where id=? GROUP BY id",nativeQuery = true)
     List<Cinema> display_cinema_from_screen(Integer id);
+
 }

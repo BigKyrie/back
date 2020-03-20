@@ -52,12 +52,12 @@ public class Movie {
         this.director = director;
     }
 
-    public String getActors() {
+    public String getLead_actors() {
         return actors;
     }
 
-    public void setActors(String actors) {
-        this.actors = actors;
+    public void setLead_actors(String lead_actors) {
+        this.actors = lead_actors;
     }
 
     public Date getShowtime() {

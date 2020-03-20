@@ -16,7 +16,7 @@ public class ScreeningService {
     @Autowired
     private ScreeningRepository screeningRepository;
     public List<Screening> display_screenings_filterby_cinema_id_and_movie_id(Integer movie_id, Integer cinema_id){
-        List <Screening> screenings_by_movie_id = screeningRepository.display_screenings_by_id(movie_id);
+        List <Screening> screenings_by_movie_id = screeningRepository.display_screenings_by_movie_id(movie_id);
         List <Screening> screenings_by_movie_id_and_cinema_id = new ArrayList<>();
         for (int i = 0; i< screenings_by_movie_id.size();i++) {
            if (screenings_by_movie_id.get(i).getScreen().getCinema().getId() == cinema_id)
