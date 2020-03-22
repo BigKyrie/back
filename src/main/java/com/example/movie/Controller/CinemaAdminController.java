@@ -4,6 +4,7 @@ package com.example.movie.Controller;
 import com.example.movie.Entity.Cinema;
 import com.example.movie.Entity.Cinema_Admin;
 import com.example.movie.Entity.Movie;
+import com.example.movie.Form.*;
 import com.example.movie.Entity.User;
 import com.example.movie.Service.Cinema_AdminService;
 
@@ -11,6 +12,9 @@ import com.example.movie.Service.MovieService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.text.ParseException;
@@ -60,6 +64,7 @@ public class CinemaAdminController {
         return "movie_form";
     }
 
+
     @PostMapping(path = "/addMovies")
     public String addMovies(@RequestParam String title, String blurb, String certificate, String director, String actors,
                             String showtime, Integer duration, String type, String language, String url)
@@ -74,10 +79,5 @@ public class CinemaAdminController {
 
         return "redirect:/cinemaAdmin/allMovies";
     }
-
-
-
-
-
 
 }
