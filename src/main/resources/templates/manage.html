@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
 
-    <link rel="stylesheet" href="/webjars/bootstrap/3.3.5/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="/css/manage.css">
+    <link href="/webjars/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="/css/manage.css" rel="stylesheet">
     <script src="/webjars/jquery/3.1.1/jquery.min.js"></script>
     <script src="/webjars/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 
@@ -12,44 +12,47 @@
 <body>
 <div class="container-fluid">
     <div class="row">
-            <!--Separate four columns in the page-->
-            <div class="col-md-3"></div>
-            <div class="col-md-6"><legend>Welcome to the cinema management system!</legend></div>
+        <!--Separate four columns in the page-->
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+            <legend>Welcome to the cinema management system!</legend>
+        </div>
         <div class="col-md-3"></div>
     </div>
     <div class="row">
-                    <div class="col-md-3"></div>
-                    <div class="col-md-3">
-                        <a href="">
-                        <div class="dashboard-content">
-                            <div class = "content-title">Movie information</div>
-                        </div>
-                        </a>
-                    </div>
-                    <div class="col-md-3">
-                        <a href="/screen/getAllScreens">
-                            <div class="dashboard-content">
-                                <div class = "content-title">Screen information</div>
-                            </div>
-                        </a>
-                    </div>
+        <div class="col-md-3"></div>
+        <div class="col-md-3">
+            <a href="/cinemaAdmin/allMovies">
+                <div class="dashboard-content">
+                    <div class="content-title">Movie information</div>
+                </div>
+            </a>
+        </div>
+        <div class="col-md-3">
+            <a href="/screen/getAllScreens">
+                <div class="dashboard-content">
+                    <div class="content-title">Screen information</div>
+                </div>
+            </a>
+        </div>
     </div>
     <div class="row">
         <div class="col-md-3"></div>
         <div class="col-md-3">
             <a href="/cinema/getAllCinema">
                 <div class="dashboard-content">
-                    <div class = "content-title">Cinema information</div>
+                    <div class="content-title">Cinema information</div>
                 </div>
             </a>
         </div>
         <div class="col-md-3">
             <a href="">
                 <div class="dashboard-content">
-                    <div class = "content-title">Screening information</div>
+                    <div class="content-title">Screening information</div>
                 </div>
             </a>
         </div>
+
     </div>
     <div class="col-md-3"></div>
 </div>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cinema</title>
+    <link rel="stylesheet" href="/webjars/bootstrap/3.3.5/css/bootstrap.min.css" />
+    <script src="/webjars/jquery/3.1.1/jquery.min.js"></script>
+    <script src="/webjars/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container-fluid">
+    <div class="row">
+        <!--Separate four columns in the page-->
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+            <h1>Add a new movie</h1>
+            <form action="/cinemaAdmin/addMovies" method="post">
+                Movie title :<input name="title" type="text" class="form-control"><br>
+                Blurb :<input name="blurb" type="text" class="form-control"><br>
+                Certificate:<input name = "certificate" type = "text" class="form-control"><br>
+                Director:<input name = "director" type = "text" class="form-control"><br>
+                Actors:<input name = "actors" type = "text" class="form-control"><br>
+                Show time:<input name = "showtime" type = "date" class="form-control"><br>
+                Duration:<input name = "duration" type = "text" class="form-control"><br>
+                Type:<input name = "type" type = "text" class="form-control"><br>
+                Language:<input name = "language" type = "text" class="form-control"><br>
+                Picture url:<input name = "url" type = "text" class="form-control"><br>
+                <input type="submit" value="Save">
+            </form>
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+</div>
+</body>
+</html>
