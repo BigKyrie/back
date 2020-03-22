@@ -4,7 +4,6 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "comment")
-
 public class Comment {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -12,13 +11,10 @@ public class Comment {
     private Integer grade;
     private String comment;
 
-
-    @ManyToOne
+    @ManyToOne//one user has many comments, one comment belong to one user
     @JoinColumn(name = "user_id")
     private User user;
-    //one user has many comments, one comment belong to one user
-
-    @ManyToOne
+    @ManyToOne//one movie has many comments, one comment belong to one movie
     @JoinColumn(name = "movie_id")
     private Movie movie;
 

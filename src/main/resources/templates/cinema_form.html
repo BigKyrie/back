@@ -3,65 +3,96 @@
 <head>
     <meta charset="UTF-8">
     <title>Cinema</title>
-    <link rel="stylesheet" href="/webjars/bootstrap/3.3.5/css/bootstrap.min.css" />
+    <link href="/webjars/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet"/>
     <script src="/webjars/jquery/3.1.1/jquery.min.js"></script>
     <script src="/webjars/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 </head>
 <body>
-<div class="container-fluid">
-    <div class="row">
-        <!--Separate four columns in the page-->
-        <div class="col-md-3"></div>
-        <div class="col-md-8">
+<div class="row">
+    <!--Separate four columns in the page-->
+    <div class="col-md-3"></div>
+    <div class="col-md-8">
+
+        <form action="/cinema/add" class="form-horizontal" method="post">
             <legend>My Cinema Info</legend>
-            <form action="/cinema/add" method="post" class="form-horizontal" role="form">
-                <fieldset>
+            <fieldset>
                 <div class="form-group">
-                Cinema Name :<input name="title" type="text"><br>
-                Location :<input name="location" type="text"><br>
-                Telephone number:<input name = "tel" type = "text"><br>
-                Refund:
-                <select name="refund">
-                    <option value="true" >yes</option>
-                    <option value="false">no</option>
-                </select><br>
-                WIFI Access:
-                <select name="wifi">
-                <option value="true" >yes</option>
-                <option value="false">no</option>
-                </select><br>
-                Change screening:
-                <select name="change_time">
-                    <option value="true" >yes</option>
-                    <option value="false">no</option>
-                </select><br>
-                Snack:
-                <select name="snack">
-                    <option value="true" >yes</option>
-                    <option value="false">no</option>
-                </select><br>
-                3D Glasses:
-                <select name="three_D_glass">
-                    <option value="true" >yes</option>
-                    <option value="false">no</option>
-                </select><br>
-                Rest Area:
-                <select name="rest_area">
-                    <option value="true" >yes</option>
-                    <option value="false">no</option>
-                </select><br>
-                Children discount:
-                <select name="children_discount">
-                    <option value="true" >yes</option>
-                    <option value="false">no</option>
-                </select><br>
+                    <label class="col-md-2 control-label">Cinema Name</label>
+                    <div class="col-md-4">
+                        <input class="form-control" name="title" type="text">
+                    </div>
                 </div>
-                </fieldset>
-                <input type="submit" value="Save">
-            </form>
-        </div>
-        <div class="col-md-3"></div>
-    </div>
+                <div class="form-group">
+                    <label class="col-md-2 control-label">Location</label>
+                    <div class="col-md-4">
+                        <input class="form-control" name="location" type="text">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-2 control-label">Telephone number</label>
+                    <div class="col-md-4">
+                        <input class="form-control" name="tel" type="text">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-2 control-label">Refund</label>
+                    <select name="refund">
+                        <option value="true">yes</option>
+                        <option value="false">no</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-2 control-label">WIFI Access</label>
+                    <select name="wifi">
+                        <option value="true">yes</option>
+                        <option value="false">no</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-2 control-label">Change screening</label>
+                    <select name="change_time">
+                        <option value="true">yes</option>
+                        <option value="false">no</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-2 control-label">Snack</label>
+                    <select name="snack">
+                        <option value="true">yes</option>
+                        <option value="false">no</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-2 control-label">3D Glasses</label>
+                    <select name="three_D_glass">
+                        <option value="true">yes</option>
+                        <option value="false">no</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-2 control-label">Rest Area</label>
+                    <select name="rest_area">
+                        <option value="true">yes</option>
+                        <option value="false">no</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-2 control-label">Children discount</label>
+                    <select name="children_discount">
+                        <option value="true">yes</option>
+                        <option value="false">no</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-6 ">
+                        <input class="btn btn-primary" type="submit" value="Save">
+                        <a href="#">Cancel</a>
+                    </div>
+                </div>
+            </fieldset>
+    </form>
+</div>
+<div class="col-md-3"></div>
 </div>
 </body>
 </html>

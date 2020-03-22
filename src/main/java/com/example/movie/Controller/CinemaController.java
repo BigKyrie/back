@@ -1,11 +1,7 @@
 package com.example.movie.Controller;
 
 import com.example.movie.Entity.Cinema;
-import com.example.movie.Entity.Screening;
 import com.example.movie.Service.CinemaService;
-import com.example.movie.Service.Cinema_AdminService;
-
-import com.example.movie.Service.ScreeningService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -33,7 +29,7 @@ public class CinemaController {
                       boolean wifi, boolean rest_area, boolean children_discount
     )
     {
-        cinemaService.add(title, location, tel, refund, change_time,  snack,  three_D_glasses,
+        cinemaService.add(title, location, tel, refund, change_time,  snack, three_D_glasses,
          wifi, rest_area, children_discount);
         return "redirect:/manage";
     }
