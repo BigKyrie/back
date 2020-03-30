@@ -86,8 +86,21 @@ public class CinemaService {
 
     //update the information of cinema
     @Transactional
-    public void update(Cinema cinema) {
-        cinema.setLocation("edit location test");
-        cinema.setTel("123123123");
+    public void update(String title, String location, String tel, boolean refund,
+                       boolean change_time, boolean snack, boolean three_D_glasses,
+                       boolean wifi, boolean rest_area, boolean children_discount, Integer id
+    )
+    {
+        Cinema cinema = this.getById(id);
+        cinema.setTitle(title);
+        cinema.setLocation(location);
+        cinema.setTel(tel);
+        cinema.setRefund(refund);
+        cinema.setChange_time(change_time);
+        cinema.setSnack(snack);
+        cinema.setThree_D_glasses(three_D_glasses);
+        cinema.setWifi(wifi);
+        cinema.setRest_area(rest_area);
+        cinema.setChildren_discount(children_discount);
     }
 }

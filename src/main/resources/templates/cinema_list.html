@@ -54,6 +54,7 @@
                         <td th:text="${cinema.wifi}"></td>
                         <td th:text="${cinema.rest_area}"></td>
                         <td th:text="${cinema.children_discount}"></td>
+                        <td><a th:href="@{'/cinema/toEdit/'+${cinema.id}}">edit</a></td>
                     </tr>
                     </tbody>
                 </table>

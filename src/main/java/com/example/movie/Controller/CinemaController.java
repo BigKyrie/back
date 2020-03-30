@@ -42,10 +42,28 @@ public class CinemaController {
         return "cinema_list";
     }
 
-    @RequestMapping("/update")
-    public String update() {
-        Cinema cinema = cinemaService.getById(2);
-        cinemaService.update(cinema);
-        return "cinema_list";
+//    @RequestMapping("/update")
+//    public String update() {
+//        Cinema cinema = cinemaService.getById(2);
+//        cinemaService.update(cinema);
+//        return "cinema_list";
+//    }
+
+    @GetMapping(path = "/toEdit/{cinema_id}")
+    public String toEdit(Model model, @PathVariable(name = "cinema_id")Integer id){
+        Cinema cinema=cinemaService.getById(id);
+        model.addAttribute("cinema", cinema);
+        return "cinema_edit";
     }
+
+    @PostMapping(path = "/edit/{cinema_id}")
+    public String update(@RequestParam String title, String location, String tel , boolean refund,
+                   boolean change_time, boolean snack, boolean three_D_glasses,
+                   boolean wifi, boolean rest_area, boolean children_discount, @PathVariable(name = "cinema_id")Integer id
+    ) {
+        cinemaService.update(title, location, tel, refund, change_time,  snack, three_D_glasses,
+                wifi, rest_area, children_discount,id);
+        return "redirect:/cinema/getAllCinema";
+    }
+
 }
