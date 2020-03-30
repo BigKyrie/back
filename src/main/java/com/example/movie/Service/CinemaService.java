@@ -4,6 +4,7 @@ import com.example.movie.Entity.*;
 import com.example.movie.Repository.CinemaRepository;
 import com.example.movie.Repository.ScreeningRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.relational.core.sql.In;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -47,6 +48,10 @@ public class CinemaService {
         }
         return final_cinemas;
     }
+    // find a cinema by id
+    public Cinema getById(Integer id) {
+        return cinemaRepository.display_cinema_from_screen(id).get(0);
+    }
 
     // add a cinema
     public boolean add(String title, String location, String tel, boolean refund,
@@ -77,5 +82,12 @@ public class CinemaService {
                 return true;
             }
         }
+    }
+
+    //update the information of cinema
+    @Transactional
+    public void update(Cinema cinema) {
+        cinema.setLocation("edit location test");
+        cinema.setTel("123123123");
     }
 }

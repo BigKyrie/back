@@ -41,4 +41,11 @@ public class CinemaController {
         model.addAttribute("cinemas",cinemas);
         return "cinema_list";
     }
+
+    @RequestMapping("/update")
+    public String update() {
+        Cinema cinema = cinemaService.getById(2);
+        cinemaService.update(cinema);
+        return "cinema_list";
+    }
 }
