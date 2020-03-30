@@ -8,24 +8,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.example.movie.Entity.Movie;
-import com.example.movie.Form.*;
-import com.example.movie.Entity.User;
-import com.example.movie.Service.Cinema_AdminService;
-
-import com.example.movie.Service.MovieService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
-import org.springframework.validation.ObjectError;
-import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.*;
-
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 @Controller
@@ -33,8 +15,6 @@ import java.util.List;
 public class CinemaAdminController {
     @Autowired
     private Cinema_AdminService cinema_adminService;
-    @Autowired
-    private MovieService movieService;
 
     @PostMapping(path="/login")
     public String login(@RequestParam("username") String username,
@@ -48,6 +28,7 @@ public class CinemaAdminController {
         }
 
     }
+
     @PostMapping(path = "/add")
     public String add(@RequestParam String username, String password)
     {
@@ -55,34 +36,12 @@ public class CinemaAdminController {
         return "redirect:/login";
     }
 
-    @GetMapping(path = "/allMovies")
-    public String displayAllMovies(Model model)
-    {
-        List<Movie> movies=movieService.display_all_movies();
-        model.addAttribute("movies",movies);
-        return "manage_movie";
-    }
 
-    @GetMapping(path = "/addMovieForm")
-    public String displayMovieForm()
-    {
-        return "movie_form";
-    }
-
-
-    @PostMapping(path = "/addMovies")
-    public String addMovies(@RequestParam String title, String blurb, String certificate, String director, String actors,
-                            String showtime, Integer duration, String type, String language, String url)
-    {
-        try {
-            SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
-            movieService.addMovies(title,blurb,certificate,director,actors,
-                    sdf.parse(showtime),duration,type,language,url);
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-
-        return "redirect:/cinemaAdmin/allMovies";
-    }
-
+//    @GetMapping(path="/movies_in_cinema")
+//    public @ResponseBody String moviesInCinema(@CurrentUser Cinema_Admin cinema_admin, Model model) {
+//        List<Movie> movies=new ArrayList<>();
+//        movies=cinema_adminService.findMovieByCinema(cinema_admin.getCinema().getId());
+//        model.addAttribute("movies",movies);
+//        return "manage_movie";
+//    }
 }

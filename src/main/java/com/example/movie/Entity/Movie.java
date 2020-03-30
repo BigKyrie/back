@@ -20,14 +20,6 @@ public class Movie {
     private String language;
     private String url;
 
-    public String getUrl() {
-        return url;
-    }
-
-    public void setUrl(String url) {
-        this.url = url;
-    }
-
     //getters and setters
     public Integer getId() {
         return id;
@@ -61,13 +53,6 @@ public class Movie {
         this.director = director;
     }
 
-    public String getActors() {
-        return actors;
-    }
-
-    public void setActors(String lead_actors) {
-        this.actors = lead_actors;
-    }
 
     public Date getShowtime() {
         return showtime;
@@ -107,5 +92,21 @@ public class Movie {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public String getActors() {
+        return actors;
+    }
+
+    public void setActors(String actors) {
+        this.actors = actors;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
     }
 }
