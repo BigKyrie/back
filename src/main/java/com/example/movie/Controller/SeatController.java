@@ -63,7 +63,7 @@ public class SeatController {
         for (int i = 0; i < taken.size();i++){
             SeatInfo seatInfo = new SeatInfo();
             seatInfo.setCol(taken.get(i).getCol());
-            seatInfo.setRow(taken.get(i).getRow());
+            seatInfo.setRow(taken.get(i).getCol());
             seatInfo.setSeat_id(taken.get(i).getId());
             seatInfo.setScreening_id(screening.getId());
             seatInfo.setTaken_or_not(true);
@@ -72,7 +72,7 @@ public class SeatController {
         for (int i = 0; i < seats.size();i++){
             SeatInfo seatInfo = new SeatInfo();
             seatInfo.setCol(seats.get(i).getCol());
-            seatInfo.setRow(seats.get(i).getRow());
+            seatInfo.setRow(seats.get(i).getCol());
             seatInfo.setSeat_id(seats.get(i).getId());
             seatInfo.setScreening_id(screening.getId());
             seatInfo.setTaken_or_not(false);
