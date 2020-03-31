@@ -25,6 +25,10 @@ public class Cinema_AdminService {
         return cinema_adminRepository.findByCinemaAdminUsernameAndPassword(username,password);
 
     }
+    public List<Cinema_Admin> findByCinemaAdminID(Integer id){
+        return cinema_adminRepository.findByCinemaAdminID(id);
+
+    }
 
     //add a cinema admin
     public boolean add(String username, String password) {

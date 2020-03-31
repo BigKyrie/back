@@ -1,6 +1,8 @@
 package com.example.movie.Controller;
 
 import com.example.movie.Entity.Cinema;
+import com.example.movie.Entity.Cinema_Admin;
+import com.example.movie.Repository.Cinema_AdminRepository;
 import com.example.movie.Service.CinemaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,6 +16,8 @@ import java.util.List;
 public class CinemaController {
     @Autowired
     private CinemaService cinemaService;
+    @Autowired
+    private Cinema_AdminRepository cinema_adminRepository;
 //    //find cinemas by movie_id
 //    @GetMapping(path = "/all")
 //    public @ResponseBody List<Cinema> display_all_cinemas() {return cinemaService.display_all_cinemas();}
@@ -31,6 +35,11 @@ public class CinemaController {
     {
         cinemaService.add(title, location, tel, refund, change_time,  snack, three_D_glasses,
          wifi, rest_area, children_discount);
+        /*List<Cinema>cinemas = cinemaService.find_cinema_by_location(location);
+        Cinema cinema = cinemas.get(0);
+        Cinema_Admin admin_user = CinemaAdminController.getAdmin_user();
+        admin_user.setCinema(cinema);
+        cinema_adminRepository.save(admin_user);*/
         return "redirect:/manage";
     }
 

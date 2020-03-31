@@ -15,6 +15,14 @@ import java.util.List;
 public class ScreeningService {
     @Autowired
     private ScreeningRepository screeningRepository;
+
+    public void deletebymovieID(Integer id){
+        screeningRepository.deleteBymovieID(id);
+    }
+
+    public List<Screening> display_screenings_by_movie_id(Integer id){
+        return screeningRepository.display_screenings_by_movie_id(id);
+    }
     public List<Screening> display_screenings_filterby_cinema_id_and_movie_id(Integer movie_id, Integer cinema_id){
         List <Screening> screenings_by_movie_id = screeningRepository.display_screenings_by_movie_id(movie_id);
         List <Screening> screenings_by_movie_id_and_cinema_id = new ArrayList<>();

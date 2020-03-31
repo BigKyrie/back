@@ -1,6 +1,7 @@
 package com.example.movie.Repository;
 
 import com.example.movie.Entity.Screening;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
@@ -13,5 +14,9 @@ public interface ScreeningRepository extends CrudRepository<Screening,Integer> {
 
     @Query(value = "select * from screening where screen_id = ?",nativeQuery = true)
     public List<Screening> find_screenings_by_screen_id(Integer id);
+
+    @Modifying //may delete
+    @Query(value = "delete from screening where movie_id = ?",nativeQuery = true)  //may delete
+    public void deleteBymovieID(Integer id);  //may delete
 
 }

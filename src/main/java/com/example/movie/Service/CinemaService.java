@@ -19,9 +19,13 @@ public class CinemaService {
     @Autowired
     private CinemaRepository cinemaRepository;
 
-
     public List<Cinema> display_all_cinemas(){
         return cinemaRepository.display_all_cinemas();
+    }
+
+    public List<Cinema> find_cinema_by_location(String location){
+        return cinemaRepository.find_cinema_by_location(location);
+
     }
 
     public List<Cinema> display_cinemas_for_a_certain_movie(Integer id) {
