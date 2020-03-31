@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Cinema</title>
+    <link rel="stylesheet" href="/webjars/bootstrap/3.3.5/css/bootstrap.min.css" />
+    <script src="/webjars/jquery/3.1.1/jquery.min.js"></script>
+    <script src="/webjars/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class = "container-fluid">
+    <div class = "row">
+        <div class = "col-md-3"></div>
+        <div class = "col-md-3"></div>
+    </div>
+    <div class = "row">
+        <div class = "col-md-3"></div>
+        <div class = "col-md-6">
+            <div class="table-responsive">
+                <table class="table table-striped table-sm">
+                    <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Title</th>
+                        <th>Location</th>
+                        <th>Tel</th>
+                        <th>Refund</th>
+                        <th>Change time</th>
+                        <th>Snack</th>
+                        <th>3D Glasses</th>
+                        <th>WIFI</th>
+                        <th>Rest Area</th>
+                        <th>Children Discount</th>
+                        <th>Select Screening</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="cinema:${cinemas}">
+                        <td th:text="${cinema.id}"></td>
+                        <td th:text="${cinema.title}"></td>
+                        <td th:text="${cinema.location}"></td>
+                        <td th:text="${cinema.tel}"></td>
+                        <td th:text="${cinema.refund}"></td>
+                        <td th:text="${cinema.change_time}"></td>
+                        <td th:text="${cinema.snack}"></td>
+                        <td th:text="${cinema.three_D_glasses}"></td>
+                        <td th:text="${cinema.wifi}"></td>
+                        <td th:text="${cinema.rest_area}"></td>
+                        <td th:text="${cinema.children_discount}"></td>
+                        <td><a th:href=${'/demo/selectScreening/'+cinema.id+'/'+movie_id}> <button type="button" class="btn btn-primary">Select</button></a></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class = "col-md-3"></div>
+    </div>
+</div>
+</body>
+</html>
