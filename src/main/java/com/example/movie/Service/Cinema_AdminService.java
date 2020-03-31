@@ -4,6 +4,8 @@ import com.example.movie.Entity.*;
 import com.example.movie.Repository.Cinema_AdminRepository;
 import com.example.movie.Repository.ScreenRepository;
 import com.example.movie.Repository.ScreeningRepository;
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,9 +22,16 @@ public class Cinema_AdminService {
     private ScreenRepository screenRepository;
     @Autowired
     private ScreeningRepository screeningRepository;
+    @Autowired
+    private AuthenticationService authenticationService;
 
     public List<Cinema_Admin> findByCinemaAdminUsernameAndPassword(String username,String password){
         return cinema_adminRepository.findByCinemaAdminUsernameAndPassword(username,password);
+
+    }
+
+    public List<Cinema_Admin> findByCinemaAdminUsername(String username){
+        return cinema_adminRepository.findByCinemaAdminUsername(username);
 
     }
 
@@ -43,6 +52,11 @@ public class Cinema_AdminService {
             }
         }
     }
+
+    public Cinema_Admin findAdminById(Integer id) {
+        return cinema_adminRepository.findByCinemaAdminId(id).get(0);
+    }
+
 
     public List<Movie> findMovieByCinema(Integer cinema_id) {
         List<Screen> screens=new ArrayList<>();
@@ -70,5 +84,29 @@ public class Cinema_AdminService {
         }
         return final_movies;
     }
+    public Object loginAuthentication(String username,String password) throws JSONException {
+        List<Cinema_Admin> admins = cinema_adminRepository.findByCinemaAdminUsernameAndPassword(username,password);
+        List<Cinema_Admin> adminExist = cinema_adminRepository.findByCinemaAdminUsername(username);
+        JSONObject jsonObject = new JSONObject();
+        if(adminExist.size()>0) {
+            if(admins.size()>0){
+                String token = authenticationService.getToken(admins.get(0));
+                jsonObject.put("token", token);
+                jsonObject.put("user", admins.get(0));
+                //model.addAttribute("user",user);
+                //return "redirect:/manage";
+            }
+            else{
+                jsonObject.put("message", "Password is not correct");
+                //return "redirect:/login";
+            }
+        }
+        else {
+            jsonObject.put("message", "Username does not exist");
+            //return "redirect:/login";
+        }
+        return jsonObject;
+    }
+
 
 }

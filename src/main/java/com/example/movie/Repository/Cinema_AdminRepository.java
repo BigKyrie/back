@@ -21,4 +21,7 @@ public interface Cinema_AdminRepository extends CrudRepository<Cinema_Admin,Inte
     @Query(value = "delete from cinema_admin where name = ?1",nativeQuery = true)  //may delete
     public int deleteByName(String name);  //may delete
 
+    @Query(value = "select * from cinema_admin where id=?",nativeQuery = true)
+    public List<Cinema_Admin> findByCinemaAdminId(Integer id);
+
 }
