@@ -1,8 +1,6 @@
 package com.example.movie.Controller;
 
-import com.example.movie.Entity.Movie;
 import com.example.movie.Entity.Screening;
-import com.example.movie.Service.MovieService;
 import com.example.movie.Service.ScreeningService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -20,7 +18,7 @@ public class ScreeningController {
     private ScreeningService screeningService;
     //find screenings by movie_id
     @GetMapping(path = "/{movie_id}/{cinema_id}")
-    public @ResponseBody List<Screening> display_screenings_by_id(@PathVariable(name = "movie_id") Integer movie_id,
-                                                                  @PathVariable(name = "cinema_id") Integer cinema_id)
+    public @ResponseBody List<Screening> display_screenings_by_id
+    (@PathVariable(name = "movie_id") Integer movie_id, @PathVariable(name = "cinema_id") Integer cinema_id)
     {return screeningService.display_screenings_filterby_cinema_id_and_movie_id(movie_id,cinema_id);}
 }

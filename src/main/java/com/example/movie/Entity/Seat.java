@@ -10,12 +10,13 @@ public class Seat {
     private Integer id;
     private Integer row;
     private Integer col;
-    private boolean taken_or_not;
 
+    //There are a lot of seats in one screen, one seat may belong to one screen
     @ManyToOne
-    @JoinColumn(name = "screening_id")
-    private Screening screening;
+    @JoinColumn(name = "screen_id")
+    private Screen screen;
 
+    //getters and setters
     public Integer getId() {
         return id;
     }
@@ -32,30 +33,19 @@ public class Seat {
         this.row = row;
     }
 
-    public Integer getColumn() {
+    public Integer getCol() {
         return col;
     }
 
-    public void setColumn(Integer col) {
+    public void setCol(Integer col) {
         this.col = col;
     }
 
-    public boolean isTaken_or_not() {
-        return taken_or_not;
+    public Screen getScreen() {
+        return screen;
     }
 
-    public void setTaken_or_not(boolean taken_or_not) {
-        this.taken_or_not = taken_or_not;
+    public void setScreen(Screen screen) {
+        this.screen = screen;
     }
-
-    public Screening getScreening() {
-        return screening;
-    }
-
-    public void setScreening(Screening screening) {
-        this.screening = screening;
-    }
-
-
-
 }
