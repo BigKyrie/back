@@ -32,4 +32,8 @@ public class ScreeningService {
         }
         return screenings_by_movie_id_and_cinema_id;
     }
+
+    public Screening find_screening_by_screening_id(Integer id){
+        return screeningRepository.find_screening_by_screening_id(id).get(0);
+    }
 }
