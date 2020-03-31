@@ -38,6 +38,7 @@
                         <td th:text="${screen.id}"></td>
                         <td th:text="${screen.num}"></td>
                         <td th:text="${screen.cinema.title}"></td>
+                        <td><a th:href="@{'/seat/view/'+${screen.id}}">View Seats</a></td>
                     </tr>
                     </tbody>
                 </table>
