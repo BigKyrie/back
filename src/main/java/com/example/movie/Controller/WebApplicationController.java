@@ -1,5 +1,6 @@
 package com.example.movie.Controller;
 
+import org.hibernate.annotations.GeneratorType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,6 +26,5 @@ public class WebApplicationController {
         return "cinema_form";
     }
 
-
-
+//    @GetMapping(path = "/addScreen")
 }
