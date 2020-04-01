@@ -1,29 +1,32 @@
 package com.example.movie.Controller;
 
-import com.example.movie.Entity.*;
 import com.example.movie.Service.*;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-
-
+import com.example.movie.Entity.Cinema;
+import com.example.movie.Entity.Cinema_Admin;
+import com.example.movie.Entity.Movie;
+import com.example.movie.Service.AuthenticationService;
 import com.example.movie.Service.Cinema_AdminService;
-
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
+import com.example.movie.Service.MovieService;
+import com.example.movie.Session.UserInfo;
+import org.json.JSONException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
-import org.springframework.validation.ObjectError;
-import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.RequestMapping;
+
 import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.HttpServletRequest;
+
+import javax.servlet.http.HttpSession;
+
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
+
 
 @Controller
 @RequestMapping(path = "/cinemaAdmin")
@@ -36,6 +39,8 @@ public class CinemaAdminController {
     private MovieService movieService;
     @Autowired
     private CinemaService cinemaService;
+    @Autowired
+    private AuthenticationService authenticationService;
 
     private static Cinema_Admin admin_user;
 
@@ -43,19 +48,28 @@ public class CinemaAdminController {
         return admin_user;
     }
 
+
     @PostMapping(path="/login")
     public String login(@RequestParam("username") String username,
-                                      @RequestParam("password") String password){
-        List<Cinema_Admin> admins = cinema_adminService.findByCinemaAdminUsernameAndPassword(username,password);
-        if(admins.size()>0){
-            admin_user=admins.get(0);
-            return "redirect:/manage";
-        }
-        else{
-            return "Wrong";
-        }
-
+                        @RequestParam("password") String password) throws JSONException {
+        List<Cinema_Admin> admins = cinema_adminService.findByCinemaAdminUsernameAndPassword(username, password);
+        List<Cinema_Admin> adminExist = cinema_adminService.findByCinemaAdminUsername(username);
+        if (adminExist.size() > 0) {
+            if (admins.size() > 0) {
+                UserInfo userInfo = new UserInfo(admins.get(0).getId(), admins.get(0).getUsername());
+                HttpSession session = getRequest().getSession();
+                session.setAttribute("user_info_in_the_session", userInfo);
+                return "redirect:/manage";
+                }
+                else {
+                    return "redirect:/login";
+                }
+            }
+            else {
+                return "redirect:/login";
+            }
     }
+
     @PostMapping(path = "/add")
     public String add(@RequestParam String username, String password)
     {
@@ -87,9 +101,13 @@ public class CinemaAdminController {
         return "movie_cinema";
     }
 
+
     @GetMapping(path = "/addMovieForm")
-    public String displayMovieForm()
+    public String displayMovieForm(Model model)
     {
+        HttpSession session = getRequest().getSession();
+        UserInfo userInfo = (UserInfo) session.getAttribute("user_info_in_the_session");
+        model.addAttribute("username",userInfo.getUsername());
         return "movie_form";
     }
 
@@ -107,6 +125,10 @@ public class CinemaAdminController {
         }
 
         return "redirect:/cinemaAdmin/allMovies";
+    }
+
+    private HttpServletRequest getRequest() {
+        return ((ServletRequestAttributes) RequestContextHolder.currentRequestAttributes()).getRequest();
     }
 
 }
