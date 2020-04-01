@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cinema</title>
+    <link href="/webjars/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet"/>
+    <script src="/webjars/jquery/3.1.1/jquery.min.js"></script>
+    <script src="/webjars/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="row">
+    <!--Separate four columns in the page-->
+    <div class="col-md-3"></div>
+    <div class="col-md-8">
+
+        <form action="/screen/add" class="form-horizontal" method="post">
+            <legend>Add Screen Info</legend>
+            <fieldset>
+                <div class="form-group">
+                    <label class="col-md-2 control-label">Screen No.</label>
+                    <div class="col-md-4">
+                        <input class="form-control" name="num" type="text">
+                    </div>
+                </div>
+                    <div class="col-md-6 ">
+                        <input class="btn btn-primary" type="submit" value="Save">
+                        <a href="#">Cancel</a>
+                    </div>
+                </div>
+            </fieldset>
+    </form>
+</div>
+<div class="col-md-3"></div>
+</div>
+</body>
+</html>

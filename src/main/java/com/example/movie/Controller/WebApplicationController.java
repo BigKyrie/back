@@ -26,5 +26,6 @@ public class WebApplicationController {
         return "cinema_form";
     }
 
-//    @GetMapping(path = "/addScreen")
+    @GetMapping(path = "/addScreen")
+    public String myScreen() { return "screen_form"; }
 }
