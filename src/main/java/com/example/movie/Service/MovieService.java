@@ -1,5 +1,5 @@
 package com.example.movie.Service;
-import java.util.Date;
+
 import com.example.movie.Entity.Movie;
 import com.example.movie.Entity.User;
 import com.example.movie.Repository.MovieRepository;
@@ -15,32 +15,15 @@ public class MovieService {
     @Autowired
     private MovieRepository movieRepository;
 
+    public List<Movie> display_all_movies(){
+        return movieRepository.display_all_movies();
+    }
     public void deletebyID(Integer id){
         movieRepository.deleteByID(id);
     }
 
     public Movie findMoviebyID(Integer id){
         return movieRepository.findMovieByID(id);
-    }
-    public List<Movie> display_all_movies(){
-        return movieRepository.display_all_movies();
-    }
-
-    public boolean addMovies(String title,String blurb,String certificate,String director,String actors,
-                             Date showtime,Integer duration,String type,String language,String url) {
-        Movie movie = new Movie();
-        movie.setTitle(title);
-        movie.setBlurb(blurb);
-        movie.setCertificate(certificate);
-        movie.setDirector(director);
-        movie.setActors(actors);
-        movie.setShowtime(showtime);
-        movie.setDuration(duration);
-        movie.setType(type);
-        movie.setLanguage(language);
-        movie.setUrl(url);
-        movieRepository.save(movie);
-        return true;
     }
 
 //    public boolean add() {
@@ -59,7 +42,5 @@ public class MovieService {
 //            }
 //        }
 //    }
-
-
 
 }

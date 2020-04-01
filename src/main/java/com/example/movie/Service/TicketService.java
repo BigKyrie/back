@@ -16,4 +16,8 @@ public class TicketService {
     public List<Ticket> find_ticket_of_a_screening(Integer id){
         return ticketRepository.find_ticket_of_a_screening(id);
     }
+
+//    public Ticket generate_a_ticket(Integer screening_id,Integer seat_id) {
+//    }
+
 }
