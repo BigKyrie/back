@@ -6,7 +6,7 @@ import com.example.movie.Annotation.LoginRequired;
 import com.example.movie.Entity.Cinema;
 import com.example.movie.Entity.Cinema_Admin;
 import com.example.movie.Entity.Movie;
-import com.example.movie.Form.*;
+//import com.example.movie.Form.*;
 import com.example.movie.Entity.User;
 import com.example.movie.Service.AuthenticationService;
 import com.example.movie.Service.Cinema_AdminService;
@@ -33,6 +33,7 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 import org.springframework.web.context.request.RequestContextHolder;
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.web.context.request.ServletRequestAttributes;
+//import sun.security.pkcs11.wrapper.Constants;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -78,9 +79,10 @@ public class CinemaAdminController {
                 //jsonObject.put("token", token);
                 //jsonObject.put("user", admins.get(0));
                 //model.addAttribute("user",user);
-                //UserInfo userInfo = new UserInfo(admins.get(0).getId(), admins.get(0).getUsername());
-                //HttpSession session = getRequest().getSession();
-                //session.setAttribute("user_info_in_the_session", userInfo);
+                UserInfo userInfo = new UserInfo(admins.get(0).getId(), admins.get(0).getUsername());
+                HttpSession session = getRequest().getSession();
+               // session.setAttribute(Constants.SESSION_KEY_USER,user.getId());
+                session.setAttribute("user_info_in_the_session", userInfo);
                 return "redirect:/manage";
             }
             else{
@@ -105,15 +107,20 @@ public class CinemaAdminController {
     @GetMapping(path = "/allMovies")
     public String displayAllMovies(Model model)
     {
+        HttpSession session = getRequest().getSession();
+        UserInfo userInfo = (UserInfo) session.getAttribute("user_info_in_the_session");
         List<Movie> movies=movieService.display_all_movies();
         model.addAttribute("movies",movies);
+        model.addAttribute("username",userInfo.getUsername());
         return "manage_movie";
     }
 
-    @LoginRequired
     @GetMapping(path = "/addMovieForm")
-    public String displayMovieForm()
+    public String displayMovieForm(Model model)
     {
+        HttpSession session = getRequest().getSession();
+        UserInfo userInfo = (UserInfo) session.getAttribute("user_info_in_the_session");
+        model.addAttribute("username",userInfo.getUsername());
         return "movie_form";
     }
 
@@ -131,6 +138,10 @@ public class CinemaAdminController {
         }
 
         return "redirect:/cinemaAdmin/allMovies";
+    }
+
+    private HttpServletRequest getRequest() {
+        return ((ServletRequestAttributes) RequestContextHolder.currentRequestAttributes()).getRequest();
     }
 
 }
