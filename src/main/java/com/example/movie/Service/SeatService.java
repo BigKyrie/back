@@ -20,6 +20,10 @@ public class SeatService {
 
     public List<Seat> view_seat_of_a_screen(Integer id){return seatRepository.view_seat_of_a_screen(id);}
 
+    public Seat find_seat_by_id(Integer id) {
+        return seatRepository.find_seat_by_id(id).get(0);
+    }
+
     public boolean add_seats(Integer screen_id, int row, int col){
         Screen screen = screenRepository.search_screen_by_id(screen_id).get(0);
         for (int i = 0; i < row; i++){

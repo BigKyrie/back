@@ -16,4 +16,6 @@ public interface ScreeningRepository extends CrudRepository<Screening,Integer> {
 
     @Query(value = "select * from screening where id = ?", nativeQuery = true)
     public List<Screening> find_screening_by_screening_id(Integer id);
+
+
 }

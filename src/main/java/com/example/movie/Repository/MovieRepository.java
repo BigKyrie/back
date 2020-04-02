@@ -14,4 +14,7 @@ public interface MovieRepository extends CrudRepository<Movie,Integer>
     @Query(value = "select * from movie" ,nativeQuery = true)
     List<Movie> display_all_movies();
 
+    @Query(value = "select * from movie where certificate=?" ,nativeQuery = true)
+    List<Movie> find_movie_by_certificate(String certificate);
+
 }

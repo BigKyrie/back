@@ -11,10 +11,7 @@ public class WebMvcConfigurer extends WebMvcConfigurerAdapter {
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(new AuthorityInterceptor())
-                .addPathPatterns("/cinemaAdmin/**");
-
-        //registry.addResourceHandler("/webjars/**") .addResourceLocations("classpath:/META-INF/resources/webjars/");
-
+                .addPathPatterns("/cinemaAdmin/**","/seat/**");
         super.addInterceptors(registry);
     }
 }

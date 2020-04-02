@@ -9,4 +9,6 @@ import java.util.List;
 public interface SeatRepository extends CrudRepository<Seat,Integer> {
     @Query(value = "select * from seat where screen_id = ?",nativeQuery = true)
     public List<Seat> view_seat_of_a_screen(Integer id);
+    @Query(value = "select * from seat where id = ?",nativeQuery = true)
+    public List<Seat> find_seat_by_id(Integer id);
 }
