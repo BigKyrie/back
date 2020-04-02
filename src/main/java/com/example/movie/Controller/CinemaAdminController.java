@@ -81,8 +81,11 @@ public class CinemaAdminController {
     @GetMapping(path = "/allMovies")
     public String displayAllMovies(Model model)
     {
+        HttpSession session = getRequest().getSession();
+        UserInfo userInfo = (UserInfo) session.getAttribute("user_info_in_the_session");
         List<Movie> movies=movieService.display_all_movies();
         model.addAttribute("movies",movies);
+        model.addAttribute("username",userInfo.getUsername());
         return "manage_movie";
     }
 

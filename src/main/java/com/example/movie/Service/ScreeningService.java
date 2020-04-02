@@ -16,6 +16,10 @@ public class ScreeningService {
     @Autowired
     private ScreeningRepository screeningRepository;
 
+    public List<Screening> find_screenings_by_screen_id(Integer id){
+        return screeningRepository.find_screenings_by_screen_id(id);
+    }
+
     public void deletebymovieID(Integer id){
         screeningRepository.deleteBymovieID(id);
     }

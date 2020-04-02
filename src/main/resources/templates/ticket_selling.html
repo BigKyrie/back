@@ -13,14 +13,21 @@
         <!--Separate four columns in the page-->
         <div class="col-md-4"></div>
 
-        <div class="col-md-6"><h1>Movies on show in your cinema</h1><h1 th:text="${username}"></h1></div>
+        <div class="col-md-6"><h1>Cinema sales in one week</h1><h1 th:text="${username}"></h1></div>
         <div class="col-md-4"></div>
     </div>
     <div class="row">
         <!--Separate four columns in the page-->
         <div class="col-md-2"></div>
-        <div class="col-md-8"><div class="col-md-3"><a href="/cinemaAdmin/addMovieForm"><button type="button" class="btn btn-primary">Add a new movie</button></a></div></div>
+        <div class="col-md-8">
+            <div class="col-md-3"><a href="/ticket/sellingweek"><button type="button" class="btn btn-primary">cinema sales in one week</button></a></div>
+
+            <div class="col-md-3"><a href="/ticket/sellingmonth"><button type="button" class="btn btn-primary">cinema sales in one month</button></a></div>
+
+            <div class="col-md-3"><a href="/ticket/sellingtotal"><button type="button" class="btn btn-primary">cinema sales in total</button></a></div>
+        </div>
         <div class="col-md-2"></div>
+
     </div>
 
     <div class="row">
@@ -36,9 +43,8 @@
                         <th>Certificate</th>
                         <th>Type</th>
                         <th>Showtime</th>
-                        <th>Select Cinema</th>
-                        <th>Edit</th>
-                        <th>Delete</th>
+                        <th>Selling number</th>
+                        <th>Turnover</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -51,9 +57,8 @@
                         <td th:text="${movie.certificate}"></td>
                         <td th:text="${movie.type}"></td>
                         <td th:text="${#dates.format(movie.showtime, 'yyyy-MM-dd HH:mm')}"></td>
-                        <td><button type="button" class="btn btn-primary">Edit</button></td>
-                        <td><a th:href=${'/cinemaAdmin/delete/'+movie.id}> <button type="button" class="btn btn-primary">Delete</button></a></td>
-
+                        <td th:text="${movie.selling_num_week}"></td>
+                        <td th:text="${movie.money_week}"></td>
                     </tr>
                     </tbody>
                 </table>
