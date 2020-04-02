@@ -1,6 +1,7 @@
 package com.example.movie.Service;
 
 import com.example.movie.Entity.Cinema;
+import com.example.movie.Entity.Cinema_Admin;
 import com.example.movie.Entity.Screen;
 import com.example.movie.Repository.CinemaRepository;
 import com.example.movie.Repository.ScreenRepository;
@@ -15,6 +16,8 @@ import java.util.List;
 public class ScreenService {
     @Autowired
     private ScreenRepository screenRepository;
+    @Autowired
+    private Cinema_AdminService cinema_adminService;
 
     public List<Screen> display_all_screens(){
         return screenRepository.display__all_screens();
@@ -24,5 +27,16 @@ public class ScreenService {
 
     public List<Screen> search_screen_by_cinema(Integer id){
         return screenRepository.search_screen_by_cinema(id);
+    }
+
+    public List<Screen> get_screen_by_cinema_id(Integer id) {return screenRepository.search_screen_by_cinems_id(id); }
+
+    public boolean add(Integer admin_id, Integer num) {
+        Cinema_Admin admin = cinema_adminService.findAdminById(admin_id);
+        Screen screen = new Screen();
+        screen.setCinema(admin.getCinema());
+        screen.setNum(num);
+        screenRepository.save(screen);
+        return true;
     }
 }

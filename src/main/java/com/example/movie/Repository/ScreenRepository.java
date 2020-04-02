@@ -18,4 +18,7 @@ public interface ScreenRepository extends CrudRepository<Screen,Integer>
 
     @Query(value = "select * from screen",nativeQuery = true)
     List<Screen> display__all_screens();
+
+    @Query(value = "select * from screen where cinema_id = ?",nativeQuery = true)
+    List<Screen> search_screen_by_cinems_id(Integer id);
 }

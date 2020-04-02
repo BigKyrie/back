@@ -4,11 +4,17 @@ import com.example.movie.Entity.Cinema;
 import com.example.movie.Entity.Cinema_Admin;
 import com.example.movie.Repository.Cinema_AdminRepository;
 import com.example.movie.Service.CinemaService;
+import com.example.movie.Service.Cinema_AdminService;
+import com.example.movie.Session.UserInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @Controller
@@ -17,7 +23,7 @@ public class CinemaController {
     @Autowired
     private CinemaService cinemaService;
     @Autowired
-    private Cinema_AdminRepository cinema_adminRepository;
+    private Cinema_AdminService cinema_adminService;
 //    //find cinemas by movie_id
 //    @GetMapping(path = "/all")
 //    public @ResponseBody List<Cinema> display_all_cinemas() {return cinemaService.display_all_cinemas();}
@@ -33,30 +39,36 @@ public class CinemaController {
                       boolean wifi, boolean rest_area, boolean children_discount
     )
     {
-        cinemaService.add(title, location, tel, refund, change_time,  snack, three_D_glasses,
+        //get current user
+        HttpSession session = getRequest().getSession();
+        UserInfo userInfo = (UserInfo) session.getAttribute("user_info_in_the_session");
+        Integer id = Integer.valueOf(userInfo.getUserId());
+        cinemaService.add(id,title, location, tel, refund, change_time,  snack, three_D_glasses,
          wifi, rest_area, children_discount);
-        /*List<Cinema>cinemas = cinemaService.find_cinema_by_location(location);
-        Cinema cinema = cinemas.get(0);
-        Cinema_Admin admin_user = CinemaAdminController.getAdmin_user();
-        admin_user.setCinema(cinema);
-        cinema_adminRepository.save(admin_user);*/
         return "redirect:/manage";
     }
 
 
     @GetMapping(path="/getAllCinema")
     public String allCinema( Model model) {
-        List<Cinema> cinemas = cinemaService.display_all_cinemas();
-        model.addAttribute("cinemas",cinemas);
+        HttpSession session = getRequest().getSession();
+        UserInfo userInfo = (UserInfo) session.getAttribute("user_info_in_the_session");
+        Integer id = Integer.valueOf(userInfo.getUserId());
+        Cinema_Admin cinema_admin = cinema_adminService.findAdminById(id);
+        String hasCinema = "true";
+        if (cinema_admin.getCinema()!= null){
+            Cinema cinema = cinemaService.getById(cinema_admin.getCinema().getId());
+            model.addAttribute("cinemas",cinema);
+        }
+        else
+        {
+            hasCinema = "false";
+        }
+        model.addAttribute("hasCinema",hasCinema);
+//        model.addAttribute("userInfo",userInfo.getUserId());
         return "cinema_list";
     }
 
-//    @RequestMapping("/update")
-//    public String update() {
-//        Cinema cinema = cinemaService.getById(2);
-//        cinemaService.update(cinema);
-//        return "cinema_list";
-//    }
 
     @GetMapping(path = "/toEdit/{cinema_id}")
     public String toEdit(Model model, @PathVariable(name = "cinema_id")Integer id){
@@ -73,6 +85,10 @@ public class CinemaController {
         cinemaService.update(title, location, tel, refund, change_time,  snack, three_D_glasses,
                 wifi, rest_area, children_discount,id);
         return "redirect:/cinema/getAllCinema";
+    }
+
+    private HttpServletRequest getRequest() {
+        return ((ServletRequestAttributes) RequestContextHolder.currentRequestAttributes()).getRequest();
     }
 
 }
