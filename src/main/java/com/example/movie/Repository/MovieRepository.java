@@ -22,5 +22,7 @@ public interface MovieRepository extends CrudRepository<Movie,Integer>
     @Modifying //may delete
     @Query(value = "delete from movie where id = ?",nativeQuery = true)  //may delete
     public void deleteByID(Integer id);  //may delete
+    @Query(value = "select * from movie where certificate=?" ,nativeQuery = true)
+    List<Movie> find_movie_by_certificate(String certificate);
 
 }

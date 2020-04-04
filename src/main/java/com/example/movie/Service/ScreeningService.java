@@ -1,5 +1,7 @@
 package com.example.movie.Service;
 
+import com.example.movie.Entity.Movie;
+import com.example.movie.Entity.Screen;
 import com.example.movie.Entity.Screening;
 import com.example.movie.Repository.ScreeningRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,4 +42,15 @@ public class ScreeningService {
     public Screening find_screening_by_screening_id(Integer id){
         return screeningRepository.find_screening_by_screening_id(id).get(0);
     }
+    public boolean addScreening(Date start_time, Date end_time, float price, Screen screen, Movie movie) {
+        Screening screening=new Screening();
+        screening.setStart_time(start_time);
+        screening.setEnd_time(end_time);
+        screening.setPrice(price);
+        screening.setMovie(movie);
+        screening.setScreen(screen);
+        screeningRepository.save(screening);
+        return true;
+    }
+
 }

@@ -3,12 +3,19 @@ package com.example.movie.Controller;
 import com.example.movie.Entity.*;
 import com.example.movie.Service.*;
 import org.apache.tomcat.util.modeler.BaseAttributeFilter;
+import com.example.movie.Service.UserService;
+import com.example.movie.Entity.User;
+import com.example.movie.Session.UserInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 
 import java.util.ArrayList;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @Controller
@@ -63,7 +70,13 @@ public class UserController {
     @PostMapping(path = "/get")
     public @ResponseBody List<User> findByUsernameAndPassword(String username,String password)
     {
-        return userService.findByUsernameAndPassword(username,password);
+        List<User> users=userService.findByUsernameAndPassword(username,password);
+        if(users.size()>0) {
+            UserInfo userInfo = new UserInfo(users.get(0).getId(), users.get(0).getUsername());
+            HttpSession session = getRequest().getSession();
+            session.setAttribute("current_normal_user", userInfo);
+        }
+        return users;
     }
 
     @PostMapping(path = "/add")
@@ -72,5 +85,8 @@ public class UserController {
         return userService.add(username, password);
     }
 
+    private HttpServletRequest getRequest() {
+        return ((ServletRequestAttributes) RequestContextHolder.currentRequestAttributes()).getRequest();
+    }
 
 }

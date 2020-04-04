@@ -33,7 +33,11 @@ public class AuthorityInterceptor implements HandlerInterceptor {
         }
         HttpSession session = request.getSession();
         UserInfo userInfo = (UserInfo) session.getAttribute("user_info_in_the_session");
+        UserInfo userInfo_normal_user = (UserInfo) session.getAttribute("current_normal_user");
         if (userInfo == null) {
+            throw new RuntimeException("用户未登陆");
+        }
+        if(userInfo_normal_user==null) {
             throw new RuntimeException("用户未登陆");
         }
         return true;

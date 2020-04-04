@@ -1,10 +1,8 @@
 package com.example.movie.Controller;
 
 import com.example.movie.Entity.Movie;
-import com.example.movie.Entity.Screening;
 import com.example.movie.Entity.Ticket;
 import com.example.movie.Service.MovieService;
-import com.example.movie.Service.SeatService;
 import com.example.movie.Service.TicketService;
 import com.example.movie.Session.UserInfo;
 import com.example.movie.nonEntity.MovieSelling;
@@ -14,8 +12,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import com.example.movie.Session.UserInfo;
+
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
@@ -74,14 +72,18 @@ public class TicketController {
         return ((ServletRequestAttributes) RequestContextHolder.currentRequestAttributes()).getRequest();
     }
 
-
-
 //    @GetMapping(path = "/{screening_id}/{seat_id}")
 //    public @ResponseBody
 //    List<Ticket> display_ticket
 //            (@PathVariable(name = "screening_id") Integer screening_id, @PathVariable(name = "seat_id") Integer seat_id)
 //    {return screeningService.display_screenings_filterby_cinema_id_and_movie_id(movie_id,cinema_id);}
 
+    @PostMapping(path = "/{screening_id}/{seat_id}")
+    public Ticket add_and_display_ticket
+            (@RequestParam String type,@PathVariable(name = "screening_id") Integer screening_id,
+             @PathVariable(name = "seat_id") Integer seat_id) {
+        return ticketService.generate_a_ticket(screening_id,seat_id,type);
+    }
 
 
 }
