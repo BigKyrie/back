@@ -30,7 +30,7 @@ public class MovieService {
         return movieRepository.find_movie_by_certificate(certificate);
     }
 
-    public boolean addMovies(String title, String blurb, String certificate, String director, String actors,
+    public Movie addMovies(String title, String blurb, String certificate, String director, String actors,
                              Date showtime, Integer duration, String type, String language, String url) {
         Movie movie = new Movie();
         movie.setTitle(title);
@@ -44,7 +44,7 @@ public class MovieService {
         movie.setLanguage(language);
         movie.setUrl(url);
         movieRepository.save(movie);
-        return true;
+        return movie;
     }
 
     public List<Movie> movies_in_cinema(Integer cinema_id) {

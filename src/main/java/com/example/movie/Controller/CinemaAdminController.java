@@ -1,6 +1,8 @@
 package com.example.movie.Controller;
+import com.example.movie.Entity.Cinema;
 import com.example.movie.Entity.Cinema_Admin;
 import com.example.movie.Entity.Movie;
+import com.example.movie.Entity.Screen;
 import com.example.movie.Service.*;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
@@ -26,6 +28,8 @@ public class CinemaAdminController {
     private MovieService movieService;
     @Autowired
     private ScreeningService screeningService;
+    @Autowired
+    private ScreenService screenService;
 
     @PostMapping(path="/login")
     public String login(@RequestParam("username") String username,
@@ -85,10 +89,13 @@ public class CinemaAdminController {
             }
             else {
                 SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd hh:mm");
-                movieService.addMovies(title,blurb,certificate,director,actors,
+                Movie movie=movieService.addMovies(title,blurb,certificate,director,actors,
                         sdf.parse(showtime),duration,type,language,url);
-//
-//                screeningService.addScreening(sdf.parse(start_time), sdf.parse(end_time), Float.parseFloat(price), Screen screen, Movie movie)
+                HttpSession session = getRequest().getSession();
+                UserInfo userInfo = (UserInfo) session.getAttribute("user_info_in_the_session");
+                Cinema cinema=cinema_adminService.findAdminById(userInfo.getUserId()).getCinema();
+                Screen screen=screenService.find_screen_by_num_and_cinema(Integer.parseInt(num),cinema.getId());
+                screeningService.addScreening(sdf.parse(start_time), sdf.parse(end_time), Float.parseFloat(price), screen, movie);
 
             }
 

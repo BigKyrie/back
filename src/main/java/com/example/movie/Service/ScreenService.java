@@ -22,4 +22,9 @@ public class ScreenService {
 
     public List<Screen> get_screen_by_id(Integer id){ return screenRepository.search_screen_by_id(id);}
 
+    public Screen find_screen_by_num_and_cinema(Integer num,Integer cinema_id) {
+        return screenRepository.find_screen_by_num_and_cinema(num,cinema_id).get(0);
+    }
+
+
 }
