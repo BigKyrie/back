@@ -1,5 +1,7 @@
 package com.example.movie.nonEntity;
 
+import com.example.movie.Entity.Seat;
+
 public class SeatInfo {
     private Integer screening_id;
     private Integer seat_id;
@@ -47,4 +49,5 @@ public class SeatInfo {
     public void setTaken_or_not(boolean taken_or_not) {
         this.taken_or_not = taken_or_not;
     }
+
 }
