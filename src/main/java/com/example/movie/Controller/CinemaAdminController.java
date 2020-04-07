@@ -118,7 +118,7 @@ public class CinemaAdminController {
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        return "movie_edit";
+        return "redirect:/cinemaAdmin/allMovies";
     }
 
 
