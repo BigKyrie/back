@@ -29,6 +29,8 @@ public class SeatController {
         Screen screen = screenService.get_screen_by_id(screen_id).get(0);
         model.addAttribute("seats",seats);
         model.addAttribute("screen",screen);
+        model.addAttribute("row",seats.get(seats.size()-1).getRow());
+        model.addAttribute("col",seats.get(seats.size()-1).getCol());
         return "view_seats";
     }
 
