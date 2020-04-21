@@ -20,7 +20,7 @@ public class ScreenService {
     private Cinema_AdminService cinema_adminService;
 
     public List<Screen> display_all_screens(){
-        return screenRepository.display_all_screens();
+        return screenRepository.display__all_screens();
     }
 
     public List<Screen> get_screen_by_id(Integer id){ return screenRepository.search_screen_by_id(id);}

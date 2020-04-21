@@ -13,7 +13,7 @@
         <!--Separate four columns in the page-->
         <div class="col-md-4"></div>
 
-        <div class="col-md-6"><h1>Movies on show in your cinema</h1><h1 th:text="${username}"></h1></div>
+        <div class="col-md-6"><h1>Movies on show in your cinema</h1></div>
         <div class="col-md-4"></div>
     </div>
     <div class="row">
@@ -36,7 +36,6 @@
                         <th>Certificate</th>
                         <th>Type</th>
                         <th>Showtime</th>
-                        <th>Select Cinema</th>
                         <th>Edit</th>
                         <th>Delete</th>
                     </tr>
@@ -51,7 +50,7 @@
                         <td th:text="${movie.certificate}"></td>
                         <td th:text="${movie.type}"></td>
                         <td th:text="${#dates.format(movie.showtime, 'yyyy-MM-dd HH:mm')}"></td>
-                        <td><button type="button" class="btn btn-primary">Edit</button></td>
+                        <td><a th:href=${'/cinemaAdmin/toEditMovie/'+movie.id}><button type="button" class="btn btn-primary">Edit</button></a></td>
                         <td><a th:href=${'/cinemaAdmin/delete/'+movie.id}> <button type="button" class="btn btn-primary">Delete</button></a></td>
 
                     </tr>

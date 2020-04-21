@@ -17,6 +17,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 
@@ -69,9 +70,8 @@ public class CinemaAdminController {
     {
         HttpSession session = getRequest().getSession();
         UserInfo userInfo = (UserInfo) session.getAttribute("user_info_in_the_session");
-        List<Movie> movies=movieService.movies_in_cinema(cinema_adminService.findAdminById(userInfo.getUserId()).getCinema().getId());
+        List<Movie> movies=movieService.movie_in_cinema(cinema_adminService.findAdminById(userInfo.getUserId()).getCinema().getId());
         model.addAttribute("movies",movies);
-        //model.addAttribute("username",userInfo.getUsername());
         return "manage_movie";
     }
 
@@ -98,6 +98,29 @@ public class CinemaAdminController {
         return "movie_form";
     }
 
+    @GetMapping(path = "/toEditMovie/{movie_id}")
+    public String editMovieForm(Model model,@PathVariable Integer movie_id)
+    {
+        Movie movie=movieService.findMoviebyID(movie_id);
+        model.addAttribute("movie",movie);
+        model.addAttribute("movie_id",movie_id);
+        return "movie_edit";
+    }
+
+    @PostMapping(path = "/editMovie/{movie_id}")
+    public String editMovie(@RequestParam String title, String blurb, String certificate, String director, String actors,
+                            String showtime,Integer duration,String type,String language,String url,@PathVariable Integer movie_id)
+    {
+        try {
+            SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd hh:mm");
+            movieService.update(title, blurb, certificate, director, actors,
+                    sdf.parse(showtime),duration,type,language,url,movie_id);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return "redirect:/cinemaAdmin/allMovies";
+    }
+
 
     @PostMapping(path = "/addMovies")
     public String addMovies(@RequestParam String title, String blurb, String certificate, String director, String actors,
@@ -107,8 +130,13 @@ public class CinemaAdminController {
         try {
 
             if(movieService.find_movie_by_certificate(certificate).size()>0) {
-
-                return "redirect:/cinemaAdmin/addMovieForm";
+                SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd hh:mm");
+                HttpSession session = getRequest().getSession();
+                UserInfo userInfo = (UserInfo) session.getAttribute("user_info_in_the_session");
+                Cinema cinema=cinema_adminService.findAdminById(userInfo.getUserId()).getCinema();
+                Screen screen=screenService.find_screen_by_num_and_cinema(Integer.parseInt(num),cinema.getId());
+                screeningService.addScreening(sdf.parse(start_time), sdf.parse(end_time), Float.parseFloat(price), screen,
+                                              movieService.find_movie_by_certificate(certificate).get(0));
             }
             else {
                 SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd hh:mm");

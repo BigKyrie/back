@@ -21,9 +21,7 @@ public class AuthorityInterceptor implements HandlerInterceptor {
 
 
 
-    /**
-     * 在请求处理之前进行调用（Controller方法调用之前）
-     */
+
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response,
                              Object object) throws Exception {
@@ -33,13 +31,13 @@ public class AuthorityInterceptor implements HandlerInterceptor {
         }
         HttpSession session = request.getSession();
         UserInfo userInfo = (UserInfo) session.getAttribute("user_info_in_the_session");
-        UserInfo userInfo_normal_user = (UserInfo) session.getAttribute("current_normal_user");
+        //UserInfo userInfo_normal_user = (UserInfo) session.getAttribute("current_normal_user");
         if (userInfo == null) {
-            throw new RuntimeException("用户未登陆");
+            throw new RuntimeException("The user has not logged in");
         }
-        if(userInfo_normal_user==null) {
-            throw new RuntimeException("用户未登陆");
-        }
+//        if(userInfo_normal_user==null) {
+//            throw new RuntimeException("The user has not logged in");
+//        }
         return true;
     }
     /**
