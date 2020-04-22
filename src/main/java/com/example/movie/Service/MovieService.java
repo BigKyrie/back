@@ -34,27 +34,6 @@ public class MovieService {
     private ScreeningRepository screeningRepository;
     @Autowired
     private ScreenRepository screenRepository;
-
-    public List<Movie> movie_in_cinema(Integer cinema_id) {
-        //List<Screen> screensInTheCinema=screenRepository.search_screen_by_cinema(cinema_id);
-        //List<Movie> moviesInCinema=new ArrayList<>();
-        List<Movie> moviesInCinema=movieRepository.display_all_movies();
-        //for(int i=0;i<screensInTheCinema.size();i++) {
-            //List<Screening> screenings=screeningRepository.find_screenings_by_screen_id(screensInTheCinema.get(1).getId());
-            //for(int j=0;j<screenings.size();j++) {
-            //if(moviesInCinema.contains(screenings.get(j).getMovie())) {
-
-            //}
-            //else {
-            //moviesInCinema.add(screenings.get(j).getMovie());
-            //}
-            //}
-
-        //}
-
-        return moviesInCinema;
-    }
-
     public Movie findMoviebyID(Integer id){
         return movieRepository.findMovieByID(id);
     }
@@ -113,7 +92,9 @@ public class MovieService {
         for(int i=0;i<screensInTheCinema.size();i++) {
             List<Screening> screenings=screeningRepository.find_screenings_by_screen_id(screensInTheCinema.get(i).getId());
             for(int j=0;j<screenings.size();j++) {
-                finalScreenings.add(screenings.get(j));
+                if(!finalScreenings.contains(screenings.get(j))) {
+                    finalScreenings.add(screenings.get(j));
+                }
             }
 
         }

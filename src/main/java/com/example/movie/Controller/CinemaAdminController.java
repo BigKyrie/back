@@ -1,10 +1,7 @@
 package com.example.movie.Controller;
+import com.example.movie.Entity.*;
 import com.example.movie.Service.*;
-import com.example.movie.Entity.Cinema;
-import com.example.movie.Entity.Cinema_Admin;
-import com.example.movie.Entity.Movie;
 import com.example.movie.Service.Cinema_AdminService;
-import com.example.movie.Entity.Screen;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 import com.example.movie.Session.UserInfo;
@@ -17,6 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -68,11 +66,27 @@ public class CinemaAdminController {
     @GetMapping(path = "/allMovies")
     public String displayAllMoviesInCinema(Model model)
     {
+        List<Movie> moviesInCinema=new ArrayList<>();
         HttpSession session = getRequest().getSession();
         UserInfo userInfo = (UserInfo) session.getAttribute("user_info_in_the_session");
-        List<Movie> movies=movieService.movie_in_cinema(cinema_adminService.findAdminById(userInfo.getUserId()).getCinema().getId());
-        model.addAttribute("movies",movies);
+        List<Screening> screenings=screeningService.screenings_in_cinema(cinema_adminService.findAdminById(userInfo.getUserId()).getCinema().getId());
+        for(int i=0;i<screenings.size();i++) {
+            if(!moviesInCinema.contains(screenings.get(i).getMovie())) {
+                moviesInCinema.add(screenings.get(i).getMovie());
+            }
+        }
+        model.addAttribute("movies",moviesInCinema);
         return "manage_movie";
+    }
+
+    @GetMapping(path = "/allScreenings")
+    public String displayAllScreeningsInCinema(Model model)
+    {
+        HttpSession session = getRequest().getSession();
+        UserInfo userInfo = (UserInfo) session.getAttribute("user_info_in_the_session");
+        List<Screening> screenings=screeningService.screenings_in_cinema(cinema_adminService.findAdminById(userInfo.getUserId()).getCinema().getId());
+        model.addAttribute("screenings",screenings);
+        return "screening_list";
     }
 
     @RequestMapping(path="/delete/{movie_id}")
@@ -98,6 +112,19 @@ public class CinemaAdminController {
         return "movie_form";
     }
 
+    @GetMapping(path = "/searchScreeningForm")
+    public String searchScreeningForm()
+    {
+        return "screening_search";
+    }
+
+    @GetMapping(path = "/addScreeningForm")
+    public String addScreeningForm()
+    {
+        return "screening_form";
+    }
+
+
     @GetMapping(path = "/toEditMovie/{movie_id}")
     public String editMovieForm(Model model,@PathVariable Integer movie_id)
     {
@@ -120,6 +147,8 @@ public class CinemaAdminController {
         }
         return "redirect:/cinemaAdmin/allMovies";
     }
+
+
 
 
     @PostMapping(path = "/addMovies")
