@@ -31,13 +31,9 @@ public class AuthorityInterceptor implements HandlerInterceptor {
         }
         HttpSession session = request.getSession();
         UserInfo userInfo = (UserInfo) session.getAttribute("user_info_in_the_session");
-        //UserInfo userInfo_normal_user = (UserInfo) session.getAttribute("current_normal_user");
         if (userInfo == null) {
             throw new RuntimeException("The user has not logged in");
         }
-//        if(userInfo_normal_user==null) {
-//            throw new RuntimeException("The user has not logged in");
-//        }
         return true;
     }
     /**

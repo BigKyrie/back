@@ -41,7 +41,7 @@ public class ScreeningController {
     {return screeningService.display_screenings_filterby_cinema_id_and_movie_id(movie_id,cinema_id);}
 
     @GetMapping(path = "/toEditScreening/{screening_id}")
-    public String editMovieForm(Model model,@PathVariable Integer screening_id)
+    public String editScreeningForm(Model model,@PathVariable Integer screening_id)
     {
         Screening screening=screeningService.find_screening_by_screening_id(screening_id);
         model.addAttribute("screening",screening);
