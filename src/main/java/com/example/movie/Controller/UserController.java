@@ -22,8 +22,6 @@ import java.util.List;
 @RequestMapping(path = "/demo")
 public class UserController {
     @Autowired
-    private UserService userService;
-    @Autowired
     private MovieService movieService;
     @Autowired
     private CinemaService cinemaService;
@@ -31,12 +29,36 @@ public class UserController {
     private ScreeningService screeningService;
     @Autowired
     private ScreenService screenService;
+    @Autowired
+    private Cinema_AdminService cinema_adminService;
 
     @GetMapping(path="/userMovie")
     public String userCinema(Model model){
         List<Movie> movies=movieService.display_all_movies();
         model.addAttribute("movies",movies);
         return "user_movie";
+    }
+
+    @PostMapping(path="/userLogin")
+    public String login(@RequestParam("username") String username,
+                        @RequestParam("password") String password) {
+        List<Cinema_Admin> admins = cinema_adminService.findByCinemaAdminUsernameAndPassword(username,password);
+        List<Cinema_Admin> adminExist = cinema_adminService.findByCinemaAdminUsername(username);
+        if(adminExist.size()>0) {
+            if(admins.size()>0){
+                UserInfo userInfo = new UserInfo(admins.get(0).getId(), admins.get(0).getUsername());
+                HttpSession session = getRequest().getSession();
+                session.setAttribute("user_info_in_the_session", userInfo);
+                return "redirect:/demo/userMovie";
+            }
+            else {
+                return "redirect:/userLogin";
+            }
+        }
+
+        else{
+            return "redirect:/userLogin";
+        }
     }
 
     @RequestMapping(path="/selectCinema/{movie_id}")
@@ -55,26 +77,21 @@ public class UserController {
         return "movie_cinema_screenings";
     }
 
-    @GetMapping(path = "/getAll")
-    public @ResponseBody Iterable<User> getAllUsers()
-    {
-        return userService.getAllUsers();
-    }
 
     @PostMapping(path = "/getUser")
-    public @ResponseBody List<User> findByUsername(String username)
+    public @ResponseBody List<Cinema_Admin> findByUsername(String username)
     {
-        return userService.findByUsername(username);
+        return cinema_adminService.findByCinemaAdminUsername(username);
     }
 
     @PostMapping(path = "/get")
-    public @ResponseBody List<User> findByUsernameAndPassword(String username,String password)
+    public @ResponseBody List<Cinema_Admin> findByUsernameAndPassword(String username,String password)
     {
-        List<User> users=userService.findByUsernameAndPassword(username,password);
+        List<Cinema_Admin> users=cinema_adminService.findByCinemaAdminUsernameAndPassword(username,password);
         if(users.size()>0) {
             UserInfo userInfo = new UserInfo(users.get(0).getId(), users.get(0).getUsername());
             HttpSession session = getRequest().getSession();
-            session.setAttribute("current_normal_user", userInfo);
+            session.setAttribute("user_info_in_the_session", userInfo);
         }
         return users;
     }
@@ -82,7 +99,7 @@ public class UserController {
     @PostMapping(path = "/add")
     public @ResponseBody boolean add(@RequestParam String username,String password)
     {
-        return userService.add(username, password);
+        return cinema_adminService.add(username, password);
     }
 
     private HttpServletRequest getRequest() {
