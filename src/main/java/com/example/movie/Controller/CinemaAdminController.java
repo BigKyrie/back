@@ -46,14 +46,14 @@ public class CinemaAdminController {
                 return "redirect:/manage";
                 }
                 else {
-                    return "redirect:/login";
+                    return "redirect:/adminLogin";
                 }
             }
 
             else{
-                return "redirect:/login";
+                return "redirect:/adminLogin";
             }
-        }
+    }
 
 
     @PostMapping(path = "/add")

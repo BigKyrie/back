@@ -17,7 +17,7 @@ public class Ticket {
     //a user may have a lot of tickets, one ticket can only belong to one user
     @ManyToOne
     @JoinColumn(name = "user_id")
-    private User user;
+    private Cinema_Admin cinema_admin;
     //a seat may relate to a lot of tickets, one ticket can only have one seat
     @ManyToOne
     @JoinColumn(name = "seat_id")
@@ -51,12 +51,12 @@ public class Ticket {
         this.create_time = create_time;
     }
 
-    public User getUser() {
-        return user;
+    public Cinema_Admin getUser() {
+        return cinema_admin;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setUser(Cinema_Admin cinema_admin) {
+        this.cinema_admin = cinema_admin;
     }
 
     public Seat getSeat() {

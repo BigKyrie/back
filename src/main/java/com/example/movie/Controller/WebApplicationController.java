@@ -9,7 +9,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping
 public class WebApplicationController {
     @GetMapping(path="/login")
-    private String login() { return "cinema_admin_login"; }
+    private String Login() { return "user_admin_selection"; }
+
+    @GetMapping(path="/adminLogin")
+    private String adminLogin() { return "cinema_admin_login"; }
+
+    @GetMapping(path="/userLogin")
+    private String userLogin() { return "user_login"; }
 
     @GetMapping(path = "/register")
     private String adminRegister() {
