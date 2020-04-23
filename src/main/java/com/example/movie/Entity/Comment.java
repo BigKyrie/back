@@ -13,7 +13,7 @@ public class Comment {
 
     @ManyToOne//one user has many comments, one comment belong to one user
     @JoinColumn(name = "user_id")
-    private User user;
+    private Cinema_Admin cinema_admin;
     @ManyToOne//one movie has many comments, one comment belong to one movie
     @JoinColumn(name = "movie_id")
     private Movie movie;
@@ -42,12 +42,12 @@ public class Comment {
         this.comment = comment;
     }
 
-    public User getUser() {
-        return user;
+    public Cinema_Admin getUser() {
+        return cinema_admin;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setUser(Cinema_Admin cinema_admin) {
+        this.cinema_admin = cinema_admin;
     }
 
     public Movie getMovie() {
