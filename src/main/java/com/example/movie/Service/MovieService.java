@@ -8,6 +8,8 @@ import com.example.movie.Repository.ScreenRepository;
 import com.example.movie.Repository.ScreeningRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.transaction.Transactional;
 import java.util.ArrayList;
@@ -32,7 +34,6 @@ public class MovieService {
     private ScreeningRepository screeningRepository;
     @Autowired
     private ScreenRepository screenRepository;
-
     public Movie findMoviebyID(Integer id){
         return movieRepository.findMovieByID(id);
     }
@@ -91,7 +92,9 @@ public class MovieService {
         for(int i=0;i<screensInTheCinema.size();i++) {
             List<Screening> screenings=screeningRepository.find_screenings_by_screen_id(screensInTheCinema.get(i).getId());
             for(int j=0;j<screenings.size();j++) {
-                finalScreenings.add(screenings.get(j));
+                if(!finalScreenings.contains(screenings.get(j))) {
+                    finalScreenings.add(screenings.get(j));
+                }
             }
 
         }
@@ -102,6 +105,23 @@ public class MovieService {
         }
         return moviesInCinema;
     }
+    public void update(String title, String blurb, String certificate, String director, String actors,
+                       Date showtime, Integer duration, String type, String language, String url, Integer movie_id) {
+        Movie movie=movieRepository.findMovieByID(movie_id);
+        movie.setTitle(title);
+        movie.setBlurb(blurb);
+        movie.setCertificate(certificate);
+        movie.setDirector(director);
+        movie.setActors(actors);
+        movie.setShowtime(showtime);
+        movie.setDuration(duration);
+        movie.setType(type);
+        movie.setLanguage(language);
+        movie.setUrl(url);
+    }
+
+
+
 
 
 }

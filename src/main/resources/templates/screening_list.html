@@ -13,13 +13,13 @@
         <!--Separate four columns in the page-->
         <div class="col-md-4"></div>
 
-        <div class="col-md-6"><h1>Movies on show in your cinema</h1></div>
+        <div class="col-md-6"><h1>Screenings in your cinema</h1></div>
         <div class="col-md-4"></div>
     </div>
     <div class="row">
         <!--Separate four columns in the page-->
         <div class="col-md-2"></div>
-        <div class="col-md-8"><div class="col-md-3"><a href="/cinemaAdmin/addMovieForm"><button type="button" class="btn btn-primary">Add a new movie</button></a></div></div>
+        <div class="col-md-8"><div class="col-md-3"><a href="/cinemaAdmin/addScreeningForm"><button type="button" class="btn btn-primary">Add a new screening</button></a></div><div class="col-md-3"><a href="/cinemaAdmin/searchScreeningForm"><button type="button" class="btn btn-primary">Search screenings</button></a></div></div>
         <div class="col-md-2"></div>
     </div>
 
@@ -30,28 +30,24 @@
                 <table class="table table-striped table-sm">
                     <thead>
                     <tr>
-                        <th>Id</th>
-                        <th>Poster</th>
-                        <th>Title</th>
-                        <th>Certificate</th>
-                        <th>Type</th>
-                        <th>Showtime</th>
+                        <th>Screen number</th>
+                        <th>Movie title</th>
+                        <th>Start time</th>
+                        <th>End time</th>
+                        <th>Price</th>
                         <th>Edit</th>
                         <th>Delete</th>
                     </tr>
                     </thead>
                     <tbody>
-                    <tr th:each="movie:${movies}">
-                        <td th:text="${movie.id}"></td>
-                        <td>
-                            <img th:src="${movie.url}" width="100px" height="110px"/>
-                        </td>
-                        <td th:text="${movie.title}"></td>
-                        <td th:text="${movie.certificate}"></td>
-                        <td th:text="${movie.type}"></td>
-                        <td th:text="${#dates.format(movie.showtime, 'yyyy-MM-dd HH:mm')}"></td>
-                        <td><a th:href=${'/cinemaAdmin/toEditMovie/'+movie.id}><button type="button" class="btn btn-primary">Edit</button></a></td>
-                        <td><a th:href=${'/cinemaAdmin/delete/'+movie.id}> <button type="button" class="btn btn-primary">Delete</button></a></td>
+                    <tr th:each="screening:${screenings}">
+                        <td th:text="${screening.screen.num}"></td>
+                        <td th:text="${screening.movie.title}"></td>
+                        <td th:text="${#dates.format(screening.start_time, 'yyyy-MM-dd HH:mm')}"></td>
+                        <td th:text="${#dates.format(screening.end_time, 'yyyy-MM-dd HH:mm')}"></td>
+                        <td th:text="${screening.price}"></td>
+                        <td><a th:href=${'/screenings/toEditScreening/'+screening.id}><button type="button" class="btn btn-primary">Edit</button></a></td>
+                        <td><a th:href=${'/screenings/delete/'+screening.id}> <button type="button" class="btn btn-primary">Delete</button></a></td>
 
                     </tr>
                     </tbody>

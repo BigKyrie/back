@@ -58,7 +58,7 @@ public class Cinema_AdminService {
     }
 
     public Cinema_Admin findAdminById(Integer id) {
-        return cinema_adminRepository.findByCinemaAdminId(id).get(0);
+        return cinema_adminRepository.findByCinemaAdminID(id).get(0);
     }
 
 
@@ -88,29 +88,5 @@ public class Cinema_AdminService {
         }
         return final_movies;
     }
-    public Object loginAuthentication(String username,String password) throws JSONException {
-        List<Cinema_Admin> admins = cinema_adminRepository.findByCinemaAdminUsernameAndPassword(username,password);
-        List<Cinema_Admin> adminExist = cinema_adminRepository.findByCinemaAdminUsername(username);
-        JSONObject jsonObject = new JSONObject();
-        if(adminExist.size()>0) {
-            if(admins.size()>0){
-                String token = authenticationService.getToken(admins.get(0));
-                jsonObject.put("token", token);
-                jsonObject.put("user", admins.get(0));
-                //model.addAttribute("user",user);
-                //return "redirect:/manage";
-            }
-            else{
-                jsonObject.put("message", "Password is not correct");
-                //return "redirect:/login";
-            }
-        }
-        else {
-            jsonObject.put("message", "Username does not exist");
-            //return "redirect:/login";
-        }
-        return jsonObject;
-    }
-
 
 }

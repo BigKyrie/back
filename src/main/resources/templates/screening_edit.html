@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Cinema</title>
+    <link rel="stylesheet" href="/webjars/bootstrap/3.3.5/css/bootstrap.min.css" />
+    <script src="/webjars/jquery/3.1.1/jquery.min.js"></script>
+    <script src="/webjars/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+<div class="container-fluid">
+    <div class="row">
+        <!--Separate four columns in the page-->
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+            <form th:object="${screening}" th:action="@{'/screenings/editScreening/'+${screening_id}}" method="post">
+                <legend>Screening Information</legend>
+                <fieldset>
+                    Screen number:<input name="screen_number" type="text" class="form-control" th:value="${screen_number}"><br>
+                    Movie certificate:<input name="movie_certificate" type="text" class="form-control" th:value="${movie_certificate}"><br>
+                    Date:<input name="date" type="date" class="form-control"><br>
+                    Start Time :<input name="start_time" type="time" class="form-control"><br>
+                    End Time :<input name="end_time" type="time" class="form-control"><br>
+                    Price :<input name="price" type="text" class="form-control" th:value="*{price}"><br>
+                    <input type="submit" value="Save">
+                    <a href="/cinemaAdmin/allScreenings">Cancel</a>
+                </fieldset>
+            </form>
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+</div>
+</body>
+</html>
