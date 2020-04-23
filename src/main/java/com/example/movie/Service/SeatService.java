@@ -39,8 +39,8 @@ public class SeatService {
         for (int i = 0; i < row; i++){
             for (int j = 0; j < col; j++){
                 Seat seat = new Seat();
-                seat.setCol(Integer.valueOf(i+1));
-                seat.setRow(Integer.valueOf(j+1));
+                seat.setRow(Integer.valueOf(i+1));
+                seat.setCol(Integer.valueOf(j+1));
                 seat.setScreen(screen);
                 seatRepository.save(seat);
             }
