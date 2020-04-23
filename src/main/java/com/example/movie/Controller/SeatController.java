@@ -54,4 +54,13 @@ public class SeatController {
     public @ResponseBody List<SeatInfo> get_seats(@PathVariable(name = "screening_id") Integer screening_id){
         return seatService.get_seat_of_a_screening(screening_id);
     }
+
+    @GetMapping(path = "/selectSeats/{screening_id}")
+    public String select_seats(@PathVariable(name = "screening_id") Integer screening_id,  Model model){
+        List<SeatInfo> seatInfos = seatService.get_seat_of_a_screening(screening_id);
+        model.addAttribute("seats",seatInfos);
+        model.addAttribute("row",seatInfos.get(seatInfos.size()-1).getRow());
+        model.addAttribute("col",seatInfos.get(seatInfos.size()-1).getCol());
+        return "select_seat";
+    }
 }
