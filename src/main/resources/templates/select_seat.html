@@ -9,6 +9,19 @@
     <script src="/webjars/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 </head>
 <body>
+
+<script type="text/javascript">
+    var x = 0;
+    function choose(id){
+        if (x%2)
+            document.getElementById(id).src = "/image/Seat.png";
+
+        else
+            document.getElementById(id).src = "/image/chosenSeat.png";
+        x++;
+    }
+</script>
+
 <div  class = "row">
     <div class = "col-md-3"></div>
     <div class = "col-md-6">
@@ -46,7 +59,8 @@
                     <span th:each="j:${#numbers.sequence(1,col)}">
                     <td>
                         <img th:if="${seats[(i-1)*row+(j-1)].taken_or_not}==true" src="/image/notAvailableSeat.png">
-                        <img th:if="${seats[(i-1)*row+(j-1)].taken_or_not}==false" src="/image/seat.png">
+                        <img th:id = "${seats[(i-1)*row+(j-1)].seat_id}" th:onclick="|choose((${seats[(i-1)*row+(j-1)].seat_id}))|"
+                             th:if="${seats[(i-1)*row+(j-1)].taken_or_not}==false" src="/image/seat.png">
                     </td>
                     </span>
                 </tr>
