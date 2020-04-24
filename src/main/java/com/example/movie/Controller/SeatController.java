@@ -22,12 +22,13 @@ public class SeatController {
     private SeatService seatService;
     @Autowired
     private ScreenService screenService;
+    @Autowired
+    private ScreeningService screeningService;
 
     @GetMapping(path = "/view/{screen_id}")
     public String view_seat(@PathVariable(name = "screen_id") Integer screen_id,  Model model){
         List<Seat> seats = seatService.view_seat_of_a_screen(screen_id);
         Screen screen = screenService.get_screen_by_id(screen_id).get(0);
-        model.addAttribute("seats",seats);
         model.addAttribute("screen",screen);
         //if the seat are already added to the screen
         if(seats.size()>0){
@@ -59,6 +60,7 @@ public class SeatController {
     public String select_seats(@PathVariable(name = "screening_id") Integer screening_id,  Model model){
         List<SeatInfo> seatInfos = seatService.get_seat_of_a_screening(screening_id);
         model.addAttribute("seats",seatInfos);
+        model.addAttribute("screenings",screeningService.find_screening_by_screening_id(screening_id));
         model.addAttribute("row",seatInfos.get(seatInfos.size()-1).getRow());
         model.addAttribute("col",seatInfos.get(seatInfos.size()-1).getCol());
         return "select_seat";
