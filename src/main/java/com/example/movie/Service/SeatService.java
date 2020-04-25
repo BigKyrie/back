@@ -57,7 +57,7 @@ public class SeatService {
         List<Seat> empty = new ArrayList<>();
         for (int i = 0; i< tickets.size();i++) {
             for (int j = 0; j < seats.size();j++){
-                if (tickets.get(i).getSeat().getId() == seats.get(j).getId()){
+                if (tickets.get(i).getSeat().getId() == seats.get(j).getId() && tickets.get(i).getUser()!=null){
                     taken.add(seats.get(j));
                     seats.remove(seats.get(j));
                 }
