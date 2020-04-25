@@ -31,12 +31,29 @@ public class UserController {
     private ScreenService screenService;
     @Autowired
     private Cinema_AdminService cinema_adminService;
+    @Autowired
+    private TicketService ticketService;
 
     @GetMapping(path="/userMovie")
     public String userCinema(Model model){
         List<Movie> movies=movieService.display_all_movies();
         model.addAttribute("movies",movies);
         return "user_movie";
+    }
+
+    @GetMapping(path="/mine")
+    public String mineInformation(Model model){
+        return "mine_information";
+    }
+
+    @GetMapping(path="/allorders")
+    public String mineallorders(Model model){
+        HttpSession session = getRequest().getSession();
+        UserInfo userInfo = (UserInfo) session.getAttribute("user_info_in_the_session");
+        Cinema_Admin admin = cinema_adminService.findAdminById(userInfo.getUserId());
+        List<Ticket> tickets = ticketService.find_ticket_of_a_user(admin.getId());
+        model.addAttribute("tickets",tickets);
+        return "user_tickets";
     }
 
     @PostMapping(path="/userLogin")
@@ -100,6 +117,14 @@ public class UserController {
     public @ResponseBody boolean add(@RequestParam String username,String password)
     {
         return cinema_adminService.add(username, password);
+    }
+
+    @GetMapping(path = "/my_ticket")
+    public @ResponseBody List<Ticket> mytickets(){
+        HttpSession session = getRequest().getSession();
+        UserInfo userInfo = (UserInfo) session.getAttribute("user_info_in_the_session");
+        Cinema_Admin admin = cinema_adminService.findAdminById(userInfo.getUserId());
+        return ticketService.find_ticket_of_a_user(admin.getId());
     }
 
     private HttpServletRequest getRequest() {
