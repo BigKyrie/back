@@ -39,8 +39,8 @@ public class SeatService {
         for (int i = 0; i < row; i++){
             for (int j = 0; j < col; j++){
                 Seat seat = new Seat();
-                seat.setCol(Integer.valueOf(i+1));
-                seat.setRow(Integer.valueOf(j+1));
+                seat.setRow(Integer.valueOf(i+1));
+                seat.setCol(Integer.valueOf(j+1));
                 seat.setScreen(screen);
                 seatRepository.save(seat);
             }
@@ -57,7 +57,7 @@ public class SeatService {
         List<Seat> empty = new ArrayList<>();
         for (int i = 0; i< tickets.size();i++) {
             for (int j = 0; j < seats.size();j++){
-                if (tickets.get(i).getSeat().getId() == seats.get(j).getId()){
+                if (tickets.get(i).getSeat().getId() == seats.get(j).getId() && tickets.get(i).getUser()!=null){
                     taken.add(seats.get(j));
                     seats.remove(seats.get(j));
                 }
