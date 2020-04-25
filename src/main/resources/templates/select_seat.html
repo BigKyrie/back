@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Cinema</title>
     <link href="/webjars/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet"/>
-    <link rel="stylesheet" href="/css/manage.css">
+    <link rel="stylesheet" href="/static/css/manage.css">
     <script src="/webjars/jquery/3.1.1/jquery.min.js"></script>
     <script src="/webjars/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 </head>
@@ -15,11 +15,11 @@
     var lastSeatId;
     function choose(seatId,screeningId){
         if (x==0){
-            document.getElementById(seatId).src = "/image/chosenSeat.png";
+            document.getElementById(seatId).src = "/static/image/chosenSeat.png";
         }
         else{
-            document.getElementById(lastSeatId).src = "/image/Seat.png"
-            document.getElementById(seatId).src = "/image/chosenSeat.png";
+            document.getElementById(lastSeatId).src = "/static/image/Seat.png"
+            document.getElementById(seatId).src = "/static/image/chosenSeat.png";
         }
         document.getElementById("typeAndSeat").action="/ticket/generate/"+screeningId+"/"+seatId;
         lastSeatId = seatId;
@@ -74,9 +74,9 @@
             </legend>
             <p><b>2. Please select your seat</b></p>
             <p>Please notice that you can only select one seat at one time. </p>
-            <p>Available:<img src="/image/seat.png"  alt="available seat" />
-                Not Available:<img src="/image/notAvailableSeat.png"  alt="not Available" />
-                Chosen:<img src="/image/chosenSeat.png" alt="chosen"/>
+            <p>Available:<img src="/static/image/seat.png"  alt="available seat" />
+                Not Available:<img src="/static/image/notAvailableSeat.png"  alt="not Available" />
+                Chosen:<img src="/static/image/chosenSeat.png" alt="chosen"/>
             </p>
             <div class="screen">Screen</div>
             <table class="table table-striped table-sm">
@@ -97,9 +97,9 @@
                     <span th:each="j:${#numbers.sequence(1,col)}">
                     <td>
                        <img th:id = "${seats[(i-1)*row+(j-1)].seat_id}" th:onclick="|choose((${seats[(i-1)*row+(j-1)].seat_id}),(${screenings.id}))|"
-                             th:if="${seats[(i-1)*row+(j-1)].taken_or_not}==false" src="/image/seat.png">
+                             th:if="${seats[(i-1)*row+(j-1)].taken_or_not}==false" src="/static/image/seat.png">
                        <img th:id = "${seats[(i-1)*row+(j-1)].seat_id}"
-                             th:if="${seats[(i-1)*row+(j-1)].taken_or_not}==true" src="/image/notAvailableSeat.png">
+                             th:if="${seats[(i-1)*row+(j-1)].taken_or_not}==true" src="/static/image/notAvailableSeat.png">
                     </td>
                     </span>
                 </tr>

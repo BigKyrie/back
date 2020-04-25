@@ -91,8 +91,12 @@ public class TicketController {
             (@RequestParam String type,@PathVariable(name = "screening_id") Integer screening_id,
              @PathVariable(name = "seat_id") Integer seat_id) {
         Ticket ticket=ticketService.generate_a_ticket(screening_id,seat_id,type);
-        return "redirect:/manage";
+        return "pay";
     }
 
+//    @GetMapping(path = "/pay")
+//    public String pay(){
+//        return "pay";
+//    }
 
 }
