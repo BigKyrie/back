@@ -33,10 +33,6 @@ public class TicketService {
     @Autowired
     private ScreeningService screeningService;
 
-    public Ticket find_ticket_by_id(Integer id) {
-        return ticketRepository.find_ticket_by_id(id).get(0);
-    }
-
     public List<Ticket> find_ticket_of_a_screening(Integer id){
         return ticketRepository.find_ticket_of_a_screening(id);
     }

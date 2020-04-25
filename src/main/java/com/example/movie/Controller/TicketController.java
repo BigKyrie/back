@@ -82,16 +82,7 @@ public class TicketController {
     public Ticket add_and_display_ticket
             (@RequestParam String type,@PathVariable(name = "screening_id") Integer screening_id,
              @PathVariable(name = "seat_id") Integer seat_id) {
-        //return ticketService.generate_a_ticket(screening_id,seat_id,type);
-        return null;
-    }
-
-    @PostMapping(path = "generate/{screening_id}/{seat_id}")
-    public String generate_ticket
-            (@RequestParam String type,@PathVariable(name = "screening_id") Integer screening_id,
-             @PathVariable(name = "seat_id") Integer seat_id) {
-        Ticket ticket=ticketService.generate_a_ticket(screening_id,seat_id,type);
-        return "redirect:/manage";
+        return ticketService.generate_a_ticket(screening_id,seat_id,type);
     }
 
 
