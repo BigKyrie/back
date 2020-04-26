@@ -1,0 +1,15 @@
+.button2 {
+    border-radius: 20px;
+    background-color: rgb(71,118,230);
+    color: #FFFFFF;
+
+}
+
+.btn:hover {
+    background-color: #FFFFFF;
+    color: rgb(71,118,230);
+}
+
+.row2 {
+    padding-top: 40px;
+}

@@ -1,53 +1,46 @@
-<!DOCTYPE html>
-<html lang="en">
+﻿<!DOCTYPE html>
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Cinema</title>
-    <link rel="stylesheet" href="/webjars/bootstrap/3.3.5/css/bootstrap.min.css" />
-    <script src="/webjars/jquery/3.1.1/jquery.min.js"></script>
-    <script src="/webjars/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <title>Admin Log in</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+    <link rel="stylesheet" href="/static/css/form.css" type="text/css" media="all">
 </head>
 <body>
-<div class="container">
-    <div class="row">
-        <div class="col-md-3 "></div>
-        <div class="col-md-6 ">
-            <form class="form-horizontal" method="post" action="/cinemaAdmin/login" >
-                <fieldset>
-                    <legend><h1>Login as a cinema admin</h1>
-                    </legend>
-                    <div class="form-group">
-                        <label class="col-md-2 control-label" for="mid">username</label>
-                        <div class="col-md-4">
-                            <input class="form-control" name="username" id="mid" type="text"/>
-                        </div>
+    <div class="banner">
+        <div class="agileinfo-dot">
+            <div class="w3layoutscontaineragileits">
+                <h1>Admin Log In</h1>
+                <form method="post" action="/cinemaAdmin/login">
+                    <input type="text" name="username" placeholder="Username" required>
+                    <input type="password" name="password" placeholder="Password" required>
+                    <ul class="agileinfotickwthree">
+                        <li>
+                            <a href="/register">New User?</a>
+                            <a href="#">|</a>
+                            <a href="/login">Back</a>
+                        </li>
+                    </ul>
+                    <div class="aitssendbuttonw3ls">
+                        <input type="submit" value="Sign In">
+                        <div class="clear"></div>
                     </div>
+                </form>
+            </div>
 
-                    <div class="form-group">
-                        <label class="col-md-2 control-label" for="password">password</label>
-                        <div class="col-md-4">
-                            <input class="form-control" name="password" id="password" type="password"/>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="col-md-6 ">
-                            <input class="btn btn-primary" type="submit" value="sign in"/>
-                            <a href="/register">Click here to Register</a>
-                        </div>
-                        <div class="col-md-2">
-                            <a href="/login"> <button type="button" class="btn btn-primary">Back</button></a>
-                        </div>
-                    </div>
-                </fieldset>
-            </form>
+            <div class="w3footeragile">
+                <p> &copy; Group 9</a></p>
+            </div>
 
         </div>
-        <div class="col-md-3 "></div>
     </div>
-</div>
+
+
+
 
 </body>
-</html>
+<!-- //Body -->
 
-</body>
 </html>

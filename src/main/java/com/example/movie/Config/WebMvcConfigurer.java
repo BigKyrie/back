@@ -11,7 +11,7 @@ public class WebMvcConfigurer extends WebMvcConfigurerAdapter {
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(new AuthorityInterceptor())
-                .addPathPatterns("/cinemaAdmin/**");
+                .addPathPatterns("/cinemaAdmin/**","/demo/**");
         super.addInterceptors(registry);
     }
 }
