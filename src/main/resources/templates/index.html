@@ -121,8 +121,8 @@
         <!-- coidea:grid-list:navigation+switcher END -->
         <!-- coidea:grid-list:main-section START -->
 
-        <div class="grid masonry" th:each="movie:${movies}" >
-            <div class="masonry__item" >
+        <div class="grid masonry">
+            <div class="masonry__item" th:each="movie:${movies}">
                 <figure data-container="body" data-toggle="popover" data-placement="top"
                         data-html="true" data-content="<image src='${movie.url}' height = 140px width = 100px>">
                     <figcaption class="content">
@@ -140,12 +140,22 @@
                                 <span><b>Type:</b></span>
                                 <span th:text="${movie.type}"></span>
                             </a></li>
-                            <li><a href="#" th:text="${movie.director}">
+                            <li><a href="#">
                                 <span><b>Director:</b></span>
+                                <span th:text="${movie.director}"></span>
                             </a></li>
-                            <li><a href="#" th:text="${movie.duration}"></a></li>
-                            <li><a href="#" th:text="${movie.actors}"></a></li>
-                            <li><a href="#" th:text="${movie.language}"></a></li>
+                            <li><a href="#">
+                                <span><b>Duration:</b></span>
+                                <span th:text="${movie.duration}"></span>
+                            </a></li>
+                            <li><a href="#">
+                                <span><b>Actors:</b></span>
+                                <span th:text="${movie.actors}"></span>
+                            </a></li>
+                            <li><a href="#">
+                                <span><b>Language:</b></span>
+                                <span th:text="${movie.language}"></span>
+                            </a></li>
                             <li><a th:href=${'/cinemaAdmin/toEditMovie/'+movie.id}>Edit</a></li>
                             <li><a th:href=${'/cinemaAdmin/delete/'+movie.id}>Delete</a></li>
                             <li><a href="#!" class="more" data-click-state="1">+</a></li>
