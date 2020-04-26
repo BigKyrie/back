@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="no-js" lang="zxx">
+<html class="no-js" lang="zxx" xmlns:th="http://www.w3.org/1999/xhtml">
 
 <head>
     <meta charset="utf-8">
@@ -24,13 +24,13 @@
     <div class="row">
         <div class="col-md-2"></div>
         <div class="col-md-8">
-            <form action="/card/bindCardForWeb" method="post">
+            <form th:object="${card}" action="/card/editCard" method="post">
                 <div class="login-form">
-                    <h4 class="login-title">Bind your bank card</h4>
+                    <h4 class="login-title">Change your bank card</h4>
                     <div class="row">
                         <div class="col-md-6 col-12 mb-20">
                             <label>Card Number*</label>
-                            <input class="mb-0" name="card_number" type="text">
+                            <input class="mb-0" name="card_number" type="text" th:value="*{number}">
                         </div>
                         <div class="col-md-6 col-12 mb-20">
                             <label>Password*</label>
@@ -40,7 +40,6 @@
                             <label>Verify Password*</label>
                             <input class="mb-0" type="text" name = "verify_password">
                         </div>
-
                         <div class="col-md-4">
                             <input class="register-button mt-0" type="submit" value="Save" id="submit">
                         </div>
@@ -52,19 +51,13 @@
         <div class="col-md-2"></div>
     </div>
     <div class="row row2">
-        <div class="col-md-7"></div>
+        <div class="col-md-9"></div>
         <div class="col-md-1">
-            <a href="/demo/mine">
+            <a href="#" onClick="javascript:history.back(-1);">
                 <button class="button2 btn btn-primary">Back</button>
             </a>
         </div>
-        <div class="col-md-2">
-            <a href="/card/toEditCard">
-                <button class="button2 btn btn-primary">Change Card</button>
-            </a>
-        </div>
     </div>
-
 </div>
 </body>
 </html>
