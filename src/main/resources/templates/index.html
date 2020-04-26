@@ -6,8 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Movies </title>
     <link rel="stylesheet" type="text/css" href="../static/css/Listassets/css/demo.css" />
-    <link href="/webjars/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet"/>
-    <script src="/webjars/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 </head>
 <body>
     <!-- coidea:loader START -->
@@ -129,10 +127,25 @@
                         data-html="true" data-content="<image src='${movie.url}' height = 140px width = 100px>">
                     <figcaption class="content">
                         <h2 th:text="${movie.title}" ></h2>
-                        <p class="date" th:text="${#dates.format(movie.showtime, 'yyyy-MM-dd HH:mm')}"><span>Updated</span> MARCH 16, 2019</p>
+                        <p class="date">
+                            <span th:text="${#dates.format(movie.showtime, 'yyyy-MM-dd HH:mm')}"></span>
+                            <span th:text="${movie.certificate}"></span>
+                        </p>
                         <ul class="tags">
-                            <li><a href="#" th:text="${movie.type}"></a></li>
-                            <li><a href="#" th:text="${movie.certificate}"></a></li>
+                            <li><a href="#">
+                                <span><b>Blurb:</b></span>
+                                <span th:text="${movie.blurb}"></span>
+                            </a></li>
+                            <li><a href="#" >
+                                <span><b>Type:</b></span>
+                                <span th:text="${movie.type}"></span>
+                            </a></li>
+                            <li><a href="#" th:text="${movie.director}">
+                                <span><b>Director:</b></span>
+                            </a></li>
+                            <li><a href="#" th:text="${movie.duration}"></a></li>
+                            <li><a href="#" th:text="${movie.actors}"></a></li>
+                            <li><a href="#" th:text="${movie.language}"></a></li>
                             <li><a th:href=${'/cinemaAdmin/toEditMovie/'+movie.id}>Edit</a></li>
                             <li><a th:href=${'/cinemaAdmin/delete/'+movie.id}>Delete</a></li>
                             <li><a href="#!" class="more" data-click-state="1">+</a></li>
@@ -146,16 +159,17 @@
 
     </section>
     <!-- coidea:grid-list END -->
-    <script>
-        $(function (){
-            $("[data-toggle='popover']").popover();
-        });
-    </script>
+
     <script src="../static/js/jquery-1.11.0.min.js" type="text/javascript"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.0.2/TweenMax.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.0/plugins/ScrollToPlugin.min.js"></script>
     <script src="https://masonry.desandro.com/masonry.pkgd.js"></script>
     <script src="https://unpkg.com/imagesloaded@4.1.4/imagesloaded.pkgd.min.js"></script>
     <script src="../static/css/Listassets/js/demo.js"></script>
+    <script>
+        $(function (){
+            $("[data-toggle='popover']").popover();
+        });
+    </script>
 </body>
 </html>
