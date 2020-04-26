@@ -88,8 +88,9 @@ public class TicketController {
     @PostMapping(path = "generate/{screening_id}/{seat_id}")
     public String generate_ticket
             (@RequestParam String type,@PathVariable(name = "screening_id") Integer screening_id,
-             @PathVariable(name = "seat_id") Integer seat_id) {
+             @PathVariable(name = "seat_id") Integer seat_id,Model model) {
         Ticket ticket=ticketService.generate_a_ticket(screening_id,seat_id,type);
+        model.addAttribute("screening_id",screening_id);
         return "pay";
     }
 
