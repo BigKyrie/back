@@ -10,7 +10,6 @@
 
     <link th:href="@{../static/css/plugins.css}" rel="stylesheet" type="text/css">
 
-    <!-- ========== MAIN CSS ========== -->
     <link th:href="@{../static/css/style.css}" rel="stylesheet" type="text/css">
     <link th:href="@{../static/css/responsive.css}" rel="stylesheet" type="text/css">
     <script th:src="@{../static/js/vendor.js}"></script>
@@ -22,64 +21,69 @@
 
 </head>
 <body>
-<div class="container-fluid">
-    <div class="row">
-            <!--Separate four columns in the page-->
-            <div class="col-md-3"></div>
-            <div class="col-md-6"><legend>Welcome to the cinema management system!</legend></div>
-        <div class="col-md-3"></div>
-    </div>
-    <div class="row">
-                    <div class="col-md-3"></div>
-                    <div class="col-md-3">
+<section id="about" class="overview-area text-center">
+    <div class="container">
+        <div class="row">
+            <div class="section-title col-sm-8 col-sm-offset-2">
+                <h2 class="text-uppercase branding-color">Cinema Management System
+                    <span>
+							<i class="fa fa-circle"></i>
+							<i class="fa fa-circle"></i>
+							<i class="fa fa-circle"></i>
+						</span>
+                </h2>
+                <p> Welcome</p>
+            </div>
+
+            <div class="overviews">
+                <div class="col-md-3 col-sm-6">
+                    <div class="single">
                         <a href="/cinemaAdmin/allMovies">
-                            <div class="dashboard-content">
-                                <div class = "content-title">Movie information</div>
-                            </div>
+                            <i class="fa fa-tags"></i>
                         </a>
+                        <h4 class="text-uppercase">Movie</h4>
+                        <p>Check movie information of your cinema</p>
                     </div>
-                    <div class="col-md-3">
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <div class="single">
                         <a href="/screen/getAllScreens">
-                            <div class="dashboard-content">
-                                <div class = "content-title">Screen information</div>
-                            </div>
+                            <i class="fa fa-tags"></i>
                         </a>
+                        <h4 class="text-uppercase">Screen</h4>
+                        <p>Check screen information of your cinema</p>
                     </div>
-    </div>
-    <div class="row">
-        <div class="col-md-3"></div>
-        <div class="col-md-3">
-            <a href="/cinema/getAllCinema">
-                <div class="dashboard-content">
-                    <div class = "content-title">Cinema information</div>
                 </div>
-            </a>
-        </div>
-        <div class="col-md-3">
-            <a href="/cinemaAdmin/allScreenings">
-                <div class="dashboard-content">
-                    <div class = "content-title">Screening information</div>
+                <div class="col-md-3 col-sm-6">
+                    <div class="single">
+                        <a href="/cinema/getAllCinema">
+                            <i class="fa fa-tags"></i>
+                        </a>
+                        <h4 class="text-uppercase">Cinema</h4>
+                        <p>Check oe edit your own cinema information</p>
+                    </div>
                 </div>
-            </a>
-        </div>
-
-    </div>
-    <div class="row">
-        <div class="col-md-3"></div>
-        <div class="col-md-3">
-            <a href="/ticket/sellingweek">
-                <div class="dashboard-content">
-                    <div class = "content-title">Ticket Selling Information</div>
+                <div class="col-md-3 col-sm-6">
+                    <div class="single">
+                        <a href="cinemaAdmin/allScreenings">
+                            <i class="fa fa-tags"></i>
+                        </a>
+                        <h4 class="text-uppercase">Screening</h4>
+                        <p>Check screening information of your cinema</p>
+                    </div>
                 </div>
-            </a>
+                <div class="col-md-3 col-sm-6">
+                    <div class="single">
+                        <a href="/ticket/sellingweek">
+                             <i class="fa fa-tags"></i>
+                        </a>
+                        <h4 class="text-uppercase">Turnover</h4>
+                        <p>Check screening information of your cinema</p>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-    <div class="row">
-        <div class="col-md-3"></div>
-        <div class="col-md-3"><a href="/adminLogin"> <button type="button" class="btn btn-primary">Back</button></a></div>
-
-    </div>
-    <div class="col-md-3"></div>
-</div>
+</section>
 </body>
 </html>
