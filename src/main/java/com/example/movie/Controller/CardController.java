@@ -31,10 +31,6 @@ public class CardController {
 
     @PostMapping(path = "/bindCard")
     public @ResponseBody boolean bind_card(@RequestParam String card_number,String password,String user_id) {
-//        HttpSession session = getRequest().getSession();
-//        UserInfo userInfo = (UserInfo) session.getAttribute("user_info_in_the_session");
-
-
         Cinema_Admin cinema_admin=cinema_adminService.findAdminById(Integer.parseInt(user_id));
         if(cardService.find_card_by_number(card_number).size()!=0 || cardService.find_card_by_user_id(Integer.parseInt(user_id)).size()!=0) {
             return false;
@@ -45,18 +41,19 @@ public class CardController {
         }
 
     }
+
     @PostMapping(path = "/cardPay/{screening_id}/{seat_id}")
-    public boolean verify_card_password_for_app(@RequestParam String password,String type,
+    public @ResponseBody boolean verify_card_password_for_app(@RequestParam String password,String type, String user_id,
                                                 @PathVariable Integer screening_id,@PathVariable Integer seat_id) {
         Ticket ticket=ticketService.generate_a_ticket(screening_id,seat_id,type);
-        HttpSession session = getRequest().getSession();
-        UserInfo userInfo = (UserInfo) session.getAttribute("user_info_in_the_session");
-        Cinema_Admin cinema_admin=cinema_adminService.findAdminById(userInfo.getUserId());
-        if(cardService.find_card_by_user_id(userInfo.getUserId()).size()==0) {
+        //HttpSession session = getRequest().getSession();
+        //UserInfo userInfo = (UserInfo) session.getAttribute("user_info_in_the_session");
+        Cinema_Admin cinema_admin=cinema_adminService.findAdminById(Integer.parseInt(user_id));
+        if(cardService.find_card_by_user_id(Integer.parseInt(user_id)).size()==0) {
             return false;
         }
         else {
-            Card card=cardService.find_card_by_user_id(userInfo.getUserId()).get(0);
+            Card card=cardService.find_card_by_user_id(Integer.parseInt(user_id)).get(0);
             if(card.getPassword().equals(password)) {
                 ticket.setUser(cinema_admin);
                 return true;
@@ -65,8 +62,21 @@ public class CardController {
                 return false;
             }
         }
-
     }
+    @GetMapping(path = "/cashPay/{screening_id}/{seat_id}")
+    public @ResponseBody boolean cash_pay_for_app(@RequestParam String type, String user_id,
+                                    @PathVariable Integer screening_id,@PathVariable Integer seat_id) {
+        Ticket ticket=ticketService.generate_a_ticket(screening_id,seat_id,type);
+        //HttpSession session = getRequest().getSession();
+        //UserInfo userInfo = (UserInfo) session.getAttribute("user_info_in_the_session");
+        Cinema_Admin cinema_admin=cinema_adminService.findAdminById(Integer.parseInt(user_id));
+        ticket.setUser(cinema_admin);
+        return true;
+    }
+
+
+
+
 
     @PostMapping(path = "/verifyPassword/{ticket_id}")
     public boolean verify_card_password(@RequestParam String password,@PathVariable Integer ticket_id) {
@@ -89,16 +99,7 @@ public class CardController {
         }
 
     }
-    @GetMapping(path = "/cashPay/{screening_id}/{seat_id}")
-    public boolean cash_pay_for_app(@RequestParam String type,
-                                    @PathVariable Integer screening_id,@PathVariable Integer seat_id) {
-        Ticket ticket=ticketService.generate_a_ticket(screening_id,seat_id,type);
-        HttpSession session = getRequest().getSession();
-        UserInfo userInfo = (UserInfo) session.getAttribute("user_info_in_the_session");
-        Cinema_Admin cinema_admin=cinema_adminService.findAdminById(userInfo.getUserId());
-        ticket.setUser(cinema_admin);
-        return true;
-    }
+
 
 
     @GetMapping(path = "/cashPay/{ticket_id}")
