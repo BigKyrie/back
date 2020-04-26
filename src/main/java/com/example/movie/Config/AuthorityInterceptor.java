@@ -17,6 +17,11 @@ public class AuthorityInterceptor implements HandlerInterceptor {
         NOT_INTERCEPT_URI.add("/cinemaAdmin/login");
         NOT_INTERCEPT_URI.add("/cinemaAdmin/add");
         NOT_INTERCEPT_URI.add("/cinemaAdmin/allMovies");
+        NOT_INTERCEPT_URI.add("/demo/userMovie");
+        NOT_INTERCEPT_URI.add("/demo/userLogin");
+        NOT_INTERCEPT_URI.add("/demo/get");
+        NOT_INTERCEPT_URI.add("/demo/add");
+
     }
 
 

@@ -30,11 +30,13 @@ public class CardController {
     private TicketService ticketService;
 
     @PostMapping(path = "/bindCard")
-    public boolean bind_card(@RequestParam String card_number,String password) {
-        HttpSession session = getRequest().getSession();
-        UserInfo userInfo = (UserInfo) session.getAttribute("user_info_in_the_session");
-        Cinema_Admin cinema_admin=cinema_adminService.findAdminById(userInfo.getUserId());
-        if(cardService.find_card_by_number(card_number).size()!=0 || cardService.find_card_by_user_id(userInfo.getUserId()).size()!=0) {
+    public @ResponseBody boolean bind_card(@RequestParam String card_number,String password,String user_id) {
+//        HttpSession session = getRequest().getSession();
+//        UserInfo userInfo = (UserInfo) session.getAttribute("user_info_in_the_session");
+
+
+        Cinema_Admin cinema_admin=cinema_adminService.findAdminById(Integer.parseInt(user_id));
+        if(cardService.find_card_by_number(card_number).size()!=0 || cardService.find_card_by_user_id(Integer.parseInt(user_id)).size()!=0) {
             return false;
         }
         else {
