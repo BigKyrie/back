@@ -1,0 +1,408 @@
+/*-----------------------------------------------------------------------------------
+ 
+    URL: http://www.bootstrapmb.com
+ 
+-----------------------------------------------------------------------------------*/
+ 
+/*-- Google Font --*/
+@import url("https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i|Rubik:300,300i,400,400i,500,500i,700,700i");
+/*-- Common Style --*/
+*, *::after, *::before {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+}
+
+body {
+    background-color: #ffffff;
+    line-height: 1.25em;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 300;
+    visibility: visible;
+    font-family: "Rubik", sans-serif;
+    color: #4776e6;
+    position: relative;
+    letter-spacing: .02em;
+    padding-top: 50px;
+}
+
+    body.home-four {
+        padding-top: 0;
+    }
+
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+    body {
+        padding-top: 50px;
+    }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+    body {
+        padding-top: 0;
+    }
+}
+
+@media only screen and (max-width: 767px) {
+    body {
+        padding-top: 0;
+    }
+}
+
+@media only screen and (max-width: 575px) {
+    body {
+        padding-top: 0;
+    }
+}
+
+@media only screen and (max-width: 479px) {
+    body {
+        padding-top: 0;
+    }
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: #4776e6;
+    font-family: "Lato", sans-serif;
+    font-weight: 700;
+    margin-top: 0;
+}
+
+h1 {
+    font-size: 36px;
+    line-height: 42px;
+}
+
+h2 {
+    font-size: 30px;
+    line-height: 36px;
+}
+
+h3 {
+    font-size: 24px;
+    line-height: 30px;
+}
+
+h4 {
+    font-size: 18px;
+    line-height: 24px;
+}
+
+h5 {
+    font-size: 14px;
+    line-height: 18px;
+}
+
+h6 {
+    font-size: 12px;
+    line-height: 14px;
+}
+
+p:last-child {
+    margin-bottom: 0;
+}
+
+a, button {
+    color: inherit;
+    display: inline-block;
+    line-height: inherit;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+a, button, img, input, span {
+    -webkit-transition: all 0.3s ease 0s;
+    -o-transition: all 0.3s ease 0s;
+    transition: all 0.3s ease 0s;
+}
+
+*:focus {
+    outline: none !important;
+}
+
+a:focus {
+    color: inherit;
+    outline: none;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+button, input[type="submit"] {
+    cursor: pointer;
+}
+
+ul {
+    list-style: outside none none;
+    margin: 0;
+    padding: 0;
+}
+
+/*-- 
+    - Input Placeholder
+-----------------------------------------*/
+input:-moz-placeholder, textarea:-moz-placeholder {
+    opacity: 1;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+}
+
+input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
+    opacity: 1;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+}
+
+input::-moz-placeholder, textarea::-moz-placeholder {
+    opacity: 1;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+}
+
+input:-ms-input-placeholder, textarea:-ms-input-placeholder {
+    opacity: 1;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+}
+
+/*-- Tab Content & Pane Fix --*/
+.tab-content {
+    width: 100%;
+}
+
+    .tab-content .tab-pane {
+        display: block;
+        height: 0;
+        max-width: 100%;
+        visibility: hidden;
+        overflow: hidden;
+        opacity: 0;
+    }
+
+        .tab-content .tab-pane.active {
+            height: auto;
+            visibility: visible;
+            opacity: 1;
+            overflow: visible;
+        }
+
+/*----------  Hide and show element  ----------*/
+.hidden {
+    display: none;
+}
+
+.show {
+    display: block;
+}
+
+/*----------  select  browser issue fix  ----------*/
+select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    padding-right: 20px;
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' version='1.1' height='10px' width='15px'%3E%3Ctext x='0' y='10' fill='black'%3E%E2%96%BE%3C/text%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: 95% 50%;
+}
+
+/*----------  Scroll to top  ----------*/
+.home-two-wrapper a.scroll-top:hover {
+    background-color: #369599;
+}
+
+.home-three-wrapper a.scroll-top:hover {
+    background-color: #85B839;
+}
+
+a.scroll-top {
+    background: #666;
+    width: 45px;
+    height: 45px;
+    line-height: 45px;
+    display: none;
+    text-align: center;
+    color: #fff;
+    font-family: 'FontAwesome';
+    position: fixed;
+    right: 25px;
+    bottom: 25px;
+    z-index: 50000;
+}
+
+    a.scroll-top:after {
+        content: "\f102";
+        display: inline;
+        font-size: 20px;
+    }
+
+    a.scroll-top:hover {
+        background-color: #cea45f;
+        color: #ffffff;
+    }
+/*-- Login Title --*/
+.login-title {
+    font-size: 20px;
+    line-height: 23px;
+    text-decoration: underline;
+    text-transform: capitalize;
+    font-weight: 700;
+    margin-bottom: 30px;
+}
+
+/*-- Login Form --*/
+.login-form {
+    background-color: #ffffff;
+    padding: 30px;
+    -webkit-box-shadow: 0px 5px 4px 0px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 5px 4px 0px rgba(0, 0, 0, 0.1);
+}
+
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+    .login-form {
+        padding: 15px;
+    }
+}
+
+.login-form label {
+    display: block;
+    font-size: 14px;
+    margin-bottom: 12px;
+    font-weight: 500;
+    text-transform: capitalize;
+}
+
+.login-form .nice-select {
+    width: 100%;
+    background-color: transparent;
+    border: 1px solid#4776e6;
+    border-radius: 0;
+    line-height: 23px;
+    padding: 10px 20px;
+    font-size: 14px;
+    height: 45px;
+    color: #4776e6;
+    margin-bottom: 15px;
+}
+
+    .login-form .nice-select::after {
+        width: 6px;
+        height: 6px;
+        border-width: 1px;
+        right: 20px;
+        border-color: #4776e6;
+    }
+
+    .login-form .nice-select .current {
+        color: #4776e6;
+        display: block;
+        line-height: 23px;
+    }
+
+    .login-form .nice-select .list {
+        width: 100%;
+    }
+
+.login-form input {
+    width: 100%;
+    background-color: transparent;
+    border: 1px solid#4776e6;
+    border-radius: 0;
+    line-height: 23px;
+    padding: 10px 20px;
+    font-size: 14px;
+    color: #4776e6;
+    margin-bottom: 15px;
+}
+
+    .login-form input[type="checkbox"] {
+        width: auto;
+    }
+
+.login-form .check-box {
+    float: left;
+    margin-right: 70px;
+}
+
+    .login-form .check-box:last-child {
+        margin-right: 0;
+    }
+
+    .login-form .check-box input[type="checkbox"] {
+        display: none;
+    }
+
+        .login-form .check-box input[type="checkbox"] + label {
+            position: relative;
+            padding-left: 30px;
+            line-height: 20px;
+            font-size: 14px;
+            font-weight: 400;
+            color: #4776e6;
+            margin: 0;
+        }
+
+            .login-form .check-box input[type="checkbox"] + label::before {
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 20px;
+                height: 20px;
+                display: block;
+                border: 2px solid#4776e6;
+                content: "";
+                -webkit-transition: all 0.3s ease 0s;
+                -o-transition: all 0.3s ease 0s;
+                transition: all 0.3s ease 0s;
+            }
+
+            .login-form .check-box input[type="checkbox"] + label::after {
+                position: absolute;
+                left: 0;
+                top: 0;
+                display: block;
+                content: "\f00c";
+                font-family: Fontawesome;
+                font-size: 12px;
+                line-height: 20px;
+                opacity: 0;
+                color: #4776e6;
+                width: 20px;
+                text-align: center;
+                -webkit-transition: all 0.3s ease 0s;
+                -o-transition: all 0.3s ease 0s;
+                transition: all 0.3s ease 0s;
+            }
+
+        .login-form .check-box input[type="checkbox"]:checked + label::before {
+            border: 2px solid #4776e6;
+        }
+
+        .login-form .check-box input[type="checkbox"]:checked + label::after {
+            opacity: 1;
+        }
+
+.register-button {
+    display: block;
+    margin-top: 40px;
+    width: 140px;
+    border-radius: 0;
+    height: 36px;
+    border: none;
+    line-height: 24px;
+    padding: 6px 20px;
+    float: left;
+    font-weight: 400;
+    text-transform: uppercase;
+    color: #4776e6;
+    background-color:#ffffff ;
+}
+
+    .register-button:hover {
+        background-color: #cea45f;
+    }
+
+#submit{
+    color: #ffffff ;
+    background-color:#4776e6;
+}
