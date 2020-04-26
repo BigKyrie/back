@@ -27,6 +27,8 @@ public class MovieService {
     private ScreenService screenService;
     @Autowired
     private ScreeningService screeningService;
+    @Autowired
+    private TicketService ticketService;
 
     public void deletebyID(Integer id){
         movieRepository.deleteByID(id);
@@ -39,6 +41,27 @@ public class MovieService {
     }
     public List<Movie> display_all_movies(){
         return movieRepository.display_all_movies();
+    }
+
+    public List<Movie> display_movies_by_userID(Integer id){
+        Cinema_Admin cinema_admin = cinema_adminService.findAdminById(id);
+        List<Ticket> tickets = ticketService.find_ticket_of_a_user(cinema_admin.getId());
+        List<Movie> movies = new ArrayList<>();
+        List<Movie> final_movies = new ArrayList<>();
+        for(Ticket ticket:tickets){
+            movies.add(findMoviebyID(ticket.getScreening().getMovie().getId()));
+        }
+
+        for(Movie movie:movies){
+            if(final_movies.contains(movie)){
+            }
+            else{
+                final_movies.add(movie);
+            }
+        }
+
+        return final_movies;
+
     }
 
     public List<Movie> display_movies_by_adminID(Integer id){

@@ -41,6 +41,15 @@ public class UserController {
         return "user_movie";
     }
 
+    @GetMapping(path="myMovie")
+    public String userMovie(Model model){
+        HttpSession session = getRequest().getSession();
+        UserInfo userInfo = (UserInfo) session.getAttribute("user_info_in_the_session");
+        List<Movie> movies = movieService.display_movies_by_userID(userInfo.getUserId());
+        model.addAttribute("movies",movies);
+        return "user_bought_movie";
+    }
+
     @GetMapping(path="/mine")
     public String mineInformation(Model model){
         return "mine_information";
