@@ -24,16 +24,23 @@ public class SeatController {
     private ScreenService screenService;
     @Autowired
     private ScreeningService screeningService;
-    @Autowired
-    private TicketService ticketService;
-
 
     @GetMapping(path = "/view/{screen_id}")
     public String view_seat(@PathVariable(name = "screen_id") Integer screen_id,  Model model){
         List<Seat> seats = seatService.view_seat_of_a_screen(screen_id);
         Screen screen = screenService.get_screen_by_id(screen_id).get(0);
-        model.addAttribute("seats",seats);
         model.addAttribute("screen",screen);
+        //if the seat are already added to the screen
+        if(seats.size()>0){
+            model.addAttribute("row",seats.get(seats.size()-1).getRow());
+            model.addAttribute("col",seats.get(seats.size()-1).getCol());
+        }
+        else
+        {
+            model.addAttribute("row",0);
+            model.addAttribute("col",0);
+        }
+        model.addAttribute("seatSize",seats.size());
         return "view_seats";
     }
 
@@ -46,38 +53,16 @@ public class SeatController {
     //display seat of a screening
     @GetMapping(path = "/getSeats/{screening_id}")
     public @ResponseBody List<SeatInfo> get_seats(@PathVariable(name = "screening_id") Integer screening_id){
-        Screening screening = screeningService.find_screening_by_screening_id(screening_id);
-        List<Seat> seats = seatService.view_seat_of_a_screen(screening.getScreen().getId());
-        List<Ticket> tickets = ticketService.find_ticket_of_a_screening(screening_id);
-        List<SeatInfo> seatInfos = new ArrayList<>();
-        List<Seat> taken = new ArrayList<>();
-        List<Seat> empty = new ArrayList<>();
-        for (int i = 0; i< tickets.size();i++) {
-            for (int j = 0; j < seats.size();j++){
-                if (tickets.get(i).getSeat().getId() == seats.get(j).getId()){
-                    taken.add(seats.get(j));
-                    seats.remove(seats.get(j));
-                }
-            }
-        }
-        for (int i = 0; i < taken.size();i++){
-            SeatInfo seatInfo = new SeatInfo();
-            seatInfo.setCol(taken.get(i).getCol());
-            seatInfo.setRow(taken.get(i).getRow());
-            seatInfo.setSeat_id(taken.get(i).getId());
-            seatInfo.setScreening_id(screening.getId());
-            seatInfo.setTaken_or_not(true);
-            seatInfos.add(seatInfo);
-        }
-        for (int i = 0; i < seats.size();i++){
-            SeatInfo seatInfo = new SeatInfo();
-            seatInfo.setCol(seats.get(i).getCol());
-            seatInfo.setRow(seats.get(i).getRow());
-            seatInfo.setSeat_id(seats.get(i).getId());
-            seatInfo.setScreening_id(screening.getId());
-            seatInfo.setTaken_or_not(false);
-            seatInfos.add(seatInfo);
-        }
-        return seatInfos;
+        return seatService.get_seat_of_a_screening(screening_id);
+    }
+
+    @GetMapping(path = "/selectSeats/{screening_id}")
+    public String select_seats(@PathVariable(name = "screening_id") Integer screening_id,  Model model){
+        List<SeatInfo> seatInfos = seatService.get_seat_of_a_screening(screening_id);
+        model.addAttribute("seats",seatInfos);
+        model.addAttribute("screenings",screeningService.find_screening_by_screening_id(screening_id));
+        model.addAttribute("row",seatInfos.get(seatInfos.size()-1).getRow());
+        model.addAttribute("col",seatInfos.get(seatInfos.size()-1).getCol());
+        return "select_seat";
     }
 }

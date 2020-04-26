@@ -22,7 +22,8 @@
                     <tr>
                         <th>Start time</th>
                         <th>End time</th>
-                        <th>Number</th>
+                        <th>Screen Number</th>
+                        <th>Price</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -30,6 +31,8 @@
                         <td th:text="${screening.start_time}"></td>
                         <td th:text="${screening.end_time}"></td>
                         <td th:text="${screening.screen.num}"></td>
+                        <td th:text="${screening.price}"></td>
+                        <td><a th:href="@{'/seat/selectSeats/'+${screening.id}}">select a seat</a></td>
                     </tr>
                     </tbody>
                 </table>

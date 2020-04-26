@@ -4,37 +4,59 @@
     <meta charset="UTF-8">
 
     <link rel="stylesheet" href="/webjars/bootstrap/3.3.5/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="/css/manage.css">
+    <link rel="stylesheet" th:href="@{../static/css/manage.css}">
     <script src="/webjars/jquery/3.1.1/jquery.min.js"></script>
     <script src="/webjars/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 
+
+    <link th:href="@{../static/css/plugins.css}" rel="stylesheet" type="text/css">
+
+    <link th:href="@{../static/css/style.css}" rel="stylesheet" type="text/css">
+    <link th:href="@{../static/css/responsive.css}" rel="stylesheet" type="text/css">
+    <link th:href="@{../static/css/font-awesome.min.css}" rel="stylesheet" type="text/css">
+    <script th:src="@{../static/js/vendor.js}"></script>
+
+    <script th:src="@{../static/js/plugins.js}"></script>
+
+    <script th:src="@{../static/js/switcher.js}"></script>
+    <script th:src="@{../static/js/app.js}"></script>
+
 </head>
 <body>
-<div class="container-fluid">
-    <div class="row">
-        <!--Separate four columns in the page-->
-        <div class="col-md-3"></div>
-        <div class="col-md-6"><legend>Welcome to the cinema management system!</legend></div>
-        <div class="col-md-3"></div>
-    </div>
-    <div class="row">
-        <div class="col-md-2"></div>
-        <div class="col-md-4">
-            <a href="/userLogin">
-                <div class="dashboard-content">
-                    <div class = "content-title">Login as a common user</div>
+<section id="about" class="overview-area text-center">
+    <div class="container">
+        <div class="row">
+            <div class="section-title col-sm-8 col-sm-offset-2">
+                <h2 class="text-uppercase branding-color">Cinema System
+                    <span>
+							<i class="fa fa-circle"></i>
+							<i class="fa fa-circle"></i>
+							<i class="fa fa-circle"></i>
+						</span>
+                </h2>
+                <p> Welcome</p>
+            </div>
+
+            <div class="overviews">
+                <div class="col-md-6">
+                    <div class="single">
+                        <a href="/userLogin">
+                            <i class="fa fa-user"></i>
+                        </a>
+                        <h4 class="text-uppercase">User</h4>
+                    </div>
                 </div>
-            </a>
-        </div>
-        <div class="col-md-4">
-            <a href="/adminLogin">
-                <div class="dashboard-content">
-                    <div class = "content-title">Login as a cinema administrator</div>
+                <div class="col-md-6">
+                    <div class="single">
+                        <a href="/adminLogin">
+                            <i class="fa fa-user-secret"></i>
+                        </a>
+                        <h4 class="text-uppercase">Administrator</h4>
+                    </div>
                 </div>
-            </a>
+            </div>
         </div>
     </div>
-    <div class="col-md-3"></div>
-</div>
+</section>
 </body>
 </html>

@@ -41,6 +41,10 @@ public class TicketService {
         return ticketRepository.find_ticket_of_a_screening(id);
     }
 
+    public List<Ticket> find_ticket_of_a_user(Integer id){
+        return ticketRepository.find_ticket_by_userid(id);
+    }
+
     public List<Ticket> find_ticket_of_a_cinema_admin(Integer id){
         Cinema_Admin cinema_admin = cinema_adminService.findAdminById(id);
         List<Screen> screens = screenService.search_screen_by_cinema(cinema_admin.getCinema().getId());

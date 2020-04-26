@@ -85,5 +85,17 @@ public class TicketController {
         return ticketService.generate_a_ticket(screening_id,seat_id,type);
     }
 
+    @PostMapping(path = "generate/{screening_id}/{seat_id}")
+    public String generate_ticket
+            (@RequestParam String type,@PathVariable(name = "screening_id") Integer screening_id,
+             @PathVariable(name = "seat_id") Integer seat_id) {
+        Ticket ticket=ticketService.generate_a_ticket(screening_id,seat_id,type);
+        return "pay";
+    }
+
+//    @GetMapping(path = "/pay")
+//    public String pay(){
+//        return "pay";
+//    }
 
 }

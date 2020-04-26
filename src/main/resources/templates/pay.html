@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <link href="/static/css/plugins.css" rel="stylesheet" type="text/css">
+
+    <!-- ========== MAIN CSS ========== -->
+    <link href="/static/css/style.css" rel="stylesheet" type="text/css">
+    <link href="/static/css/responsive.css" rel="stylesheet" type="text/css">
+    <script src="/static/js/vendor.js"></script>
+
+    <script src="/static/js/plugins.js"></script>
+
+    <script src="/static/js/switcher.js"></script>
+    <script src="/static/js/app.js"></script>
+    <title>Payment</title>
+</head>
+<body>
+<section id="about" class="overview-area text-center">
+    <div class="container">
+        <div class="row">
+            <div class="section-title col-sm-8 col-sm-offset-2">
+                <h2 class="text-uppercase branding-color">Payment
+                    <span>
+							<i class="fa fa-circle"></i>
+							<i class="fa fa-circle"></i>
+							<i class="fa fa-circle"></i>
+						</span>
+                </h2>
+                <p> Choose your payment method</p>
+            </div>
+
+            <div class="overviews">
+                <div class="col-md-3 col-sm-6">
+                    <div class="single">
+                        <i class="fa fa-credit-card"></i>
+                        <h4 class="text-uppercase">Bank Card</h4>
+                        <p></p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <div class="single">
+                        <i class="fa fa-dollar"></i>
+                        <h4 class="text-uppercase">Cash</h4>
+                        <p></p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6" >
+                    <div class="single" title="Scan QR Code"
+                         data-container="body" data-toggle="popover" data-placement="top"
+                         data-html="true" data-content="<image src='/static/image/wechat.jpg' height = 100px width = 100px>">
+                            <i class="fa fa-weixin"></i>
+                        <h4 class="text-uppercase">Wechat</h4>
+                        <p></p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <div class="single" title="Scan QR Code"
+                         data-container="body" data-toggle="popover" data-placement="top"
+                         data-html="true" data-content="<image src='/static/image/alipay.jpg' height = 100px width = 100px>">
+                        <i class="fa fa-paypal"></i>
+                        <h4 class="text-uppercase">Alipay</h4>
+                        <p></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    $(function (){
+        $("[data-toggle='popover']").popover();
+    });
+</script>
+</body>
+</html>
