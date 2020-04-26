@@ -1,31 +1,68 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
-<head>
-    <meta charset="UTF-8">
-    <title>Cinema</title>
-    <link rel="stylesheet" href="/webjars/bootstrap/3.3.5/css/bootstrap.min.css" />
-    <script src="/webjars/jquery/3.1.1/jquery.min.js"></script>
-    <script src="/webjars/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-</head>
+<html class="no-js" lang="zxx" xmlns:th="http://www.w3.org/1999/xhtml">
 
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Edit Screening Info</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- CSS
+    ============================================ -->
+    <!-- Bootstrap CSS -->
+    <link href="/static/css/assets/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Helper CSS -->
+    <link href="/static/css/assets/css/helper.css" rel="stylesheet">
+    <!-- Main CSS -->
+    <link href="/static/css/assets/css/main.css" rel="stylesheet">
+    <link href="/static/css/select.css" rel="stylesheet">
+
+</head>
 <body>
-<div class="container-fluid">
+<div class="container">
     <div class="row">
-        <!--Separate four columns in the page-->
         <div class="col-md-2"></div>
         <div class="col-md-8">
             <form th:object="${screening}" th:action="@{'/screenings/editScreening/'+${screening_id}}" method="post">
-                <legend>Screening Information</legend>
-                <fieldset>
-                    Screen number:<input name="screen_number" type="text" class="form-control" th:value="${screen_number}"><br>
-                    Movie certificate:<input name="movie_certificate" type="text" class="form-control" th:value="${movie_certificate}"><br>
-                    Date:<input name="date" type="date" class="form-control"><br>
-                    Start Time :<input name="start_time" type="time" class="form-control"><br>
-                    End Time :<input name="end_time" type="time" class="form-control"><br>
-                    Price :<input name="price" type="text" class="form-control" th:value="*{price}"><br>
-                    <input type="submit" value="Save">
-                    <a href="/cinemaAdmin/allScreenings">Cancel</a>
-                </fieldset>
+            <div class="login-form">
+                    <h4 class="login-title">Edit Screening Information</h4>
+                    <div class="row">
+                        <div class="col-md-4 col-12 mb-20">
+                            <label>Screen number:*</label>
+                            <input class="mb-0" name="screen_number" type="text" th:value="${screen_number}">
+                        </div>
+                        <div class="col-md-4 mb-20">
+                            <label>Price*</label>
+                            <input class="mb-0" type="text" name = "price" th:value="*{price}">
+                        </div>
+                        <div class="col-md-4 col-12 mb-20">
+                            <label>Movie certificate*</label>
+                            <input class="mb-0" type="text" name="movie_certificate" th:value="${movie_certificate}">
+                        </div>
+                        <div class="col-md-12 mb-20">
+                            <label>Date*</label>
+                            <input class="mb-0" type="text" name = "date" placeholder="YYYY-MM-DD">
+                        </div>
+                        <div class="col-md-6 mb-20">
+                            <label>Start time*</label>
+                            <input class="mb-0" type="text" name = "start_time" placeholder="HH:MM:SS">
+                        </div>
+                        <div class="col-md-6 mb-20">
+                            <label>End time*</label>
+                            <input class="mb-0" type="text" name = "end_time" placeholder="HH:MM:SS">
+                        </div>
+                        <div class="col-md-4"></div>
+                        <div class="col-md-4">
+                            <a href="#" onClick="javascript:history.back(-1);">
+                                <button class="register-button mt-0">Back</button>
+                            </a>
+                        </div>
+                        <div class="col-md-4">
+                            <input class="register-button mt-0" type="submit" value="Save" id="submit">
+                        </div>
+                    </div>
+                </div>
+
             </form>
         </div>
         <div class="col-md-2"></div>
