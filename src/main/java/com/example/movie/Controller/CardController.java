@@ -41,6 +41,47 @@ public class CardController {
         }
 
     }
+    @GetMapping(path = "/toEditCard")
+    public String to_edit_card(Model model) {
+        HttpSession session = getRequest().getSession();
+        UserInfo userInfo = (UserInfo) session.getAttribute("user_info_in_the_session");
+        Card card=cardService.find_card_by_user_id(userInfo.getUserId()).get(0);
+        model.addAttribute("card",card);
+        return "card_edit";
+    }
+    @PostMapping(path = "/editCard")
+    public String edit_card(@RequestParam String card_number,String password,String verify_password) {
+        if(!password.equals(verify_password)) {
+
+        }
+        else {
+            HttpSession session = getRequest().getSession();
+            UserInfo userInfo = (UserInfo) session.getAttribute("user_info_in_the_session");
+            Card card=cardService.find_card_by_user_id(userInfo.getUserId()).get(0);
+            cardService.update(card_number,password,card);
+
+        }
+        return "redirect:/demo/mine";
+    }
+    @PostMapping(path = "/bindCardForWeb")
+    public String bind_card_for_web(@RequestParam String card_number,String password,String verify_password) {
+        HttpSession session = getRequest().getSession();
+        UserInfo userInfo = (UserInfo) session.getAttribute("user_info_in_the_session");
+        Cinema_Admin cinema_admin=cinema_adminService.findAdminById(userInfo.getUserId());
+        if(cardService.find_card_by_number(card_number).size()!=0 || cardService.find_card_by_user_id(userInfo.getUserId()).size()!=0) {
+            return "redirect:/card/toBindCard";
+        }
+        else {
+            if(!password.equals(verify_password)) {
+                return "redirect:/card/toBindCard";
+            }
+            else {
+                cardService.add(card_number,password,cinema_admin);
+                return "redirect:/demo/mine";
+            }
+
+        }
+    }
 
     @PostMapping(path = "/cardPay/{screening_id}/{seat_id}")
     public @ResponseBody boolean verify_card_password_for_app(@RequestParam String password,String type, String user_id,
@@ -74,8 +115,10 @@ public class CardController {
         return true;
     }
 
-
-
+    @GetMapping(path = "/toBindCard")
+    public String to_bind_card() {
+        return "bind_card";
+    }
 
 
     @PostMapping(path = "/verifyPassword/{ticket_id}")
