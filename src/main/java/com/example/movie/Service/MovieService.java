@@ -43,6 +43,11 @@ public class MovieService {
         return movieRepository.display_all_movies();
     }
 
+    public List<Movie> search_movie_by_keyword(String keyword) {
+        return movieRepository.search_movie_by_keyword(keyword);
+    }
+
+
     public List<Movie> display_movies_by_userID(Integer id){
         Cinema_Admin cinema_admin = cinema_adminService.findAdminById(id);
         List<Ticket> tickets = ticketService.find_ticket_of_a_user(cinema_admin.getId());
