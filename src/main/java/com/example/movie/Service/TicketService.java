@@ -58,6 +58,10 @@ public class TicketService {
         }
         return tickets;
     }
+    public void update(Integer ticket_id,Cinema_Admin cinema_admin) {
+        Ticket ticket=ticketRepository.find_ticket_by_id(ticket_id).get(0);
+        ticket.setUser(cinema_admin);
+    }
 
     public List<Ticket> find_ticket_within_one_week(List<Ticket> tickets) throws ParseException {
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
