@@ -3,6 +3,7 @@ package com.example.movie.Repository;
 import com.example.movie.Entity.Cinema_Admin;
 import com.example.movie.Entity.Movie;
 import com.example.movie.Entity.User;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
@@ -24,6 +25,10 @@ public interface MovieRepository extends CrudRepository<Movie,Integer>
     public void deleteByID(Integer id);  //may delete
     @Query(value = "select * from movie where certificate=?" ,nativeQuery = true)
     List<Movie> find_movie_by_certificate(String certificate);
+
+    @Query(value = "select * from movie where title like ?",nativeQuery = true)
+    public List<Movie> search_movie_by_keyword(String keyword);
+
 
 
 }
