@@ -41,6 +41,15 @@ public class UserController {
         return "user_movie";
     }
 
+    @GetMapping(path="myMovie")
+    public String userMovie(Model model){
+        HttpSession session = getRequest().getSession();
+        UserInfo userInfo = (UserInfo) session.getAttribute("user_info_in_the_session");
+        List<Movie> movies = movieService.display_movies_by_userID(userInfo.getUserId());
+        model.addAttribute("movies",movies);
+        return "user_bought_movie";
+    }
+
     @GetMapping(path="/mine")
     public String mineInformation(Model model){
         return "mine_information";
@@ -120,11 +129,11 @@ public class UserController {
     }
 
     @GetMapping(path = "/my_ticket")
-    public @ResponseBody List<Ticket> mytickets(){
-        HttpSession session = getRequest().getSession();
-        UserInfo userInfo = (UserInfo) session.getAttribute("user_info_in_the_session");
-        Cinema_Admin admin = cinema_adminService.findAdminById(userInfo.getUserId());
-        return ticketService.find_ticket_of_a_user(admin.getId());
+    public @ResponseBody List<Ticket> mytickets(String user_id){
+        //HttpSession session = getRequest().getSession();
+        //UserInfo userInfo = (UserInfo) session.getAttribute("user_info_in_the_session");
+        Cinema_Admin cinema_admin=cinema_adminService.findAdminById(Integer.parseInt(user_id));
+        return ticketService.find_ticket_of_a_user(cinema_admin.getId());
     }
 
     private HttpServletRequest getRequest() {
