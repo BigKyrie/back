@@ -44,6 +44,13 @@ public class SeatController {
         return "view_seats";
     }
 
+    @GetMapping(path = "/addSeat/{screen_id}")
+    public String add_seat(@PathVariable(name = "screen_id") Integer screen_id,  Model model){
+        Screen screen = screenService.get_screen_by_id(screen_id).get(0);
+        model.addAttribute("screen",screen);
+        return "add_seat";
+    }
+
     @PostMapping(path = "/add/{screen_id}")
     public String add_seats(@PathVariable(name = "screen_id") Integer screen_id, Integer row, Integer col){
         seatService.add_seats(screen_id,row.intValue(),col.intValue());

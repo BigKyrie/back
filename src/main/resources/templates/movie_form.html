@@ -1,37 +1,104 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
-<head>
-    <meta charset="UTF-8">
-    <title>Cinema</title>
-    <link rel="stylesheet" href="/webjars/bootstrap/3.3.5/css/bootstrap.min.css" />
-    <script src="/webjars/jquery/3.1.1/jquery.min.js"></script>
-    <script src="/webjars/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-</head>
+<html class="no-js" lang="zxx">
 
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Add Movie Info</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- CSS
+    ============================================ -->
+    <!-- Bootstrap CSS -->
+    <link href="/static/css/assets/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Helper CSS -->
+    <link href="/static/css/assets/css/helper.css" rel="stylesheet">
+    <!-- Main CSS -->
+    <link href="/static/css/assets/css/main.css" rel="stylesheet">
+    <link href="/static/css/select.css" rel="stylesheet">
+
+</head>
 <body>
-<div class="container-fluid">
+<div class="container">
     <div class="row">
-        <!--Separate four columns in the page-->
         <div class="col-md-2"></div>
         <div class="col-md-8">
             <form action="/cinemaAdmin/addMovies" method="post">
-                <h1>Movie Information</h1>
-                Movie title :<input name="title" type="text" class="form-control"><br>
-                Blurb :<input name="blurb" type="text" class="form-control"><br>
-                Certificate:<input name = "certificate" type = "text" class="form-control"><br>
-                Director:<input name = "director" type = "text" class="form-control"><br>
-                Actors:<input name = "actors" type = "text" class="form-control"><br>
-                Show time:<input name = "showtime" type = "datetime" class="form-control"><br>
-                Duration:<input name = "duration" type = "text" class="form-control"><br>
-                Type:<input name = "type" type = "text" class="form-control"><br>
-                Language:<input name = "language" type = "text" class="form-control"><br>
-                Picture url:<input name = "url" type = "text" class="form-control"><br>
-                <h1>Add a screening</h1>
-                Start Time:<input name = "start_time" type = "datetime" class="form-control"><br>
-                End Time:<input name = "end_time" type = "datetime" class="form-control"><br>
-                Price:<input name = "price" type = "text" class="form-control"><br>
-                Screen number:<input name = "num" type = "text" class="form-control"><br>
-                <input type="submit" value="Save">
+                <div class="login-form">
+                    <h4 class="login-title">Add Movie Information</h4>
+                    <div class="row">
+                        <div class="col-md-6 col-12 mb-20">
+                            <label>Movie title*</label>
+                            <input class="mb-0" name="title" type="text">
+                        </div>
+                        <div class="col-md-6 col-12 mb-20">
+                            <label>Certificate*</label>
+                            <input class="mb-0" type="text" name="certificate">
+                        </div>
+                        <div class="col-md-12 mb-20">
+                            <label>Blurb*</label>
+                            <input class="mb-0" type="blurb" name = "blurb">
+                        </div>
+                        <div class="col-md-12 mb-20">
+                            <label>Director*</label>
+                            <input class="mb-0" type="text" name = "director" >
+                        </div>
+                        <div class="col-md-12 mb-20">
+                            <label>Actors*</label>
+                            <input class="mb-0" type="text" name = "actors" >
+                        </div>
+                        <div class="col-md-4 mb-20">
+                            <label>Show time*</label>
+                            <input class="mb-0" type="text" name = "showtime" placeholder="YY-MM-DD HH:MM:SS">
+                        </div>
+                        <div class="col-md-4 mb-20">
+                            <label>Duration*</label>
+                            <input class="mb-0" type="text" name = "duration" >
+                        </div>
+                        <div class="col-md-4 mb-20">
+                            <label>Type*</label>
+                            <input class="mb-0" type="text" name = "type" >
+                        </div>
+                        <div class="col-md-6 mb-20">
+                            <label>Language*</label>
+                            <input class="mb-0" type="text" name = "language" >
+                        </div>
+                        <div class="col-md-6 mb-20">
+                            <label>Poster*</label>
+                            <input class="mb-0" type="text" name = "poster" >
+                        </div>
+                    </div>
+                    <h4 class="login-title">You must add a screening for this movie</h4>
+                    <div class="row">
+                        <div class="col-md-6 col-12 mb-20">
+                            <label>Screen number:*</label>
+                            <input class="mb-0" name="screen_number" type="text">
+                        </div>
+                        <div class="col-md-6 mb-20">
+                            <label>Price*</label>
+                            <input class="mb-0" type="text" name = "price">
+                        </div>
+                        <div class="col-md-6 mb-20">
+                            <label>Start time*</label>
+                            <input class="mb-0" type="text" name = "start_time" placeholder="HH:MM:SS">
+                        </div>
+                        <div class="col-md-6 mb-20">
+                            <label>End time*</label>
+                            <input class="mb-0" type="text" name = "end_time" placeholder="HH:MM:SS">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4"></div>
+                        <div class="col-md-4">
+                            <a href="#" onClick="javascript:history.back(-1);">
+                                <button class="register-button mt-0">Back</button>
+                            </a>
+                        </div>
+                        <div class="col-md-4">
+                            <input class="register-button mt-0" type="submit" value="Save" id="submit">
+                        </div>
+                    </div>
+                </div>
             </form>
         </div>
         <div class="col-md-2"></div>

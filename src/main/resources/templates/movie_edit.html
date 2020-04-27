@@ -1,35 +1,85 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
-<head>
-    <meta charset="UTF-8">
-    <title>Cinema</title>
-    <link rel="stylesheet" href="/webjars/bootstrap/3.3.5/css/bootstrap.min.css" />
-    <script src="/webjars/jquery/3.1.1/jquery.min.js"></script>
-    <script src="/webjars/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-</head>
+<html class="no-js" lang="zxx" xmlns:th="http://www.w3.org/1999/xhtml">
 
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Edit Movie Info</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- CSS
+    ============================================ -->
+    <!-- Bootstrap CSS -->
+    <link href="/static/css/assets/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Helper CSS -->
+    <link href="/static/css/assets/css/helper.css" rel="stylesheet">
+    <!-- Main CSS -->
+    <link href="/static/css/assets/css/main.css" rel="stylesheet">
+    <link href="/static/css/select.css" rel="stylesheet">
+
+</head>
 <body>
-<div class="container-fluid">
+<div class="container">
     <div class="row">
-        <!--Separate four columns in the page-->
         <div class="col-md-2"></div>
         <div class="col-md-8">
             <form th:object="${movie}" th:action="@{'/cinemaAdmin/editMovie/'+${movie_id}}" method="post">
-                <legend>Movie Information</legend>
-                <fieldset>
-                Movie title :<input name="title" type="text" class="form-control" th:value="*{title}"><br>
-                Blurb :<input name="blurb" type="text" class="form-control" th:value="*{blurb}"><br>
-                Certificate:<input name = "certificate" type = "text" class="form-control" th:value="*{certificate}"><br>
-                Director:<input name = "director" type = "text" class="form-control" th:value="*{director}"><br>
-                Actors:<input name = "actors" type = "text" class="form-control" th:value="*{actors}"><br>
-                Show time:<input name = "showtime" type = "datetime" class="form-control" th:value="*{showtime}"><br>
-                Duration:<input name = "duration" type = "text" class="form-control" th:value="*{duration}"><br>
-                Type:<input name = "type" type = "text" class="form-control" th:value="*{type}"><br>
-                Language:<input name = "language" type = "text" class="form-control" th:value="*{language}"><br>
-                Picture url:<input name = "url" type = "text" class="form-control" th:value="*{url}"><br>
-                <input type="submit" value="Save">
-                    <a href="/cinemaAdmin/allMovies">Cancel</a>
-                </fieldset>
+                <div class="login-form">
+                    <h4 class="login-title">Edit Movie Information</h4>
+                    <div class="row">
+                        <div class="col-md-6 col-12 mb-20">
+                            <label>Movie title*</label>
+                            <input class="mb-0" name="title" type="text" th:value="*{title}">
+                        </div>
+                        <div class="col-md-6 col-12 mb-20">
+                            <label>Certificate*</label>
+                            <input class="mb-0" type="text" name="certificate" th:value="*{certificate}">
+                        </div>
+                        <div class="col-md-12 mb-20">
+                            <label>Blurb*</label>
+                            <input class="mb-0" type="blurb" name = "blurb" th:value="*{blurb}">
+                        </div>
+                        <div class="col-md-12 mb-20">
+                            <label>Director*</label>
+                            <input class="mb-0" type="text" name = "director" th:value="*{director}">
+                        </div>
+                        <div class="col-md-12 mb-20">
+                            <label>Actors*</label>
+                            <input class="mb-0" type="text" name = "actors" th:value="*{actors}">
+                        </div>
+                        <div class="col-md-4 mb-20">
+                            <label>Show time*</label>
+                            <input class="mb-0" type="text" name = "showtime" th:value="*{showtime}">
+                        </div>
+                        <div class="col-md-4 mb-20">
+                            <label>Duration*</label>
+                            <input class="mb-0" type="text" name = "duration" th:value="*{duration}">
+                        </div>
+                        <div class="col-md-4 mb-20">
+                            <label>Type*</label>
+                            <input class="mb-0" type="text" name = "type" th:value="*{type}">
+                        </div>
+                        <div class="col-md-6 mb-20">
+                            <label>Language*</label>
+                            <input class="mb-0" type="text" name = "language" th:value="*{language}">
+                        </div>
+                        <div class="col-md-6 mb-20">
+                            <label>Poster*</label>
+                            <input class="mb-0" type="text" name = "poster" th:value="*{url}">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4"></div>
+                        <div class="col-md-4">
+                            <a href="#" onClick="javascript:history.back(-1);">
+                                <button class="register-button mt-0">Back</button>
+                            </a>
+                        </div>
+                        <div class="col-md-4">
+                            <input class="register-button mt-0" type="submit" value="Save" id="submit">
+                        </div>
+                    </div>
+                </div>
             </form>
         </div>
         <div class="col-md-2"></div>

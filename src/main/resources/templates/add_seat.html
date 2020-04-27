@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="no-js" lang="zxx">
+<html class="no-js" lang="zxx" xmlns:th="http://www.w3.org/1999/xhtml">
 
 <head>
     <meta charset="utf-8">
@@ -10,12 +10,7 @@
     <!-- CSS
     ============================================ -->
     <!-- Bootstrap CSS -->
-    <link href="/static/css/assets/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Helper CSS -->
-    <link href="/static/css/assets/css/helper.css" rel="stylesheet">
-    <!-- Main CSS -->
-    <link href="/static/css/assets/css/main.css" rel="stylesheet">
-    <link href="/static/css/select.css" rel="stylesheet">
+
 
 </head>
 <body>
@@ -23,15 +18,18 @@
     <div class="row">
         <div class="col-md-2"></div>
         <div class="col-md-8">
-            <form action="/screen/add" method="post">
+            <form th:object="${screen}" th:action = "@{'/seat/add/'+${screen.id}}"  method="post">
                 <div class="login-form">
-                    <h4 class="login-title">Add Screen Information</h4>
+                    <h4 class="login-title">Add Seat Information</h4>
                     <div class="row">
                         <div class="col-md-6 col-12 mb-20">
-                            <label>Screen No.*</label>
-                            <input class="mb-0" name="num" type="text">
+                            <label>Row*</label>
+                            <input class="mb-0" name="row" type="text">
                         </div>
-                        <div class="col-md-6"></div>
+                        <div class="col-md-6 col-12 mb-20">
+                            <label>Col*</label>
+                            <input class="mb-0" name="col" type="text">
+                        </div>
                         <div class="col-md-4"></div>
                         <div class="col-md-4">
                             <a href="#" onClick="javascript:history.back(-1);">
@@ -43,7 +41,6 @@
                         </div>
                     </div>
                 </div>
-
             </form>
         </div>
         <div class="col-md-2"></div>

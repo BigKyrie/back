@@ -36,6 +36,10 @@ public class CardService {
         card.setCinema_admin(cinema_admin);
         cardRepository.save(card);
     }
+    public void update(String card_number,String password,Card card) {
+        card.setNumber(card_number);
+        card.setPassword(password);
+    }
 
 
 

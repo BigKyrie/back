@@ -6,6 +6,12 @@
     <link rel="stylesheet" href="/webjars/bootstrap/3.3.5/css/bootstrap.min.css" />
     <script src="/webjars/jquery/3.1.1/jquery.min.js"></script>
     <script src="/webjars/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <link href="/static/css/assets/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Helper CSS -->
+    <link href="/static/css/assets/css/helper.css" rel="stylesheet">
+    <!-- Main CSS -->
+    <link href="/static/css/assets/css/main.css" rel="stylesheet">
+    <link href="/static/css/select.css" rel="stylesheet">
 </head>
 <body>
 <div class = "container-fluid">
@@ -15,22 +21,31 @@
             <h1>
                 Seats
             </h1>
-            <form th:object="${screen}" th:action = "@{'/seat/add/'+${screen.id}}" method="post">
-                <div class="form-group">
-                    <label class="col-md-1 control-label">Row</label>
-                    <div class="col-md-3">
-                        <input class="form-control" name="row" type="text">
-                    </div>
-                    <label class="col-md-1 control-label">Col</label>
-                    <div class="col-md-3">
-                        <input class="form-control" name="col" type="text">
-                    </div>
-                    <div class="col-md-4 ">
-                        <input class="btn btn-primary" type="submit" value="Save">
-                        <a href="#">Cancel</a>
+            <form th:object="${screen}" th:action = "@{'/seat/add/'+${screen.id}}"  method="post">
+                <div class="login-form">
+                    <h4 class="login-title">Add Seat Information</h4>
+                    <div class="row">
+                        <div class="col-md-6 col-12 mb-20">
+                            <label>Row*</label>
+                            <input class="mb-0" name="row" type="text">
+                        </div>
+                        <div class="col-md-6 col-12 mb-20">
+                            <label>Col*</label>
+                            <input class="mb-0" name="col" type="text">
+                        </div>
+                        <div class="col-md-4"></div>
+                        <div class="col-md-4">
+                            <a href="#" onClick="javascript:history.back(-1);">
+                                <button class="register-button mt-0">Back</button>
+                            </a>
+                        </div>
+                        <div class="col-md-4">
+                            <input class="register-button mt-0" type="submit" value="Save" id="submit">
+                        </div>
                     </div>
                 </div>
             </form>
+
         </div>
         <div class = "col-md-3"></div>
     </div>
@@ -54,7 +69,7 @@
                     <td><span th:text="${i}"></span></td>
                     <span th:each="i:${#numbers.sequence(1,col)}">
                     <td>
-                        <img src="/image/seat.png"  alt="seat" />
+                        <img src="/static/image/seat.png"  alt="seat" />
                     </td>
                     </span>
                     </span>

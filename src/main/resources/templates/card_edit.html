@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html class="no-js" lang="zxx">
+<html class="no-js" lang="zxx" xmlns:th="http://www.w3.org/1999/xhtml">
 
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Add Screen Info</title>
+    <title>Bind your bank card</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- CSS
@@ -15,6 +15,7 @@
     <link href="/static/css/assets/css/helper.css" rel="stylesheet">
     <!-- Main CSS -->
     <link href="/static/css/assets/css/main.css" rel="stylesheet">
+    <link href="/static/css/style2.css" rel="stylesheet" type="text/css">
     <link href="/static/css/select.css" rel="stylesheet">
 
 </head>
@@ -23,20 +24,21 @@
     <div class="row">
         <div class="col-md-2"></div>
         <div class="col-md-8">
-            <form action="/screen/add" method="post">
+            <form th:object="${card}" action="/card/editCard" method="post">
                 <div class="login-form">
-                    <h4 class="login-title">Add Screen Information</h4>
+                    <h4 class="login-title">Change your bank card</h4>
                     <div class="row">
                         <div class="col-md-6 col-12 mb-20">
-                            <label>Screen No.*</label>
-                            <input class="mb-0" name="num" type="text">
+                            <label>Card Number*</label>
+                            <input class="mb-0" name="card_number" type="text" th:value="*{number}">
                         </div>
-                        <div class="col-md-6"></div>
-                        <div class="col-md-4"></div>
-                        <div class="col-md-4">
-                            <a href="#" onClick="javascript:history.back(-1);">
-                                <button class="register-button mt-0">Back</button>
-                            </a>
+                        <div class="col-md-6 col-12 mb-20">
+                            <label>Password*</label>
+                            <input class="mb-0" type="text" name="password">
+                        </div>
+                        <div class="col-md-12 mb-20">
+                            <label>Verify Password*</label>
+                            <input class="mb-0" type="text" name = "verify_password">
                         </div>
                         <div class="col-md-4">
                             <input class="register-button mt-0" type="submit" value="Save" id="submit">
@@ -47,6 +49,14 @@
             </form>
         </div>
         <div class="col-md-2"></div>
+    </div>
+    <div class="row row2">
+        <div class="col-md-9"></div>
+        <div class="col-md-1">
+            <a href="#" onClick="javascript:history.back(-1);">
+                <button class="button2 btn btn-primary">Back</button>
+            </a>
+        </div>
     </div>
 </div>
 </body>

@@ -7,6 +7,7 @@
     <!-- ========== MAIN CSS ========== -->
     <link th:href="@{../static/css/style.css}" rel="stylesheet" type="text/css">
     <link th:href="@{../static/css/responsive.css}" rel="stylesheet" type="text/css">
+    <link href="/static/css/style2.css" rel="stylesheet" type="text/css">
     <script th:src="@{../static/js/vendor.js}"></script>
 
     <script th:src="@{../static/js/plugins.js}"></script>
@@ -33,7 +34,9 @@
             <div class="overviews">
                 <div class="col-md-3 col-sm-6">
                     <div class="single">
-                        <i class="fa fa-credit-card"></i>
+                        <a href="/card/toBindCard">
+                            <i class="fa fa-credit-card"></i>
+                        </a>
                         <h4 class="text-uppercase">Bank Card</h4>
                         <p>Check your bank card information</p>
                     </div>
@@ -63,6 +66,14 @@
                         <p>Contact 010-68132777 to get more</p>
                     </div>
                 </div>
+            </div>
+        </div>
+        <div class="row row2">
+            <div class="col-md-10"></div>
+            <div class="col-md-1">
+                <a href="#" onClick="javascript:history.back(-1);">
+                    <button class="button2 btn btn-primary">Back</button>
+                </a>
             </div>
         </div>
     </div>
