@@ -76,7 +76,7 @@ public class CinemaAdminController {
             }
         }
         model.addAttribute("movies",moviesInCinema);
-        return "index";
+        return "manage_movie";
     }
 
     @GetMapping(path = "/allScreenings")
