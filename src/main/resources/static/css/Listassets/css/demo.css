@@ -19,6 +19,7 @@
   }
 
 
+
   .loader {
     background-color: #4776e6;
     position: fixed;
@@ -411,4 +412,8 @@
   section.grid-holder .masonry .masonry__item.active figure {
     background-color: rgba(221, 195, 226,0.20) !important;
     box-shadow: 0 15px 31px rgba(0, 0, 0, 0.36), 0 5px 31px rgba(0, 0, 0, 0.24);
+  }
+
+  header .header-inner h1 a:link{
+    color: #FFFFFF;
   }
