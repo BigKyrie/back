@@ -1,0 +1,248 @@
+﻿<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <link rel="stylesheet" href="/static/css/TicketBookingAssets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/css/TicketBookingAssets/css/all.min.css">
+    <link rel="stylesheet" href="/static/css/TicketBookingAssets/css/animate.css">
+    <link rel="stylesheet" href="/static/css/TicketBookingAssets/css/flaticon.css">
+    <link rel="stylesheet" href="/static/css/TicketBookingAssets/css/magnific-popup.css">
+    <link rel="stylesheet" href="/static/css/TicketBookingAssets/css/odometer.css">
+    <link rel="stylesheet" href="/static/css/TicketBookingAssets/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="/static/css/TicketBookingAssets/css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="/static/css/TicketBookingAssets/css/nice-select.css">
+    <link rel="stylesheet" href="/static/css/TicketBookingAssets/css/main.css">
+
+    <link rel="shortcut icon" href="/static/css/TicketBookingAssets/images/favicon.png" type="image/x-icon">
+
+    <title>Boleto  - Online Ticket Booking Website HTML Template</title>
+
+
+</head>
+
+<body>
+    <!-- ==========Preloader========== -->
+    <div class="preloader">
+        <div class="preloader-inner">
+            <div class="preloader-icon">
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </div>
+    <!-- ==========Preloader========== -->
+    <!-- ==========Overlay========== -->
+    <div class="overlay"></div>
+    <a href="#0" class="scrollToTop">
+        <i class="fas fa-angle-up"></i>
+    </a>
+    <!-- ==========Overlay========== -->
+
+    <!-- ==========Header-Section========== -->
+    <header class="header-section">
+        <div class="container">
+            <div class="header-wrapper">
+                <div class="logo">
+                    <a href="index.html">
+                        <img src="/static/css/TicketBookingAssets/images/logo/logo.png" alt="logo">
+                    </a>
+                </div>
+                <ul class="menu">
+                    <li>
+                        <a href="#0" class="active">Home</a>
+                    </li>
+                    <li>
+                        <a href="#0">movies</a>
+                        <ul class="submenu">
+                            <li>
+                                <a href="movie-grid.html">Movie Grid</a>
+                            </li>
+                            <li>
+                                <a href="movie-list.html">Movie List</a>
+                            </li>
+                            <li>
+                                <a href="movie-details.html">Movie Details</a>
+                            </li>
+                            <li>
+                                <a href="movie-details-2.html">Movie Details 2</a>
+                            </li>
+                            <li>
+                                <a href="movie-ticket-plan.html">Movie Ticket Plan</a>
+                            </li>
+                            <li>
+                                <a href="movie-seat-plan.html">Movie Seat Plan</a>
+                            </li>
+
+
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="apps-download.html">Apps Download</a>
+                    </li>
+                    <li>
+                        <a href="#0">Mine</a>
+                    </li>
+                    <li>
+                        <a href="about.html">About Us</a>
+                        <ul class="submenu">
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#0">blog</a>
+                        <ul class="submenu">
+
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="contact.html">contact</a>
+                    </li>
+
+                </ul>
+                <div class="header-bar d-lg-none">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- ==========Header-Section========== -->
+
+    <!-- ==========Banner-Section========== -->
+    <section class="banner-section">
+        <div class="banner-bg bg_img bg-fixed" data-background="/static/css/TicketBookingAssets/images/banner/banner02.jpg"></div>
+        <div class="container">
+            <div class="banner-content">
+                <h1 class="title bold">get <span class="color-theme">movie</span> tickets</h1>
+                <p>Buy movie tickets in advance, find movie times watch trailer, read movie reviews and much more</p>
+            </div>
+        </div>
+    </section>
+    <!-- ==========Banner-Section========== -->
+
+    <!-- ==========Ticket-Search========== -->
+    <section class="search-ticket-section padding-top pt-lg-0">
+        <div class="container">
+            <div class="search-tab bg_img" data-background="/static/css/TicketBookingAssets/images/ticket/ticket-bg01.jpg">
+                <div class="row align-items-center mb--20">
+                    <div class="col-lg-6 mb-20">
+                        <div class="search-ticket-header">
+                            <h6 class="category">welcome to Group 9 Online Ticket Booking Website</h6>
+                            <h3 class="title">what are you looking for</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-area">
+                    <div class="tab-item active">
+                        <form class="ticket-search-form">
+                            <div class="form-group large">
+                                <input type="text" placeholder="Search fo Movies">
+                                <button type="submit"><i class="fas fa-search"></i></button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ==========Ticket-Search========== -->
+
+    <!-- ==========Movie-Section========== -->
+    <section class="movie-section padding-top padding-bottom">
+        <div class="container">
+            <div class="row flex-wrap-reverse justify-content-center">
+                <div class="col-lg-12 mb-50 mb-lg-0">
+                    <div class="filter-tab tab">
+                        <div class="tab-area">
+                            <div class="tab-item active">
+                                <div class="movie-area mb-10">
+                                    <div class="movie-list" th:each="movie:${movies}">
+                                        <div class="movie-thumb c-thumb">
+                                            <a href="movie-details.html" class="w-100 bg_img h-100" th:data-background="${movie.url}">
+                                                <img class="d-sm-none" src="${movie.url}" alt="movie">
+                                            </a>
+                                        </div>
+                                        <div class="movie-content bg-one">
+                                            <h5 class="title">
+                                                <a href="" th:text="${movie.title}"></a>
+                                            </h5>
+                                            <p class="duration" th:text="${movie.duration}"><span>min</span></p>
+                                            <div class="movie-tags">
+                                                <a href="" th:text="${movie.type}"></a>
+                                            </div>
+                                            <div class="release">
+                                                <span>Release Date : </span> <a href="" th:text="${#dates.format(movie.showtime, 'yyyy-MM-dd HH:mm')}"></a>
+                                            </div>
+                                            <ul class="movie-rating-percent">
+                                                <li>
+                                                    <div class="thumb">
+                                                        <img src="/static/css/TicketBookingAssets/images/movie/tomato.png" alt="movie">
+                                                    </div>
+                                                    <span class="content">88%</span>
+                                                </li>
+                                                <li>
+                                                    <div class="thumb">
+                                                        <img src="/static/css/TicketBookingAssets/images/movie/cake.png" alt="movie">
+                                                    </div>
+                                                    <span class="content">88%</span>
+                                                </li>
+                                            </ul>
+                                            <div class="book-area">
+                                                <div class="book-ticket">
+                                                    <div class="react-item">
+                                                        <a href="#0">
+                                                            <div class="thumb">
+                                                                <img src="/static/css/TicketBookingAssets/images/icons/heart.png" alt="icons">
+                                                            </div>
+                                                        </a>
+                                                    </div>
+                                                    <div class="react-item mr-auto">
+                                                        <a href="#0">
+                                                            <div class="thumb">
+                                                                <img src="/static/css/TicketBookingAssets/images/icons/book.png" alt="icons">
+                                                            </div>
+                                                            <span>book ticket</span>
+                                                        </a>
+                                                    </div>
+                                                    <div class="react-item">
+                                                        <a href="#0" class="popup-video">
+                                                            <div class="thumb">
+                                                                <img src="/static/css/TicketBookingAssets/images/icons/play-button.png" alt="icons">
+                                                            </div>
+                                                            <span>watch trailer</span>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ==========Movie-Section========== -->
+
+    <script src="/static/css/TicketBookingAssets/js/jquery-3.3.1.min.js"></script>
+    <script src="/static/css/TicketBookingAssets/js/modernizr-3.6.0.min.js"></script>
+    <script src="/static/css/TicketBookingAssets/js/plugins.js"></script>
+    <script src="/static/css/TicketBookingAssets/js/bootstrap.min.js"></script>
+    <script src="/static/css/TicketBookingAssets/js/isotope.pkgd.min.js"></script>
+    <script src="/static/css/TicketBookingAssets/js/magnific-popup.min.js"></script>
+    <script src="/static/css/TicketBookingAssets/js/owl.carousel.min.js"></script>
+    <script src="/static/css/TicketBookingAssets/js/wow.min.js"></script>
+    <script src="/static/css/TicketBookingAssets/js/countdown.min.js"></script>
+    <script src="/static/css/TicketBookingAssets/js/odometer.min.js"></script>
+    <script src="/static/css/TicketBookingAssets/js/viewport.jquery.js"></script>
+    <script src="/static/css/TicketBookingAssets/js/nice-select.js"></script>
+    <script src="/static/css/TicketBookingAssets/js/main.js"></script>
+</body>
+
+</html>
