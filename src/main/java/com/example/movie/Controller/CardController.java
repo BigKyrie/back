@@ -86,9 +86,7 @@ public class CardController {
     @PostMapping(path = "/cardPay/{screening_id}/{seat_id}")
     public @ResponseBody boolean verify_card_password_for_app(@RequestParam String password,String type, String user_id,
                                                 @PathVariable Integer screening_id,@PathVariable Integer seat_id) {
-        Ticket ticket=ticketService.generate_a_ticket(screening_id,seat_id,type);
-        //HttpSession session = getRequest().getSession();
-        //UserInfo userInfo = (UserInfo) session.getAttribute("user_info_in_the_session");
+
         Cinema_Admin cinema_admin=cinema_adminService.findAdminById(Integer.parseInt(user_id));
         if(cardService.find_card_by_user_id(Integer.parseInt(user_id)).size()==0) {
             return false;
@@ -96,23 +94,30 @@ public class CardController {
         else {
             Card card=cardService.find_card_by_user_id(Integer.parseInt(user_id)).get(0);
             if(card.getPassword().equals(password)) {
-                ticket.setUser(cinema_admin);
-                return true;
+                Ticket ticket=ticketService.generate_a_ticket_for_app(screening_id,seat_id,type,cinema_admin);
+                if(ticket!=null) {
+                    return true;
+                }
+                else {
+                    return false;
+                }
             }
             else {
                 return false;
             }
         }
     }
-    @GetMapping(path = "/cashPay/{screening_id}/{seat_id}")
+    @PostMapping(path = "/cashPay/{screening_id}/{seat_id}")
     public @ResponseBody boolean cash_pay_for_app(@RequestParam String type, String user_id,
                                     @PathVariable Integer screening_id,@PathVariable Integer seat_id) {
-        Ticket ticket=ticketService.generate_a_ticket(screening_id,seat_id,type);
-        //HttpSession session = getRequest().getSession();
-        //UserInfo userInfo = (UserInfo) session.getAttribute("user_info_in_the_session");
         Cinema_Admin cinema_admin=cinema_adminService.findAdminById(Integer.parseInt(user_id));
-        ticket.setUser(cinema_admin);
-        return true;
+        Ticket ticket=ticketService.generate_a_ticket_for_app(screening_id,seat_id,type,cinema_admin);
+        if(ticket!=null) {
+            return true;
+        }
+        else {
+            return false;
+        }
     }
 
     @GetMapping(path = "/toBindCard")
