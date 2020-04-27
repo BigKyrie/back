@@ -73,18 +73,28 @@
                         </a>
                 </div>
                 <div class="col-md-3 col-sm-6">
-
-                        <a href="/ticket/sellingweek">
-                            <div class="single">
+                            <div class="single" title="Choose one you want to view"
+                                 data-container="body" data-toggle="popover" data-placement="right"
+                                 data-html="true" data-content='
+                                 <p>
+                                 <a href="/ticket/sellingweek">Ticket Turnover in ONE WEEK</a><br>
+                                 <a href="/ticket/sellingmonth">Ticket Turnover in ONE MONTH</a><br>
+                                 <a href="/ticket/sellingtotal">Ticket Turnover in TOTAL</a><br>
+                                 </p>
+                    '>
                              <i class="fa fa-tags"></i>
                                 <h4 class="text-uppercase">Ticket</h4>
                                 <p>Check ticket selling information of your cinema</p>
                             </div>
-                        </a>
                 </div>
             </div>
         </div>
     </div>
 </section>
+<script>
+    $(function (){
+        $("[data-toggle='popover']").popover();
+    });
+</script>
 </body>
 </html>
