@@ -135,12 +135,9 @@ public class UserController {
         return cinema_adminService.add(username, password);
     }
 
-    @GetMapping(path = "/my_ticket")
-    public @ResponseBody List<Ticket> mytickets(String user_id){
-        //HttpSession session = getRequest().getSession();
-        //UserInfo userInfo = (UserInfo) session.getAttribute("user_info_in_the_session");
-        Cinema_Admin cinema_admin=cinema_adminService.findAdminById(Integer.parseInt(user_id));
-        return ticketService.find_ticket_of_a_user(cinema_admin.getId());
+    @PostMapping(path = "/my_ticket")
+    public @ResponseBody List<Ticket> mytickets(@RequestParam String user_id){
+        return ticketService.find_ticket_of_a_user(Integer.parseInt(user_id));
     }
 
     private HttpServletRequest getRequest() {

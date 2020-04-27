@@ -126,27 +126,27 @@ public class CardController {
     }
 
 
-    @PostMapping(path = "/verifyPassword/{ticket_id}")
-    public boolean verify_card_password(@RequestParam String password,@PathVariable Integer ticket_id) {
-        HttpSession session = getRequest().getSession();
-        UserInfo userInfo = (UserInfo) session.getAttribute("user_info_in_the_session");
-        Cinema_Admin cinema_admin=cinema_adminService.findAdminById(userInfo.getUserId());
-        if(cardService.find_card_by_user_id(userInfo.getUserId()).size()==0) {
-            return false;
-        }
-        else {
-            Card card=cardService.find_card_by_user_id(userInfo.getUserId()).get(0);
-            if(card.getPassword().equals(password)) {
-                Ticket ticket=ticketService.find_ticket_by_id(ticket_id);
-                ticket.setUser(cinema_admin);
-                return true;
-            }
-            else {
-                return false;
-            }
-        }
-
-    }
+//    @PostMapping(path = "/verifyPassword/{ticket_id}")
+//    public String verify_card_password(@RequestParam String password,@PathVariable Integer ticket_id) {
+//        HttpSession session = getRequest().getSession();
+//        UserInfo userInfo = (UserInfo) session.getAttribute("user_info_in_the_session");
+//        Cinema_Admin cinema_admin=cinema_adminService.findAdminById(userInfo.getUserId());
+//        if(cardService.find_card_by_user_id(userInfo.getUserId()).size()==0) {
+//            return "redirect:/card/toBindCard";
+//        }
+//        else {
+//            Card card=cardService.find_card_by_user_id(userInfo.getUserId()).get(0);
+//            if(card.getPassword().equals(password)) {
+//                Ticket ticket=ticketService.find_ticket_by_id(ticket_id);
+//                ticket.setUser(cinema_admin);
+//                return true;
+//            }
+//            else {
+//                return false;
+//            }
+//        }
+//
+//    }
 
 
 

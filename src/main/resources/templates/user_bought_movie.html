@@ -34,8 +34,9 @@
                         <th>Certificate</th>
                         <th>Type</th>
                         <th>Showtime</th>
-                        <th>View Comment</th>
                         <th>Make Comment</th>
+                        <th>Edit Comment</th>
+                        <th>View Comment</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -48,8 +49,9 @@
                         <td th:text="${movie.certificate}"></td>
                         <td th:text="${movie.type}"></td>
                         <td th:text="${#dates.format(movie.showtime, 'yyyy-MM-dd HH:mm')}"></td>
-                        <td><a th:href=${'/demo/selectCinema/'+movie.id}> <button type="button" class="btn btn-primary">Select</button></a></td>
-                        <td></td>
+                        <td><a th:href="@{'/comment/make_comment/'+${movie.id}}"> <button type="button" class="btn btn-primary">Comment</button></a></td>
+                        <td><a th:href="@{'/comment/edit_comment/'+${movie.id}}"><button type="button" class="btn btn-primary">Edit</button></a></td>
+                        <td><a th:href="@{'/comment/view_comment/'+${movie.id}}"><button type="button" class="btn btn-primary">View</button></a></td>
                     </tr>
                     </tbody>
                 </table>
