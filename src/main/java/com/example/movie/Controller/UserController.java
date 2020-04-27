@@ -38,7 +38,14 @@ public class UserController {
     public String userCinema(Model model){
         List<Movie> movies=movieService.display_all_movies();
         model.addAttribute("movies",movies);
-        return "user_movie";
+        return "index";
+    }
+
+    @GetMapping(path = "/allMovie")
+    public String allMovie(Model model){
+        List<Movie> movies=movieService.display_all_movies();
+        model.addAttribute("movies",movies);
+        return "movie_list";
     }
 
     @GetMapping(path="myMovie")
