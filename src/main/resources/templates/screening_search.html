@@ -1,49 +1,60 @@
 <!DOCTYPE html>
-<html lang="en">
+<html class="no-js" lang="zxx">
+
 <head>
-    <meta charset="UTF-8">
-    <title>Cinema</title>
-    <link href="/webjars/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet"/>
-    <script src="/webjars/jquery/3.1.1/jquery.min.js"></script>
-    <script src="/webjars/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Search Screening </title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- CSS
+    ============================================ -->
+    <!-- Bootstrap CSS -->
+    <link href="/static/css/assets/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Helper CSS -->
+    <link href="/static/css/assets/css/helper.css" rel="stylesheet">
+    <!-- Main CSS -->
+    <link href="/static/css/assets/css/main.css" rel="stylesheet">
+    <link href="/static/css/select.css" rel="stylesheet">
+
 </head>
 <body>
-<div class="row">
-    <!--Separate four columns in the page-->
-    <div class="col-md-3"></div>
-    <div class="col-md-8">
+<div class="container">
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+            <form action="/screenings/search" method="post">
+                <div class="login-form">
+                    <h4 class="login-title">Search Screenings</h4>
+                    <div class="row">
+                        <div class="col-md-12 mb-20">
+                            <label>Movie Title*</label>
+                            <input class="mb-0" type="text" name = "movie_title" placeholder='Enter "all" for all'>
+                        </div>
+                        <div class="col-md-12 col-12 mb-20">
+                            <label>Screen number:*</label>
+                            <input class="mb-0" name="screen_number" type="text" placeholder='Enter "all" for all'>
+                        </div>
+                        <div class="col-md-12 mb-20">
+                            <label>Date*</label>
+                            <input class="mb-0" type="text" name = "date" placeholder='YYYY-MM-DD(Enter "all" for all)'>
+                        </div>
+                        <div class="col-md-4"></div>
+                        <div class="col-md-4">
+                            <a href="/cinemaAdmin/allScreenings">
+                                <button class="register-button mt-0">Back</button>
+                            </a>
+                        </div>
+                        <div class="col-md-4">
+                            <input class="register-button mt-0" type="submit" value="Save" id="submit">
+                        </div>
+                    </div>
+                </div>
 
-        <form action="/screenings/search" class="form-horizontal" method="post">
-            <legend>Search screenings</legend>
-            <fieldset>
-                <div class="form-group">
-                    <label class="col-md-4 control-label">Screen number (Enter "all" for all)</label>
-                    <div class="col-md-4">
-                        <input class="form-control" name="screen_number" type="text">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-md-4 control-label">Movie title (Enter "all" for all)</label>
-                    <div class="col-md-4">
-                        <input class="form-control" name="movie_title" type="text">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-md-4 control-label">Date (xxxx-xx-xx) (Enter "all" for all)</label>
-                    <div class="col-md-4">
-                        <input class="form-control" name="date" type="text">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="col-md-6 ">
-                        <input class="btn btn-primary" type="submit" value="Search">
-                        <a href="/cinemaAdmin/allScreenings">Cancel</a>
-                    </div>
-                </div>
-            </fieldset>
-        </form>
+            </form>
+        </div>
+        <div class="col-md-2"></div>
     </div>
-    <div class="col-md-3"></div>
 </div>
 </body>
 </html>

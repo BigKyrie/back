@@ -21,6 +21,38 @@
     <div class="container">
         <div class="row">
             <div class="section-title col-sm-8 col-sm-offset-2">
+                <h2 class="text-uppercase branding-color">Ticket
+                    <span>
+							<i class="fa fa-circle"></i>
+							<i class="fa fa-circle"></i>
+							<i class="fa fa-circle"></i>
+						</span>
+                </h2>
+                <p> Verify ticket information</p>
+            </div>
+            <div class="overviews">
+                <div class="col-md-3 col-sm-6">
+                </div>
+                <div class="col-md-6 col-sm-6">
+                    <div class="single">
+                        <i class="fa fa-info-circle"></i>
+                        <h4 class="text-uppercase">Ticket information</h4>
+                        <p>
+                            <span><b>Creation time:</b></span><span th:text="${#dates.format(ticket.create_time, 'yyyy-MM-dd HH:mm')}"></span><br>
+                            <span><b>Movie:</b></span><span th:text="${ticket.screening.movie.title}"></span>
+                            <span><b>Screen number:</b></span><span th:text="${ticket.screening.screen.num}"></span><br>
+                            <span><b>Start time:</b></span><span th:text="${#dates.format(ticket.screening.start_time, 'yyyy-MM-dd HH:mm')}"></span>
+                            <span><b>End time:</b></span><span th:text="${#dates.format(ticket.screening.end_time, 'yyyy-MM-dd HH:mm')}"></span>
+                            <span><b>Seat:</b></span><span th:text="${ticket.seat.row}+' row '+${ticket.seat.col}+' column'"></span>
+                            <span><b>Type:</b></span><span th:text="${ticket.type}"></span><br>
+                            <span><b>Price:</b></span><span th:text="${ticket.price}"></span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row row2">
+            <div class="section-title col-sm-8 col-sm-offset-2">
                 <h2 class="text-uppercase branding-color">Payment
                     <span>
 							<i class="fa fa-circle"></i>

@@ -91,12 +91,8 @@ public class TicketController {
              @PathVariable(name = "seat_id") Integer seat_id,Model model) {
         Ticket ticket=ticketService.generate_a_ticket(screening_id,seat_id,type);
         model.addAttribute("screening_id",screening_id);
+        //model.addAttribute("seat_id",seat_id);
+        model.addAttribute("ticket",ticket);
         return "pay";
     }
-
-//    @GetMapping(path = "/pay")
-//    public String pay(){
-//        return "pay";
-//    }
-
 }
