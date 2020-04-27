@@ -25,4 +25,10 @@ public class MovieController {
         return "movie_list";
     }
 
+    @PostMapping(path = "/searchByKeywordForApp")
+    public @ResponseBody List<Movie> search_movie_by_keyword_for_app(@RequestParam String keyword) {
+        List<Movie> movies=movieService.search_movie_by_keyword(keyword);
+        return movies;
+    }
+
 }
