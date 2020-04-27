@@ -65,11 +65,13 @@
 
             <div class="overviews">
                 <div class="col-md-3 col-sm-6">
-                    <div class="single">
-                        <i class="fa fa-credit-card"></i>
-                        <h4 class="text-uppercase">Bank Card</h4>
-                        <p></p>
-                    </div>
+                    <a th:href=${'/verifyPassword/'+ticket.id}>
+                        <div class="single">
+                            <i class="fa fa-credit-card"></i>
+                            <h4 class="text-uppercase">Bank Card</h4>
+                            <p></p>
+                        </div>
+                    </a>
                 </div>
                 <div class="col-md-3 col-sm-6">
                     <div class="single">
