@@ -4,9 +4,10 @@
     <meta charset="UTF-8">
     <title>Cinema</title>
     <link href="/webjars/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet"/>
-    <link rel="stylesheet" href="/static/css/manage.css">
     <script src="/webjars/jquery/3.1.1/jquery.min.js"></script>
     <script src="/webjars/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="/static/css/manage.css">
+    <link href="/static/css/style2.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 
@@ -37,6 +38,11 @@
         padding: .5em;
         border: 0;
         width: auto;
+        color: #4776DE
+    }
+
+    body{
+        color: #4776DE
     }
 </style>
 
@@ -107,9 +113,15 @@
                 </tbody>
             </table>
         </fieldset>
-        <input  class="btn btn-primary" type="submit" value="Pay" />
+        <div class="row row2">
+            <div class="col-md-9"></div>
+            <div class="col-md-3">
+                <input  class="button2 btn btn-primary" type="submit" value="Pay" />
+            </div>
+        </div>
     </div>
     <div class = "col-md-3"></div>
+
 </div>
 </form>
 </body>
