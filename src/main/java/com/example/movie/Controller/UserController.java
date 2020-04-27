@@ -33,6 +33,18 @@ public class UserController {
     private Cinema_AdminService cinema_adminService;
     @Autowired
     private TicketService ticketService;
+    @Autowired
+    private CommentService commentService;
+
+    @GetMapping(path="/detail/{movie_id}")
+    public String movie_comment_detail(Model model,@PathVariable(name="movie_id") Integer movie_id){
+        Movie movie = movieService.findMoviebyID(movie_id);
+        List <Comment> comments = commentService.find_by_movie_id(movie_id);
+        model.addAttribute("movie",movie);
+        model.addAttribute("comments",comments);
+        return "";
+
+    }
 
     @GetMapping(path="/userMovie")
     public String userCinema(Model model){
