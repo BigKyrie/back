@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Admin Log in</title>
+    <title>Register</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -14,8 +14,10 @@
         <div class="w3layoutscontaineragileits">
             <h1>Sign Up</h1>
             <form method="post" action="/cinemaAdmin/add" >
-                <input class="form-control" name="username"  type="text"/>
-                <input class="form-control" name="password" type="password"/>
+                <input class="form-control" name="username"  type="text" maxlength="18"
+                       required oninvalid="setCustomValidity('This field is required');" οninput="setCustomValidity('');">
+                <input class="form-control" name="password" type="password" maxlength="40"
+                       required oninvalid="setCustomValidity('This field is required');" οninput="setCustomValidity('');">
                 <ul class="agileinfotickwthree">
                     <li>
                         <a href="/login">Back</a>

@@ -14,8 +14,10 @@
         <div class="w3layoutscontaineragileits">
             <h1>User Log In</h1>
             <form method="post" action="/demo/userLogin" >
-                <input class="form-control" name="username"  type="text"/>
-                <input class="form-control" name="password" type="password"/>
+                <input class="form-control" name="username"  type="text" maxlength="18"
+                       required oninvalid="setCustomValidity('This field is required');" οninput="setCustomValidity('');">
+                <input class="form-control" name="password" type="password" maxlength="40"
+                       required oninvalid="setCustomValidity('This field is required');" οninput="setCustomValidity('');">
                 <ul class="agileinfotickwthree">
                     <li>
                         <a href="/register">New User?</a>

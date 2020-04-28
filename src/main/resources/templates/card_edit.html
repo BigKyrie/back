@@ -30,15 +30,18 @@
                     <div class="row">
                         <div class="col-md-6 col-12 mb-20">
                             <label>Card Number*</label>
-                            <input class="mb-0" name="card_number" type="text" th:value="*{number}">
+                            <input class="mb-0" name="card_number" type="text" th:value="*{number}" maxlength="40"
+                                   required oninvalid="setCustomValidity('This field is required');" οninput="setCustomValidity('');">
                         </div>
                         <div class="col-md-6 col-12 mb-20">
                             <label>Password*</label>
-                            <input class="mb-0" type="text" name="password">
+                            <input class="mb-0" type="password" name="password" maxlength="18"
+                                   required oninvalid="setCustomValidity('This field is required');" οninput="setCustomValidity('');">
                         </div>
                         <div class="col-md-12 mb-20">
                             <label>Verify Password*</label>
-                            <input class="mb-0" type="text" name = "verify_password">
+                            <input class="mb-0" type="password" name = "verify_password" maxlength="18"
+                                   required oninvalid="setCustomValidity('This field is required');" οninput="setCustomValidity('');">
                         </div>
                         <div class="col-md-4">
                             <input class="register-button mt-0" type="submit" value="Save" id="submit">

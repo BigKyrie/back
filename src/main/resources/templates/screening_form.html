@@ -29,27 +29,32 @@
                     <div class="row">
                         <div class="col-md-4 col-12 mb-20">
                             <label>Screen number:*</label>
-                            <input class="mb-0" name="screen_number" type="text">
+                            <input class="mb-0" name="screen_number" type="text" maxlength="2" oninput="value=value.replace(/[^\d]/g,'')"
+                                   required oninvalid="setCustomValidity('This field is required.');"
+                                   οninput="setCustomValidity('');" placeholder="Please enter a number">
                         </div>
                         <div class="col-md-4 mb-20">
                             <label>Price*</label>
-                            <input class="mb-0" type="text" name = "price">
+                            <input class="mb-0" type="text" name = "price" maxlength="3" oninput="value=value.replace(/[^\d]/g,'')"
+                                   required oninvalid="setCustomValidity('This field is required.');"
+                                   οninput="setCustomValidity('');" placeholder="Please enter a number">
                         </div>
                         <div class="col-md-4 col-12 mb-20">
                             <label>Movie certificate*</label>
-                            <input class="mb-0" type="text" name="movie_certificate">
+                            <input class="mb-0" type="text" name="movie_certificate" maxlength="8" required oninvalid="setCustomValidity('This field is required');"
+                                   οninput="setCustomValidity('');">
                         </div>
                         <div class="col-md-12 mb-20">
                             <label>Date*</label>
-                            <input class="mb-0" type="text" name = "date" placeholder="YYYY-MM-DD">
+                            <input class="mb-0" type="date" name = "date" placeholder="YYYY-MM-DD">
                         </div>
                         <div class="col-md-6 mb-20">
                             <label>Start time*</label>
-                            <input class="mb-0" type="text" name = "start_time" placeholder="HH:MM:SS">
+                            <input class="mb-0" type="time" name = "start_time" placeholder="HH:MM:SS">
                         </div>
                         <div class="col-md-6 mb-20">
                             <label>End time*</label>
-                            <input class="mb-0" type="text" name = "end_time" placeholder="HH:MM:SS">
+                            <input class="mb-0" type="time" name = "end_time" placeholder="HH:MM:SS">
                         </div>
                         <div class="col-md-4"></div>
                         <div class="col-md-4">

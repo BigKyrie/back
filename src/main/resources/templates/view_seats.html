@@ -27,11 +27,15 @@
                     <div class="row">
                         <div class="col-md-6 col-12 mb-20">
                             <label>Row*</label>
-                            <input class="mb-0" name="row" type="text">
+                            <input class="mb-0" name="row" type="text" maxlength="2" oninput="value=value.replace(/[^\d]/g,'')"
+                                   required oninvalid="setCustomValidity('This field is required.');"
+                                   οninput="setCustomValidity('');" placeholder="Please enter a number">
                         </div>
                         <div class="col-md-6 col-12 mb-20">
                             <label>Col*</label>
-                            <input class="mb-0" name="col" type="text">
+                            <input class="mb-0" name="col" type="text" maxlength="2" oninput="value=value.replace(/[^\d]/g,'')"
+                                   required oninvalid="setCustomValidity('This field is required.');"
+                                   οninput="setCustomValidity('');" placeholder="Please enter a number">
                         </div>
                         <div class="col-md-4"></div>
                         <div class="col-md-4">

@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Add Cinema Info</title>
+    <title>Edit Comment</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- CSS
@@ -29,7 +29,8 @@
                     <div class="row">
                         <div class="col-md-12 mb-20">
                             <label>Comment*</label>
-                            <input class="mb-0" name="comment" type="text" th:value="*{comment}">
+                            <input class="mb-0" name="comment" type="text" th:value="*{comment}" maxlength="120"
+                                   required oninvalid="setCustomValidity('This field is required');" οninput="setCustomValidity('');">
                         </div>
                         <div class="col-md-4 col-12 mb-20">
                             <label class="col-md-2 control-label">Grade</label>

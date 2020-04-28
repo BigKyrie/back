@@ -29,62 +29,76 @@
                     <div class="row">
                         <div class="col-md-6 col-12 mb-20">
                             <label>Movie title*</label>
-                            <input class="mb-0" name="title" type="text">
+                            <input class="mb-0" name="title" type="text" maxlength="18"
+                                   required oninvalid="setCustomValidity('This field is required');" οninput="setCustomValidity('');">
                         </div>
                         <div class="col-md-6 col-12 mb-20">
                             <label>Certificate*</label>
-                            <input class="mb-0" type="text" name="certificate">
+                            <input class="mb-0" type="text" name="certificate" maxlength="8"
+                                   required oninvalid="setCustomValidity('This field is required');" οninput="setCustomValidity('');">
                         </div>
                         <div class="col-md-12 mb-20">
                             <label>Blurb*</label>
-                            <input class="mb-0" type="blurb" name = "blurb">
+                            <input class="mb-0" type="blurb" name = "blurb" maxlength="120"
+                                   required oninvalid="setCustomValidity('This field is required');" οninput="setCustomValidity('');">
                         </div>
                         <div class="col-md-12 mb-20">
                             <label>Director*</label>
-                            <input class="mb-0" type="text" name = "director" >
+                            <input class="mb-0" type="text" name = "director" maxlength="80"
+                                   required oninvalid="setCustomValidity('This field is required');" οninput="setCustomValidity('');">
                         </div>
                         <div class="col-md-12 mb-20">
                             <label>Actors*</label>
-                            <input class="mb-0" type="text" name = "actors" >
+                            <input class="mb-0" type="text" name = "actors" maxlength="80"
+                                   required oninvalid="setCustomValidity('This field is required');" οninput="setCustomValidity('');">
                         </div>
                         <div class="col-md-4 mb-20">
                             <label>Show time*</label>
-                            <input class="mb-0" type="text" name = "showtime" placeholder="YY-MM-DD HH:MM:SS">
+                            <input class="mb-0" type="datetime-local" name = "showtime">
                         </div>
                         <div class="col-md-4 mb-20">
                             <label>Duration*</label>
-                            <input class="mb-0" type="text" name = "duration" >
+                            <input class="mb-0" type="text" name = "duration" oninput="value=value.replace(/[^\d]/g,'')"
+                                   required oninvalid="setCustomValidity('This field is required.');"
+                                   οninput="setCustomValidity('');" placeholder="Please enter a number">
                         </div>
                         <div class="col-md-4 mb-20">
                             <label>Type*</label>
-                            <input class="mb-0" type="text" name = "type" >
+                            <input class="mb-0" type="text" name = "type" maxlength="80"
+                                   required oninvalid="setCustomValidity('This field is required');" οninput="setCustomValidity('');">
                         </div>
                         <div class="col-md-6 mb-20">
                             <label>Language*</label>
-                            <input class="mb-0" type="text" name = "language" >
+                            <input class="mb-0" type="text" name = "language" maxlength="18"
+                                   required oninvalid="setCustomValidity('This field is required');" οninput="setCustomValidity('');">
                         </div>
                         <div class="col-md-6 mb-20">
                             <label>Poster*</label>
-                            <input class="mb-0" type="text" name = "poster" >
+                            <input class="mb-0" type="url" name = "poster" maxlength="980"
+                                   oninvalid="setCustomValidity('This field is required to be a url');" οninput="setCustomValidity('');">
                         </div>
                     </div>
                     <h4 class="login-title">You must add a screening for this movie</h4>
                     <div class="row">
                         <div class="col-md-6 col-12 mb-20">
                             <label>Screen number:*</label>
-                            <input class="mb-0" name="screen_number" type="text">
+                            <input class="mb-0" name="screen_number" type="text" maxlength="2" oninput="value=value.replace(/[^\d]/g,'')"
+                                   required oninvalid="setCustomValidity('This field is required.');"
+                                   οninput="setCustomValidity('');" placeholder="Please enter a number">
                         </div>
                         <div class="col-md-6 mb-20">
                             <label>Price*</label>
-                            <input class="mb-0" type="text" name = "price">
+                            <input class="mb-0" type="text" name = "price"maxlength="2" oninput="value=value.replace(/[^\d]/g,'')"
+                                   required oninvalid="setCustomValidity('This field is required.');"
+                                   οninput="setCustomValidity('');" placeholder="Please enter a number">
                         </div>
                         <div class="col-md-6 mb-20">
                             <label>Start time*</label>
-                            <input class="mb-0" type="text" name = "start_time" placeholder="HH:MM:SS">
+                            <input class="mb-0" type="datetime-local" name = "start_time" placeholder="HH:MM:SS">
                         </div>
                         <div class="col-md-6 mb-20">
                             <label>End time*</label>
-                            <input class="mb-0" type="text" name = "end_time" placeholder="HH:MM:SS">
+                            <input class="mb-0" type="datetime-local" name = "end_time" placeholder="HH:MM:SS">
                         </div>
                     </div>
                     <div class="row">
