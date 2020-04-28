@@ -56,7 +56,7 @@ public class ScreeningController {
         try {
             HttpSession session = getRequest().getSession();
             UserInfo userInfo = (UserInfo) session.getAttribute("user_info_in_the_session");
-            Screen screen=screenService.find_screen_by_num_and_cinema(Integer.parseInt(screen_number),cinema_adminService.findAdminById(userInfo.getUserId()).getCinema().getId());
+            Screen screen=screenService.find_screen_by_num_and_cinema(Integer.parseInt(screen_number),cinema_adminService.findAdminById(userInfo.getUserId()).getCinema().getId()).get(0);
             Movie movie=movieService.find_movie_by_certificate(movie_certificate).get(0);
             SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm");
             String start=date+" "+start_time;
@@ -84,7 +84,7 @@ public class ScreeningController {
         try {
             HttpSession session = getRequest().getSession();
             UserInfo userInfo = (UserInfo) session.getAttribute("user_info_in_the_session");
-            Screen screen=screenService.find_screen_by_num_and_cinema(Integer.parseInt(screen_number),cinema_adminService.findAdminById(userInfo.getUserId()).getCinema().getId());
+            Screen screen=screenService.find_screen_by_num_and_cinema(Integer.parseInt(screen_number),cinema_adminService.findAdminById(userInfo.getUserId()).getCinema().getId()).get(0);
             Movie movie=movieService.find_movie_by_certificate(movie_certificate).get(0);
             SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm");
             String start=date+" "+start_time;

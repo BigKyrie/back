@@ -39,8 +39,8 @@ public class ScreenService {
         screenRepository.save(screen);
         return true;
     }
-    public Screen find_screen_by_num_and_cinema(Integer num,Integer cinema_id) {
-        return screenRepository.find_screen_by_num_and_cinema(num,cinema_id).get(0);
+    public List<Screen> find_screen_by_num_and_cinema(Integer num,Integer cinema_id) {
+        return screenRepository.find_screen_by_num_and_cinema(num,cinema_id);
     }
 
 
