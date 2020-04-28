@@ -154,27 +154,27 @@ public class CinemaAdminController {
     @PostMapping(path = "/addMovies")
     public String addMovies(@RequestParam String title, String blurb, String certificate, String director, String actors,
                             String showtime, Integer duration, String type, String language, String url,
-                            String start_time,String end_time,String price,String num)
+                            String start_time,String end_time,String price,Integer screen_number)
     {
         try {
 
             if(movieService.find_movie_by_certificate(certificate).size()>0) {
-                SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd hh:mm");
+                SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm");
                 HttpSession session = getRequest().getSession();
                 UserInfo userInfo = (UserInfo) session.getAttribute("user_info_in_the_session");
                 Cinema cinema=cinema_adminService.findAdminById(userInfo.getUserId()).getCinema();
-                Screen screen=screenService.find_screen_by_num_and_cinema(Integer.parseInt(num),cinema.getId());
+                Screen screen=screenService.find_screen_by_num_and_cinema(screen_number,cinema.getId()).get(0);
                 screeningService.addScreening(sdf.parse(start_time), sdf.parse(end_time), Float.parseFloat(price), screen,
                                               movieService.find_movie_by_certificate(certificate).get(0));
             }
             else {
-                SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd hh:mm");
+                SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm");
                 Movie movie=movieService.addMovies(title,blurb,certificate,director,actors,
                         sdf.parse(showtime),duration,type,language,url);
                 HttpSession session = getRequest().getSession();
                 UserInfo userInfo = (UserInfo) session.getAttribute("user_info_in_the_session");
                 Cinema cinema=cinema_adminService.findAdminById(userInfo.getUserId()).getCinema();
-                Screen screen=screenService.find_screen_by_num_and_cinema(Integer.parseInt(num),cinema.getId());
+                Screen screen=screenService.find_screen_by_num_and_cinema(screen_number,cinema.getId()).get(0);
                 screeningService.addScreening(sdf.parse(start_time), sdf.parse(end_time), Float.parseFloat(price), screen, movie);
 
             }
