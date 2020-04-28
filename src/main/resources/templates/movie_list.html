@@ -56,16 +56,12 @@
                         <a href="/demo/userMovie" class="active">Home</a>
                     </li>
                     <li>
-                        <a href="#0">movies</a>
-                        <ul class="submenu">
-                            <li>
-                                <a href="#">Movie Details</a>
-                            </li>
-                        </ul>
+                        <a href="/demo/allMovie">Movie</a>
                     </li>
                     <li>
                         <a href="/demo/mine">Mine</a>
                     </li>
+
                 </ul>
                 <div class="header-bar d-lg-none">
                     <span></span>
@@ -133,7 +129,7 @@
                                         </div>
                                         <div class="movie-content bg-one">
                                             <h5 class="title">
-                                                <a href="" th:text="${movie.title}"></a>
+                                                <a th:href="@{'/demo/detail/'+${movie.id}}" th:text="${movie.title}"></a>
                                             </h5>
                                             <p class="duration" th:text="${movie.duration}"><span>min</span></p>
                                             <div class="movie-tags">

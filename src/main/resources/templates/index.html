@@ -57,15 +57,7 @@
                         <a href="/demo/userMovie" class="active">Home</a>
                     </li>
                     <li>
-                        <a href="#0">movies</a>
-                        <ul class="submenu">
-                            <li><a href="/demo/allMovie">
-                                View All</a>
-                            </li>
-                            <li>
-                                <a href="#">Movie Details</a>
-                            </li>
-                        </ul>
+                        <a href="/demo/allMovie">Movie</a>
                     </li>
                     <li>
                         <a href="/demo/mine">Mine</a>
@@ -148,7 +140,7 @@
                                     </div>
                                     <div class="movie-content bg-one">
                                         <h5 class="title m-0">
-                                            <a href="#0" th:text="${movie.title}"></a>
+                                            <a th:href="@{'/demo/detail/'+${movie.id}}" th:text="${movie.title}"></a>
                                         </h5>
                                         <ul class="movie-rating-percent">
                                             <li>
