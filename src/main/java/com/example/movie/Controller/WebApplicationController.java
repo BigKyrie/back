@@ -34,4 +34,12 @@ public class WebApplicationController {
 
     @GetMapping(path = "/addScreen")
     public String myScreen() { return "screen_form"; }
+
+    @GetMapping(path="/about")
+    public String about(){ return "about"; }
+
+    @GetMapping(path="/app")
+    public String app(){return "apps-download";}
+
+
 }
