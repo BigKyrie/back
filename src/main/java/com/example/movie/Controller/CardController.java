@@ -149,6 +149,17 @@ public class CardController {
         }
     }
 
+    @GetMapping(path = "/cashPay/{ticket_id}")
+    public String cash_pay(@PathVariable Integer ticket_id) {
+        HttpSession session = getRequest().getSession();
+        UserInfo userInfo = (UserInfo) session.getAttribute("user_info_in_the_session");
+        Cinema_Admin cinema_admin=cinema_adminService.findAdminById(userInfo.getUserId());
+        //Ticket ticket=ticketService.find_ticket_by_id(ticket_id);
+        //ticket.setUser(cinema_admin);
+        ticketService.update(ticket_id,cinema_admin);
+        return "redirect:/demo/userMovie";
+    }
+
     @GetMapping(path = "/toVerifyPassword/{ticket_id}")
     public String to_verify_card_password(@PathVariable Integer ticket_id,Model model) {
         HttpSession session = getRequest().getSession();
@@ -166,15 +177,7 @@ public class CardController {
     }
 
 
-    @GetMapping(path = "/cashPay/{ticket_id}")
-    public boolean cash_pay(@PathVariable Integer ticket_id) {
-        HttpSession session = getRequest().getSession();
-        UserInfo userInfo = (UserInfo) session.getAttribute("user_info_in_the_session");
-        Cinema_Admin cinema_admin=cinema_adminService.findAdminById(userInfo.getUserId());
-        Ticket ticket=ticketService.find_ticket_by_id(ticket_id);
-        ticket.setUser(cinema_admin);
-        return true;
-    }
+
 
 
     private HttpServletRequest getRequest() {
