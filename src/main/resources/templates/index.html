@@ -45,9 +45,9 @@
 
     <!-- ==========Header-Section========== -->
     <header class="header-section">
-        <div class="container">
-            <div class="header-wrapper">
-                <div class="logo">
+                    <div class="container">
+                        <div class="header-wrapper">
+                            <div class="logo">
                     <a href="index.html">
                         <img src="/static/css/TicketBookingAssets/images/logo/logo.png" alt="logo">
                     </a>
@@ -57,18 +57,16 @@
                         <a href="/demo/userMovie" class="active">Home</a>
                     </li>
                     <li>
-                        <a href="#0">movies</a>
-                        <ul class="submenu">
-                            <li><a href="/demo/allMovie">
-                                View All</a>
-                            </li>
-                            <li>
-                                <a href="#">Movie Details</a>
-                            </li>
-                        </ul>
+                        <a href="/demo/allMovie">Movie</a>
                     </li>
                     <li>
                         <a href="/demo/mine">Mine</a>
+                    </li>
+                    <li>
+                        <a href="/about">About</a>
+                    </li>
+                    <li>
+                        <a href="/app">APP</a>
                     </li>
 
                 </ul>
@@ -148,7 +146,7 @@
                                     </div>
                                     <div class="movie-content bg-one">
                                         <h5 class="title m-0">
-                                            <a href="#0" th:text="${movie.title}"></a>
+                                            <a th:href="@{'/demo/detail/'+${movie.id}}" th:text="${movie.title}"></a>
                                         </h5>
                                         <ul class="movie-rating-percent">
                                             <li>

@@ -10,6 +10,13 @@
     <!-- CSS
     ============================================ -->
     <!-- Bootstrap CSS -->
+    <link href="/static/css/assets/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Helper CSS -->
+    <link href="/static/css/assets/css/helper.css" rel="stylesheet">
+    <!-- Main CSS -->
+    <link href="/static/css/assets/css/main.css" rel="stylesheet">
+    <link href="/static/css/select.css" rel="stylesheet">
+
 
 
 </head>
@@ -18,17 +25,21 @@
     <div class="row">
         <div class="col-md-2"></div>
         <div class="col-md-8">
-            <form th:object="${screen}" th:action = "@{'/seat/add/'+${screen.id}}"  method="post">
+            <form th:object="${screen}" th:action = "@{'/seat/add/'+${screen.id}}"  method="post" >
                 <div class="login-form">
                     <h4 class="login-title">Add Seat Information</h4>
                     <div class="row">
                         <div class="col-md-6 col-12 mb-20">
                             <label>Row*</label>
-                            <input class="mb-0" name="row" type="text">
+                            <input class="mb-0" name="row" type="text" maxlength="2" oninput="value=value.replace(/[^\d]/g,'')"
+                                   required oninvalid="setCustomValidity('This field is required.');"
+                                   οninput="setCustomValidity('');" placeholder="Please enter a number">
                         </div>
                         <div class="col-md-6 col-12 mb-20">
                             <label>Col*</label>
-                            <input class="mb-0" name="col" type="text">
+                            <input class="mb-0" name="col" type="text"  maxlength="2" oninput="value=value.replace(/[^\d]/g,'')"
+                                   required oninvalid="setCustomValidity('This field is required.');"
+                                   οninput="setCustomValidity('');" placeholder="Please enter a number">
                         </div>
                         <div class="col-md-4"></div>
                         <div class="col-md-4">

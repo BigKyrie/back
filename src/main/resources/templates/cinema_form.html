@@ -29,15 +29,18 @@
                     <div class="row">
                         <div class="col-md-6 col-12 mb-20">
                             <label>Cinema Name*</label>
-                            <input class="mb-0" name="title" type="text">
+                            <input class="mb-0" name="title" type="text" maxlength="40"
+                                   required oninvalid="setCustomValidity('This field is required');" οninput="setCustomValidity('');">
                         </div>
                         <div class="col-md-6 col-12 mb-20">
                             <label>Telephone number*</label>
-                            <input class="mb-0" type="text" name="tel">
+                            <input class="mb-0" type="text" name="tel" maxlength="15"
+                                   required oninvalid="setCustomValidity('This field is required');" οninput="setCustomValidity('');">
                         </div>
                         <div class="col-md-12 mb-20">
                             <label>Location*</label>
-                            <input class="mb-0" type="text" name = "location">
+                            <input class="mb-0" type="text" name = "location" maxlength="90"
+                                   required oninvalid="setCustomValidity('This field is required');" οninput="setCustomValidity('');">
                         </div>
                         <div class="col-md-4 col-12 mb-20">
                             <label class="col-md-2 control-label">Refund</label>

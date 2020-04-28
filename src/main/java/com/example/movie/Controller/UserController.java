@@ -42,7 +42,7 @@ public class UserController {
         List <Comment> comments = commentService.find_by_movie_id(movie_id);
         model.addAttribute("movie",movie);
         model.addAttribute("comments",comments);
-        return "";
+        return "movie-details-2";
 
     }
 

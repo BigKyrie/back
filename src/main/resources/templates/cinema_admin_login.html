@@ -14,8 +14,10 @@
             <div class="w3layoutscontaineragileits">
                 <h1>Admin Log In</h1>
                 <form method="post" action="/cinemaAdmin/login">
-                    <input type="text" name="username" placeholder="Username" required>
-                    <input type="password" name="password" placeholder="Password" required>
+                    <input type="text" name="username" placeholder="Username" maxlength="15"
+                           required oninvalid="setCustomValidity('This field is required');" οninput="setCustomValidity('');">
+                    <input type="password" name="password" placeholder="Password" maxlength="18"
+                           required oninvalid="setCustomValidity('This field is required');" οninput="setCustomValidity('');">
                     <ul class="agileinfotickwthree">
                         <li>
                             <a href="/register">New User?</a>
