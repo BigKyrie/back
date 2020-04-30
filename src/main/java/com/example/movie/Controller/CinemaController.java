@@ -24,9 +24,6 @@ public class CinemaController {
     private CinemaService cinemaService;
     @Autowired
     private Cinema_AdminService cinema_adminService;
-//    //find cinemas by movie_id
-//    @GetMapping(path = "/all")
-//    public @ResponseBody List<Cinema> display_all_cinemas() {return cinemaService.display_all_cinemas();}
 
     @GetMapping(path = "/{movie_id}")
     public @ResponseBody List<Cinema> display_cinemas_for_a_certain_movie(@PathVariable(name = "movie_id") Integer movie_id) {

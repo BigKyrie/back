@@ -12,11 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+
 
 @Controller
 @RequestMapping(path = "/card")
@@ -138,8 +134,6 @@ public class CardController {
         else {
             Card card=cardService.find_card_by_user_id(userInfo.getUserId()).get(0);
             if(card.getPassword().equals(password)) {
-                //Ticket ticket=ticketService.find_ticket_by_id(ticket_id);
-                //ticket.setUser(cinema_admin);
                 ticketService.update(ticket_id,cinema_admin);
                 return "redirect:/demo/userMovie";
             }
@@ -154,8 +148,6 @@ public class CardController {
         HttpSession session = getRequest().getSession();
         UserInfo userInfo = (UserInfo) session.getAttribute("user_info_in_the_session");
         Cinema_Admin cinema_admin=cinema_adminService.findAdminById(userInfo.getUserId());
-        //Ticket ticket=ticketService.find_ticket_by_id(ticket_id);
-        //ticket.setUser(cinema_admin);
         ticketService.update(ticket_id,cinema_admin);
         return "redirect:/demo/userMovie";
     }
@@ -167,13 +159,6 @@ public class CardController {
         Cinema_Admin cinema_admin=cinema_adminService.findAdminById(userInfo.getUserId());
         model.addAttribute("ticket_id",ticket_id);
         return "verify_password";
-//        if(cardService.find_card_by_user_id(userInfo.getUserId()).size()==0) {
-//            return "redirect:/card/toBindCard";
-//        }
-//        else {
-//            model.addAttribute("ticket_id",ticket_id);
-//            return "verify_password";
-//        }
     }
 
 

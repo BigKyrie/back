@@ -72,11 +72,6 @@ public class TicketController {
         return ((ServletRequestAttributes) RequestContextHolder.currentRequestAttributes()).getRequest();
     }
 
-//    @GetMapping(path = "/{screening_id}/{seat_id}")
-//    public @ResponseBody
-//    List<Ticket> display_ticket
-//            (@PathVariable(name = "screening_id") Integer screening_id, @PathVariable(name = "seat_id") Integer seat_id)
-//    {return screeningService.display_screenings_filterby_cinema_id_and_movie_id(movie_id,cinema_id);}
 
     @PostMapping(path = "/{screening_id}/{seat_id}")
     public Ticket add_and_display_ticket

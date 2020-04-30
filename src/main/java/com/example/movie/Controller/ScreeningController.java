@@ -3,10 +3,8 @@ package com.example.movie.Controller;
 import com.example.movie.Entity.Movie;
 import com.example.movie.Entity.Screen;
 import com.example.movie.Entity.Screening;
-import com.example.movie.Service.Cinema_AdminService;
-import com.example.movie.Service.MovieService;
-import com.example.movie.Service.ScreenService;
-import com.example.movie.Service.ScreeningService;
+import com.example.movie.Entity.Ticket;
+import com.example.movie.Service.*;
 import com.example.movie.Session.UserInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -34,6 +32,9 @@ public class ScreeningController {
     private ScreenService screenService;
     @Autowired
     private MovieService movieService;
+    @Autowired
+    private TicketService ticketService;
+
     //find screenings by movie_id
     @GetMapping(path = "/{movie_id}/{cinema_id}")
     public @ResponseBody List<Screening> display_screenings_by_id
@@ -98,6 +99,10 @@ public class ScreeningController {
 
     @RequestMapping(path="/delete/{screening_id}")
     public String deleteScreening(@PathVariable Integer screening_id){
+        List<Ticket> tickets=ticketService.find_ticket_of_a_screening(screening_id);
+        for(int i=0;i<tickets.size();i++) {
+            ticketService.delete_by_ticket_id(tickets.get(i).getId());
+        }
         screeningService.delete_by_screening_id(screening_id);
         return "redirect:/cinemaAdmin/allScreenings";
     }

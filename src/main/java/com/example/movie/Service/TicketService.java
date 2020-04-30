@@ -7,6 +7,8 @@ import com.example.movie.Entity.Seat;
 import com.example.movie.Entity.Ticket;
 import com.example.movie.Repository.TicketRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -61,6 +63,10 @@ public class TicketService {
     public void update(Integer ticket_id,Cinema_Admin cinema_admin) {
         Ticket ticket=ticketRepository.find_ticket_by_id(ticket_id).get(0);
         ticket.setUser(cinema_admin);
+    }
+
+    public void delete_by_ticket_id(Integer id) {
+        ticketRepository.delete_by_ticket_id(id);
     }
 
     public List<Ticket> find_ticket_within_one_week(List<Ticket> tickets) throws ParseException {
