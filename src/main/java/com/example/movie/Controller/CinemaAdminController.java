@@ -15,7 +15,6 @@ import javax.servlet.http.HttpSession;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 
@@ -139,7 +138,7 @@ public class CinemaAdminController {
                             String showtime,Integer duration,String type,String language,String url,@PathVariable Integer movie_id)
     {
         try {
-            SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd hh:mm");
+            SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm");
             movieService.update(title, blurb, certificate, director, actors,
                     sdf.parse(showtime),duration,type,language,url,movie_id);
         } catch (ParseException e) {
