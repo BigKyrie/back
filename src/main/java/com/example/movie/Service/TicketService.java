@@ -53,10 +53,16 @@ public class TicketService {
             screenings.addAll(screeningService.find_screenings_by_screen_id(screen.getId()));
         }
         List<Ticket> tickets = new ArrayList<>();
+        List<Ticket> ftickets = new ArrayList<>();
         for (Screening screening : screenings) {
             tickets.addAll(ticketRepository.find_ticket_of_a_screening(screening.getId()));
         }
-        return tickets;
+        for(Ticket ticket : tickets){
+            if(ticket.getUser()!=null){
+                ftickets.add(ticket);
+            }
+        }
+        return ftickets;
     }
     public void update(Integer ticket_id,Cinema_Admin cinema_admin) {
         Ticket ticket=ticketRepository.find_ticket_by_id(ticket_id).get(0);
