@@ -86,11 +86,17 @@ public class ScreeningController {
             HttpSession session = getRequest().getSession();
             UserInfo userInfo = (UserInfo) session.getAttribute("user_info_in_the_session");
             Screen screen=screenService.find_screen_by_num_and_cinema(Integer.parseInt(screen_number),cinema_adminService.findAdminById(userInfo.getUserId()).getCinema().getId()).get(0);
-            Movie movie=movieService.find_movie_by_certificate(movie_certificate).get(0);
-            SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm");
-            String start=date+" "+start_time;
-            String end=date+" "+end_time;
-            screeningService.addScreening(sdf.parse(start),sdf.parse(end),Float.parseFloat(price),screen,movie);
+            if(movieService.find_movie_by_certificate(movie_certificate).size()==0) {
+                return "redirect:/cinemaAdmin/addScreeningForm";
+            }
+            else {
+                Movie movie=movieService.find_movie_by_certificate(movie_certificate).get(0);
+                SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm");
+                String start=date+" "+start_time;
+                String end=date+" "+end_time;
+                screeningService.addScreening(sdf.parse(start),sdf.parse(end),Float.parseFloat(price),screen,movie);
+            }
+
         } catch (ParseException e) {
             e.printStackTrace();
         }

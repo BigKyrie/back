@@ -42,7 +42,12 @@ public class CinemaAdminController {
                 UserInfo userInfo = new UserInfo(admins.get(0).getId(), admins.get(0).getUsername());
                 HttpSession session = getRequest().getSession();
                 session.setAttribute("user_info_in_the_session", userInfo);
-                return "redirect:/manage";
+                if(cinema_adminService.findAdminById(userInfo.getUserId()).getCinema()==null) {
+                    return "redirect:/addCinema";
+                }
+                else {
+                    return "redirect:/manage";
+                }
                 }
                 else {
                     return "redirect:/adminLogin";
