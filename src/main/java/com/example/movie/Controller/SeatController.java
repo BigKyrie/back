@@ -24,6 +24,8 @@ public class SeatController {
     private ScreenService screenService;
     @Autowired
     private ScreeningService screeningService;
+    @Autowired
+    private TicketService ticketService;
 
     @GetMapping(path = "/view/{screen_id}")
     public String view_seat(@PathVariable(name = "screen_id") Integer screen_id,  Model model){
@@ -47,12 +49,42 @@ public class SeatController {
     @GetMapping(path = "/addSeat/{screen_id}")
     public String add_seat(@PathVariable(name = "screen_id") Integer screen_id,  Model model){
         Screen screen = screenService.get_screen_by_id(screen_id).get(0);
-        model.addAttribute("screen",screen);
-        return "add_seat";
+        List<Seat> seats = seatService.view_seat_of_a_screen(screen_id);
+        if(seats.size() == 0) {
+            model.addAttribute("screen", screen);
+            return "add_seat";
+        }
+        else {
+            return "redirect:/screen/getAllScreens";
+        }
     }
 
     @PostMapping(path = "/add/{screen_id}")
     public String add_seats(@PathVariable(name = "screen_id") Integer screen_id, Integer row, Integer col){
+        seatService.add_seats(screen_id,row.intValue(),col.intValue());
+        return "redirect:/manage";
+    }
+
+    @GetMapping(path = "/editSeat/{screen_id}")
+    public String edit_seat(@PathVariable(name = "screen_id") Integer screen_id,  Model model){
+        Screen screen = screenService.get_screen_by_id(screen_id).get(0);
+        List<Seat> seats = seatService.view_seat_of_a_screen(screen_id);
+        if(seats.size()>0){
+            model.addAttribute("screen",screen);
+            return "edit_seat";
+        }
+        else{
+            return "redirect:/screen/getAllScreens";
+        }
+    }
+
+    @PostMapping(path = "/edit/{screen_id}")
+    public String edit_seats(@PathVariable(name = "screen_id") Integer screen_id, Integer row, Integer col){
+        List<Seat> seats = seatService.view_seat_of_a_screen(screen_id);
+        for(int i = 0; i<seats.size();i++){
+            ticketService.delete_ticket_by_seat_id(seats.get(i).getId());
+            seatService.delete_seat_by_id(seats.get(i).getId());
+        }
         seatService.add_seats(screen_id,row.intValue(),col.intValue());
         return "redirect:/manage";
     }

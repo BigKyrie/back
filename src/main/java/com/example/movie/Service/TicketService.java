@@ -184,5 +184,10 @@ public class TicketService {
         return ticket;
     }
 
-
+    public void delete_ticket_by_seat_id(Integer id) {
+        List<Ticket> tickets = ticketRepository.find_ticket_by_seat_id(id);
+        for(int i = 0; i<tickets.size();i++){
+            ticketRepository.delete_ticket_by_seat_id(id);
+        }
+    }
 }

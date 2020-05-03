@@ -92,5 +92,9 @@ public class SeatService {
         });
         return seatInfos;
     }
+
+    public void delete_seat_by_id(Integer id) {
+        seatRepository.delete_by_seat_id(id);
+    }
 }
 

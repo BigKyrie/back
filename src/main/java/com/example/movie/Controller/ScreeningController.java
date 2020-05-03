@@ -107,6 +107,12 @@ public class ScreeningController {
         return "redirect:/cinemaAdmin/allScreenings";
     }
 
+    @RequestMapping(path = "/view/{screen_id}")
+    public String viewScreeningOfAScreen(@PathVariable Integer screen_id, Model model){
+        List<Screening> screenings = screeningService.find_screenings_by_screen_id(screen_id);
+        model.addAttribute("screenings",screenings);
+        return "screen_screening";
+    }
 
     private HttpServletRequest getRequest() {
         return ((ServletRequestAttributes) RequestContextHolder.currentRequestAttributes()).getRequest();

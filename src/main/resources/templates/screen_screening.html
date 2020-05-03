@@ -4,9 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Screens </title>
+    <title>Screening </title>
     <link rel="stylesheet" type="text/css" href="/static/css/Listassets/css/demo.css" />
-    <link rel="stylesheet" type="text/css" href="/static/css/font-awesome.min.css">
     <link href="/static/css/style2.css" rel="stylesheet" type="text/css">
 </head>
 <body>
@@ -22,8 +21,10 @@
 <!-- coidea:header START -->
 <header>
     <div class="header-inner">
-        <h1>History Movies
-            <a href="/demo/mine"> <button type="button" class="button2 btn btn-primary">Back</button></a>
+        <h1>Screenings on this screen
+            <a href="/cinemaAdmin/addScreeningForm"><button type="button" class="button2 btn btn-primary">Add a new screening</button></a>
+            <a href="/cinemaAdmin/searchScreeningForm"><button type="button" class="button2 btn btn-primary">Search screenings</button></a>
+            <a href="/manage"> <button type="button" class="button2 btn btn-primary">Back</button></a>
         </h1>
     </div>
 </header>
@@ -33,6 +34,8 @@
 
     <!-- coidea:grid-list:navigation+switcher START -->
     <div class="grid-list-layout">
+
+
         <div class="grid-list-holder">
                 <span class="grid-layout active">
                     <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
@@ -124,34 +127,25 @@
     <!-- coidea:grid-list:main-section START -->
 
     <div class="grid masonry">
-        <div class="masonry__item" th:each="movie:${movies}">
-            <figure data-container="body" data-toggle="popover" data-placement="top"
-                    data-html="true" data-content="<image src='${movie.url}' height = 140px width = 100px>">
+        <div class="masonry__item" th:each="screening:${screenings}">
+            <figure>
                 <figcaption class="content">
-                    <h2><span><b>Title:</b></span><span th:text="${movie.title}" ></span></h2>
+                    <h2 th:text="${screening.movie.title}" ></h2>
+                    <p class="date">
+                        <span th:text="${#dates.format(screening.start_time, 'YY/MM/dd HH:mm')}"></span>
+                        <span>-</span>
+                        <span th:text="${#dates.format(screening.end_time, 'YY/MM/dd HH:mm')}"></span>
+                    </p>
                     <ul class="tags">
-                        <li><a href="#">
-                            <span><b>Director:</b></span>
-                            <span th:text="${movie.director}"></span>
+                        <li><a href="#" >
+                            <span><b>Price:</b></span>
+                            <span th:text="${screening.price}"></span>
                         </a></li>
-                        <li><a href="#">
-                            <span><b>Type:</b></span>
-                            <span th:text="${movie.type}"></span>
+                        <li><a href="#" >
+                            <span><b>Screen</b></span><span>: No.</span><span th:text="${screening.screen.num}"></span>
                         </a></li>
-                        <li><a href="#">
-                            <span><b>Language:</b></span>
-                            <span th:text="${movie.language}"></span>
-                        </a></li>
-                        <li><a href="#">
-                            <span><b>Actors:</b></span>
-                            <span th:text="${movie.actors}"></span>
-                        </a></li>
-                        <li><a href="#">
-                            <span><b>Time:</b></span>
-                            <span th:text="${#dates.format(movie.showtime, 'yyyy-MM-dd HH:mm')}"></span>
-                        </a></li>
-                        <li><a th:href="@{'/comment/make_comment/'+${movie.id}}">make comment</a></li>
-                        <li><a th:href="@{'/comment/edit_comment/'+${movie.id}}">edit comment</a></li>
+                        <li><a th:href=${'/screenings/toEditScreening/'+screening.id}>Edit</a></li>
+                        <li><a th:href=${'/screenings/delete/'+screening.id}>Delete</a></li>
                         <li><a href="#!" class="more" data-click-state="1">+</a></li>
                     </ul>
                 </figcaption>
@@ -171,9 +165,7 @@
 <script src="/static/js/imagesloaded.pkgd.min.js"></script>
 <script src="/static/css/Listassets/js/demo.js"></script>
 <script>
-    $(function (){
-        $("[data-toggle='popover']").popover();
-    });
+
 </script>
 </body>
 </html>

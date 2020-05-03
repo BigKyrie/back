@@ -16,7 +16,12 @@ public interface TicketRepository extends CrudRepository<Ticket,Integer> {
     List<Ticket> find_ticket_by_userid(Integer user_id);
     @Query(value = "select * from ticket where id = ?", nativeQuery = true)
     List<Ticket> find_ticket_by_id(Integer id);
+    @Query(value = "select * from ticket where seat_id = ?", nativeQuery = true)
+    List<Ticket> find_ticket_by_seat_id(Integer seat_id);
     @Modifying
     @Query(value = "delete from ticket where id = ?",nativeQuery = true)  //may delete
     public void delete_by_ticket_id(Integer id);
+    @Modifying
+    @Query(value = "delete from ticket where seat_id = ?", nativeQuery = true)
+    void delete_ticket_by_seat_id(Integer id);
 }

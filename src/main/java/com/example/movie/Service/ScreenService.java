@@ -44,4 +44,8 @@ public class ScreenService {
     }
 
 
+    public void delete_by_screen_id(Integer screen_id) {
+        Screen screen = screenRepository.search_screen_by_id(screen_id).get(0);
+        screenRepository.delete(screen);
+    }
 }

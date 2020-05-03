@@ -135,11 +135,11 @@
                     </p>
                     <ul class="tags">
                         <li><a th:href="@{'/seat/view/'+${screen.id}}"><span>View Seats</span></a></li>
-                        <li><a><span>View Screenings</span></a></li>
+                        <li><a th:href="@{'/screenings/view/'+${screen.id}}"><span>View Screenings</span></a></li>
                         <li><a th:href="@{'/seat/addSeat/'+${screen.id}}">Add Seats</a></li>
-                        <li><a>Edit Seats</a></li>
-                        <li><a>Delete Screening</a></li>
-                        <li><a href="#!" class="more" data-click-state="1">+</a></li>
+                        <li><a th:href="@{'/seat/editSeat/'+${screen.id}}">Edit Seats</a></li>
+                        <li><a th:href="@{'/screen/delete/'+${screen.id}}">Delete Screen</a></li>
+                        <li><a class="more" data-click-state="1">+</a></li>
                     </ul>
                 </figcaption>
             </figure>
